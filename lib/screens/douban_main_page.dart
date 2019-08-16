@@ -1,0 +1,103 @@
+import 'package:firewood/playground/playground_page.dart';
+import 'package:firewood/screens/douban_home_page.dart';
+import 'package:firewood/screens/douban_subject_page.dart';
+import 'package:firewood/widgets/navigation/FBottomNavigationBar.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
+
+import 'douban_group_page.dart';
+import 'douban_market_page.dart';
+import 'douban_profile_page.dart';
+
+class MainPage extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() {
+    return _MainPageState();
+  }
+}
+
+class _MainPageState extends State<MainPage> {
+  List<FBottomData> bottomData;
+  List<Widget> pages = List<Widget>();
+  int currentIndex = 0;
+
+  @override
+  void initState() {
+    super.initState();
+
+    bottomData = new List();
+    bottomData.add(FBottomData(
+      title: "首页",
+      page: HomePage(),
+      selectIcon: Image.asset("images/ic_tab_home_active.png"),
+      unSelectIcon: Image.asset("images/ic_tab_home_normal.png"),
+    ));
+    bottomData.add(FBottomData(
+      title: "书影音",
+      page: SubjectPage(),
+      selectIcon: Image.asset("images/ic_tab_subject_active.png"),
+      unSelectIcon: Image.asset("images/ic_tab_subject_normal.png"),
+    ));
+    bottomData.add(FBottomData(
+      title: "小组",
+      page: GroupPage(),
+      selectIcon: Image.asset("images/ic_tab_group_active.png"),
+      unSelectIcon: Image.asset("images/ic_tab_group_normal.png"),
+    ));
+    bottomData.add(FBottomData(
+      title: "市集",
+      page: MarketPage(),
+      selectIcon: Image.asset("images/ic_tab_shiji_active.png"),
+      unSelectIcon: Image.asset("images/ic_tab_shiji_normal.png"),
+    ));
+    bottomData.add(FBottomData(
+      title: "我的",
+//      page: ProfilePage(),
+      page: PlaygroundPage(),
+      selectIcon: Image.asset("images/ic_tab_profile_active.png"),
+      unSelectIcon: Image.asset("images/ic_tab_profile_normal.png"),
+    ));
+  }
+
+  void onPageChange(val) {
+    setState(() {
+      currentIndex = val;
+      print("onPageChange=$val");
+    });
+  }
+
+  Widget getBody() {
+    for (int i = 0; i < bottomData.length; i++) {
+      pages.add(AnimatedOpacity(
+        duration: Duration(milliseconds: 300),
+        opacity: currentIndex == i ? 1.0 : 0.0,
+        child: bottomData[i].page,
+      ));
+    }
+    Stack stack = Stack(
+      children: pages,
+    );
+    return stack;
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          Expanded(
+            child: getBody(),
+          ),
+          Container(
+              height: 60,
+              color: Colors.white,
+              child: FBottomNavigationBar(
+                bottomData: bottomData,
+                callback: onPageChange,
+              )),
+        ],
+      ),
+    );
+  }
+}

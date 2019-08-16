@@ -1,5 +1,9 @@
+import 'dart:io';
+
 import 'package:firewood/screens/douban_home_page.dart';
 import 'package:flutter/material.dart';
+
+import 'screens/douban_main_page.dart';
 
 void main() => runApp(MyApp());
 
@@ -27,7 +31,6 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-
 
 class MyHomePage extends StatefulWidget {
   MyHomePage({Key key, this.title}) : super(key: key);
@@ -114,11 +117,13 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 }
 
-
-class DouBan extends StatelessWidget{
+class DouBan extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return HomePage();
+    if (Platform.isAndroid) {
+      return MainPage();
+    } else if (Platform.isIOS) {
+      return SafeArea(child: MainPage());
+    }
   }
-
 }

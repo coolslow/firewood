@@ -1,20 +1,20 @@
 import 'package:flutter/material.dart';
 
-class HomePage extends StatefulWidget {
+class GroupPage extends StatefulWidget {
 
   @override
-  _HomePageState createState() => new _HomePageState();
+  _GroupPageState createState() => new _GroupPageState();
 
 }
 
-class _HomePageState extends State<HomePage> {
+class _GroupPageState extends State<GroupPage> {
 
   @override
   Widget build(BuildContext context) {
     return new MaterialApp(
         home: new Scaffold(
           appBar: new AppBar(
-            title: new Text('首页'),
+            title: new Text('小组'),
           ),
           body: new Center(
               child: null

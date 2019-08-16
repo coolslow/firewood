@@ -145,5 +145,7 @@ class FBottomData {
   Widget selectIcon;
   Widget unSelectIcon;
 
-  FBottomData({this.title, this.selectIcon, this.unSelectIcon});
+  Widget page;
+
+  FBottomData({this.page, this.title, this.selectIcon, this.unSelectIcon});
 }

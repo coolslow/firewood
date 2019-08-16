@@ -1,20 +1,20 @@
 import 'package:flutter/material.dart';
 
-class HomePage extends StatefulWidget {
+class MarketPage extends StatefulWidget {
 
   @override
-  _HomePageState createState() => new _HomePageState();
+  _MarketPageState createState() => new _MarketPageState();
 
 }
 
-class _HomePageState extends State<HomePage> {
+class _MarketPageState extends State<MarketPage> {
 
   @override
   Widget build(BuildContext context) {
     return new MaterialApp(
         home: new Scaffold(
           appBar: new AppBar(
-            title: new Text('首页'),
+            title: new Text('市集'),
           ),
           body: new Center(
               child: null

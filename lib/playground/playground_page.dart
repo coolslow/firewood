@@ -10,12 +10,12 @@ import 'custompaint/custom_paint_demo.dart';
 import 'package:firewood/playground/http/http_demo.dart';
 import 'list_demo.dart';
 
-class DemoPage extends StatefulWidget {
+class PlaygroundPage extends StatefulWidget {
   @override
-  _DemoPageState createState() => new _DemoPageState();
+  _PlaygroundPageState createState() => new _PlaygroundPageState();
 }
 
-class _DemoPageState extends State<DemoPage> {
+class _PlaygroundPageState extends State<PlaygroundPage> {
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
