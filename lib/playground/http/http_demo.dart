@@ -2,7 +2,6 @@ import 'package:firewood/playground/http/http_service.dart';
 import 'package:firewood/playground/navigation/action_bar.dart';
 import 'package:firewood/playground/util/fcolor.dart';
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 
 
 class HttpDemoPage extends StatefulWidget {
@@ -57,7 +56,7 @@ class _HttpDemoState extends State<HttpDemoPage> {
     );
   }
 
-  Future onClickGet() {
+  void onClickGet() {
     print("get========>");
     Future<String> content = HttpService.getInstance().get("music.md");
     content.then((data) {
@@ -70,7 +69,7 @@ class _HttpDemoState extends State<HttpDemoPage> {
   void onClickPost() {
     print("post========>");
 
-    Fluttertoast.showToast(msg: "post 方法空实现");
+//    Fluttertoast.showToast(msg: "post 方法空实现");
   }
 
 }
