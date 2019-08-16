@@ -1,3 +1,3 @@
 # Playground usage
 
-> Used for writing private demos
+> Used for writing private demo codes
