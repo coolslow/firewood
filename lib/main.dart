@@ -135,7 +135,16 @@ class DouBan extends StatelessWidget {
     if (Platform.isAndroid) {
       return MainPage();
     } else if (Platform.isIOS) {
-      return SafeArea(child: MainPage());
+      return Column(
+        children: <Widget>[
+          Expanded(child: MainPage()),
+          Container(
+            color: Colors.white,
+            height: SizeCompat.bottom / 2,
+            width: double.infinity,
+          )
+        ],
+      );
     }
     return Container();
   }

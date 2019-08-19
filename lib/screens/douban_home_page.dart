@@ -40,7 +40,7 @@ class _HomePageState extends State<HomePage> {
           Expanded(
             child: PageView.builder(
               onPageChanged: _pageChange,
-              physics: NeverScrollableScrollPhysics(),
+//              physics: NeverScrollableScrollPhysics(),
               controller: _pageController,
               itemBuilder: (BuildContext context, int index) {
                 if (index == 0) {
