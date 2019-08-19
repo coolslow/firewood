@@ -2,10 +2,20 @@ import 'dart:io';
 
 import 'package:firewood/screens/douban_home_page.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
+import 'common/utils/size_compat.dart';
 import 'screens/douban_main_page.dart';
 
-void main() => runApp(MyApp());
+void main() {
+  runApp(MyApp());
+
+  if (Platform.isAndroid) {
+    SystemUiOverlayStyle systemUiOverlayStyle =
+        SystemUiOverlayStyle(statusBarColor: Colors.transparent);
+    SystemChrome.setSystemUIOverlayStyle(systemUiOverlayStyle);
+  }
+}
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
@@ -120,10 +130,13 @@ class _MyHomePageState extends State<MyHomePage> {
 class DouBan extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    SizeCompat.init(context, 1080);
+
     if (Platform.isAndroid) {
       return MainPage();
     } else if (Platform.isIOS) {
       return SafeArea(child: MainPage());
     }
+    return Container();
   }
 }

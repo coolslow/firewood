@@ -1,3 +1,4 @@
+import 'package:firewood/common/utils/size_compat.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
@@ -29,12 +30,12 @@ class _FBottomNavigationBarState extends State<FBottomNavigationBar> {
 
   var selectTs = new TextStyle(
       color: Color(0xff42BD56),
-      fontSize: 13,
+      fontSize: SizeCompat.px(30),
       decoration: TextDecoration.none,
       fontWeight: FontWeight.w200);
   var unSelectTs = new TextStyle(
       color: Color(0xffa6a6a6),
-      fontSize: 13,
+      fontSize: SizeCompat.px(30),
       decoration: TextDecoration.none,
       fontWeight: FontWeight.w200);
 
@@ -63,7 +64,9 @@ class _FBottomNavigationBarState extends State<FBottomNavigationBar> {
 
   void notify(int index) {
     if (currIndex != index) {
-      widget.callback(index);
+      if (widget.callback != null) {
+        widget.callback(index);
+      }
     }
   }
 
@@ -90,14 +93,14 @@ class _FBottomNavigationBarState extends State<FBottomNavigationBar> {
             child: Container(
               color: currIndex == i ? selectBg : unSelectBg,
               child: Stack(
-                alignment: Alignment.center,
+                alignment: Alignment.topCenter,
                 children: <Widget>[
                   Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
                         Container(
-                          width: 28,
-                          height: 28,
+                          width: SizeCompat.px(64),
+                          height: SizeCompat.px(64),
+                          margin: EdgeInsets.only(top: SizeCompat.px(6),),
                           child: currIndex == i
                               ? data[i].selectIcon
                               : data[i].unSelectIcon,

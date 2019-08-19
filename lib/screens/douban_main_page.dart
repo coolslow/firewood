@@ -1,7 +1,8 @@
+import 'package:firewood/common/utils/size_compat.dart';
 import 'package:firewood/playground/playground_page.dart';
 import 'package:firewood/screens/douban_home_page.dart';
 import 'package:firewood/screens/douban_subject_page.dart';
-import 'package:firewood/widgets/navigation/FBottomNavigationBar.dart';
+import 'package:firewood/widgets/navigation/bottom_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
@@ -68,9 +69,8 @@ class _MainPageState extends State<MainPage> {
 
   Widget getBody() {
     for (int i = 0; i < bottomData.length; i++) {
-      pages.add(AnimatedOpacity(
-        duration: Duration(milliseconds: 300),
-        opacity: currentIndex == i ? 1.0 : 0.0,
+      pages.add(Offstage(
+        offstage: currentIndex == i ? false : true,
         child: bottomData[i].page,
       ));
     }
@@ -90,7 +90,7 @@ class _MainPageState extends State<MainPage> {
             child: getBody(),
           ),
           Container(
-              height: 60,
+              height: SizeCompat.px(126),
               color: Colors.white,
               child: FBottomNavigationBar(
                 bottomData: bottomData,
