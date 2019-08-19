@@ -34,6 +34,7 @@ class _HomePageState extends State<HomePage> {
           FActionSearchBar(searchHint: "村里那个古怪的人", unReadCount: 9),
           Container(
               height: SizeCompat.px(106),
+              color: Colors.white,
               padding: EdgeInsets.only(left: padding, right: padding),
               width: double.infinity,
               child: FTabBar(tabData: tabData, callback: _onTap)),
