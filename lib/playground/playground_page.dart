@@ -10,6 +10,7 @@ import 'circleprogress/circle_progress_bar_demo.dart';
 import 'custompaint/custom_paint_demo.dart';
 import 'package:firewood/playground/http/http_demo.dart';
 import 'list_demo.dart';
+import 'package:firewood/playground/mediaquery/basic.dart';
 
 class PlaygroundPage extends StatefulWidget {
   @override
@@ -33,6 +34,7 @@ class _PlaygroundPageState extends State<PlaygroundPage> {
             getItem(
                 context, "CircleProgressbarDemo", CircleProgressBarDemoPage()),
             getItem(context, "CircleAvatarDemo", CircleAvatarDemoPage()),
+            getItem(context, "MediaQueryDataDemo", MediaQueryDataScreen())
           ],
         ),
       ),

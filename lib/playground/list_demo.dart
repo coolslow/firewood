@@ -6,7 +6,7 @@ import 'navigation/action_bar.dart';
 
 class ListDemoPage extends StatefulWidget {
   @override
-  _ListDemoState createState() => new _ListDemoState();
+  _ListDemoState createState() => _ListDemoState();
 }
 
 class _ListDemoState extends State<ListDemoPage> {
@@ -19,7 +19,7 @@ class _ListDemoState extends State<ListDemoPage> {
   Widget build(BuildContext context) {
     var statusbarHeight = MediaQuery.of(context).padding.top; //
 
-    return new Scaffold(
+    return Scaffold(
       body: SingleChildScrollView(
         child: Column(
           children: <Widget>[
@@ -32,12 +32,12 @@ class _ListDemoState extends State<ListDemoPage> {
                 physics: BouncingScrollPhysics(),
                 padding: EdgeInsets.all(0.0),
                 itemCount: 10,
-                itemBuilder: (BuildContext context, int index) => new ListTile(
-                      leading: new Icon(Icons.list),
-                      title: new Text("顾名思义=$index"),
-                      subtitle: new Text("属性详细介绍"),
-                      trailing: new Icon(Icons.keyboard_arrow_right),
-                    ),
+                itemBuilder: (BuildContext context, int index) => ListTile(
+                  leading: Icon(Icons.list),
+                  title: Text("顾名思义=$index"),
+                  subtitle: Text("属性详细介绍"),
+                  trailing: Icon(Icons.keyboard_arrow_right),
+                ),
               ),
             ),
             Container(
@@ -49,14 +49,14 @@ class _ListDemoState extends State<ListDemoPage> {
                   itemCount: 10,
                   separatorBuilder: (BuildContext context, int index) =>
                       Container(
-                        width: 1,
-                        color: Colors.white,
-                      ),
+                    width: 1,
+                    color: Colors.white,
+                  ),
                   itemBuilder: (BuildContext context, int index) => Container(
-                        color: Colors.deepPurpleAccent,
-                        padding: EdgeInsets.fromLTRB(1, 1, 1, 1),
-                        child: Text("属性详细介绍"),
-                      ),
+                    color: Colors.deepPurpleAccent,
+                    padding: EdgeInsets.fromLTRB(1, 1, 1, 1),
+                    child: Text("属性详细介绍"),
+                  ),
                 )),
             Container(
                 height: 150,
