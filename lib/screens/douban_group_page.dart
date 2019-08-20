@@ -1,3 +1,4 @@
+import 'package:firewood/common/constants.dart';
 import 'package:firewood/widgets/navigation/action_search_bar.dart';
 import 'package:flutter/material.dart';
 
@@ -17,7 +18,7 @@ class _GroupPageState extends State<GroupPage> {
                 searchHint: "日剧小组",
                 bgColor: Colors.white,
                 connerBgColor: Color(0xffF4F4F4),
-                mailColor: Color(0xff7E7E7E),
+                mailColor: FColors.iconColorFilter,
                 unReadCount: 2),
           ],
         ),

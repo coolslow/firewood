@@ -38,6 +38,10 @@ class _HomePageState extends State<HomePage> {
               padding: EdgeInsets.only(left: padding, right: padding),
               width: double.infinity,
               child: FTabBar(tabData: tabData, callback: _onTap)),
+          Container(
+            height: SizeCompat.px(2),
+            color: Color(0xffEBEBEB),
+          ),
           Expanded(
             child: PageView.builder(
               onPageChanged: _pageChange,

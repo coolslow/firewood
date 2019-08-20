@@ -21,10 +21,10 @@ class SizeCompat {
     }
     _ratio = width / uiWidth;
 
-    print(
-        "mediaQuery   devicePixelRatio=${mediaQuery.devicePixelRatio}    _ratio=$_ratio");
-    print(
-        "mediaQuery   width=${mediaQuery.size.width}    height=${mediaQuery.size.height}");
+//    print(
+//        "mediaQuery   devicePixelRatio=${mediaQuery.devicePixelRatio}    _ratio=$_ratio");
+//    print(
+//        "mediaQuery   width=${mediaQuery.size.width}    height=${mediaQuery.size.height}");
   }
 
   ///

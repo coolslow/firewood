@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 
 import 'bloc_demo.dart';
 import 'chess/chess_demo.dart';
+import 'circleavatar/circle_avatar_demo.dart';
 import 'circleprogress/circle_progress_bar_demo.dart';
 import 'custompaint/custom_paint_demo.dart';
 import 'package:firewood/playground/http/http_demo.dart';
@@ -31,6 +32,7 @@ class _PlaygroundPageState extends State<PlaygroundPage> {
             getItem(context, "ChessDemo", ChessDemoPage()),
             getItem(
                 context, "CircleProgressbarDemo", CircleProgressBarDemoPage()),
+            getItem(context, "CircleAvatarDemo", CircleAvatarDemoPage()),
           ],
         ),
       ),

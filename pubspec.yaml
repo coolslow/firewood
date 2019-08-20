@@ -79,6 +79,8 @@ flutter:
     - images/ic_commented.png
     - images/ic_forward.png
     - images/ic_topic.png
+    - images/ic_more.png
+    - images/default_place_holder.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
