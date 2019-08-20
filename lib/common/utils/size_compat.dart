@@ -47,6 +47,4 @@ class SizeCompat {
   static double onepx() {
     return 1 / _devicePixelRatio;
   }
-
-
 }
