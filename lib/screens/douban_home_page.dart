@@ -13,20 +13,22 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   List<FTabBarData> tabData;
-  int currentIndex = 0;
-
+  int currentIndex = 1;
+  var _pageController;
   @override
   void initState() {
+    _pageController = PageController(initialPage: currentIndex);
+
     tabData = new List();
     tabData.add(FTabBarData("动态"));
     tabData.add(FTabBarData("推荐"));
+
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
     double padding = SizeCompat.px(390);
-
     return new MaterialApp(
       home: new Scaffold(
           body: Column(
@@ -37,7 +39,8 @@ class _HomePageState extends State<HomePage> {
               color: Colors.white,
               padding: EdgeInsets.only(left: padding, right: padding),
               width: double.infinity,
-              child: FTabBar(tabData: tabData, callback: _onTap)),
+              child: FTabBar(
+                  tabData: tabData, currIndex: currentIndex, callback: _onTap)),
           Container(
             height: SizeCompat.px(2),
             color: Color(0xffEBEBEB),
@@ -62,7 +65,7 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  var _pageController = new PageController(initialPage: 0);
+
 
   void _onTap(int index) {
     _pageController.animateToPage(index,
@@ -70,6 +73,7 @@ class _HomePageState extends State<HomePage> {
   }
 
   void _pageChange(int index) {
+
     if (currentIndex != index) {
       setState(() {
         currentIndex = index;

@@ -4,12 +4,13 @@ import 'package:flutter/widgets.dart';
 
 class FTabBar extends StatefulWidget {
   final List<FTabBarData> tabData;
+  final int currIndex;
   final ValueChanged<int> callback;
   final TextStyle selectTs;
   final TextStyle unSelectTs;
 
   FTabBar(
-      {@required this.tabData, this.callback, this.selectTs, this.unSelectTs});
+      {@required this.tabData,this.currIndex=0, this.callback, this.selectTs, this.unSelectTs});
 
   @override
   State<StatefulWidget> createState() {
@@ -22,12 +23,12 @@ class _FTabBarState extends State<FTabBar> {
 
   var selectTs = new TextStyle(
       color: Color(0xff42BD56),
-      fontSize: SizeCompat.px(44),
+      fontSize: SizeCompat.px(40),
       decoration: TextDecoration.none,
       fontWeight: FontWeight.w700);
   var unSelectTs = new TextStyle(
       color: Color(0xff959595),
-      fontSize: SizeCompat.px(44),
+      fontSize: SizeCompat.px(40),
       decoration: TextDecoration.none,
       fontWeight: FontWeight.w200);
 
@@ -39,7 +40,14 @@ class _FTabBarState extends State<FTabBar> {
     if (widget.unSelectTs != null) {
       unSelectTs = widget.unSelectTs;
     }
+    currIndex = widget.currIndex;
     super.initState();
+  }
+
+  @override
+  void didUpdateWidget(FTabBar oldWidget) {
+    currIndex = widget.currIndex;
+    super.didUpdateWidget(oldWidget);
   }
 
   void notify(int index) {
@@ -52,6 +60,7 @@ class _FTabBarState extends State<FTabBar> {
 
   @override
   Widget build(BuildContext context) {
+
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: getBar(widget.tabData),
