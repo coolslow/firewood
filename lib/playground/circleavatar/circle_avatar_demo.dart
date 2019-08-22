@@ -35,26 +35,26 @@ class _CircleAvatarDemoState extends State<CircleAvatarDemoPage> {
 
   Widget getBody(BuildContext context) {
     Container result = Container(
-      padding: EdgeInsets.only(top: SizeCompat.px(54)),
+      padding: EdgeInsets.only(top: SizeCompat.pxToDp(54)),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
           CircleAvatar(
-            radius: SizeCompat.px(40),
+            radius: SizeCompat.pxToDp(40),
             backgroundImage: NetworkImage(portrait),
           ),
           Container(
             margin: EdgeInsets.only(top: 20),
-            height: SizeCompat.px(80),
-            width: SizeCompat.px(80),
+            height: SizeCompat.pxToDp(80),
+            width: SizeCompat.pxToDp(80),
             decoration: BoxDecoration(
                 image: DecorationImage(image: NetworkImage(portrait)),
-                borderRadius: BorderRadius.circular(SizeCompat.px(40))),
+                borderRadius: BorderRadius.circular(SizeCompat.pxToDp(40))),
           ),
           Container(
             margin: EdgeInsets.only(top: 20),
-            height: SizeCompat.px(80),
-            width: SizeCompat.px(80),
+            height: SizeCompat.pxToDp(80),
+            width: SizeCompat.pxToDp(80),
             decoration: BoxDecoration(
                 image: DecorationImage(image: NetworkImage(portrait)),
                 shape: BoxShape.circle),

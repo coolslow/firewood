@@ -37,9 +37,9 @@ class _RecommendPageState extends State<RecommendPage> {
 
 class RecommendUIController {
   static Widget create(TypeEntity entity) {
-    if (entity.getType() == TypeEntity.typeData) {
+    if (entity.getType() == TypeEntity.typeRecommendData) {
       return _createDataItem(entity);
-    } else if (entity.getType() == TypeEntity.typeAD) {
+    } else if (entity.getType() == TypeEntity.typeRecommendAD) {
       return _createADItem(entity);
     }
     return Container();
@@ -71,32 +71,32 @@ class RecommendUIController {
     }
     RecommendEntity data = entity as RecommendEntity;
     Container result = Container(
-      padding:
-          EdgeInsets.only(left: SizeCompat.px(54), right: SizeCompat.px(54)),
-      height: SizeCompat.px(150),
+      padding: EdgeInsets.only(
+          left: SizeCompat.pxToDp(54), right: SizeCompat.pxToDp(54)),
+      height: SizeCompat.pxToDp(150),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
           CircleAvatar(
-            radius: SizeCompat.px(40),
+            radius: SizeCompat.pxToDp(40),
             backgroundColor: Colors.grey,
             backgroundImage: NetworkImage(data.portrait),
           ),
           Expanded(
             child: Container(
               margin: EdgeInsets.only(
-                  left: SizeCompat.px(32), right: SizeCompat.px(32)),
+                  left: SizeCompat.pxToDp(32), right: SizeCompat.pxToDp(32)),
               child: Text(
                 data.name,
                 maxLines: 1,
                 style: TextStyle(
-                    color: Color(0xff191919), fontSize: SizeCompat.px(38)),
+                    color: Color(0xff191919), fontSize: SizeCompat.pxToDp(38)),
               ),
             ),
           ),
           Container(
-            height: SizeCompat.px(50),
-            width: SizeCompat.px(50),
+            height: SizeCompat.pxToDp(50),
+            width: SizeCompat.pxToDp(50),
             decoration: BoxDecoration(
                 image: DecorationImage(
               image: AssetImage("images/ic_more.png"),
@@ -117,29 +117,30 @@ class RecommendUIController {
     RecommendEntity data = entity as RecommendEntity;
     return Container(
         alignment: Alignment.centerLeft,
-        margin:
-            EdgeInsets.only(left: SizeCompat.px(54), right: SizeCompat.px(54)),
-        padding:
-            EdgeInsets.only(left: SizeCompat.px(10), right: SizeCompat.px(20)),
-        height: SizeCompat.px(70),
+        margin: EdgeInsets.only(
+            left: SizeCompat.pxToDp(54), right: SizeCompat.pxToDp(54)),
+        padding: EdgeInsets.only(
+            left: SizeCompat.pxToDp(10), right: SizeCompat.pxToDp(20)),
+        height: SizeCompat.pxToDp(70),
         decoration: BoxDecoration(
             color: Color(0xffF7F7F7), //
-            borderRadius: BorderRadius.all(Radius.circular(SizeCompat.px(35)))),
+            borderRadius:
+                BorderRadius.all(Radius.circular(SizeCompat.pxToDp(35)))),
         child: Row(
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
             Image.asset(
               "images/ic_topic.png",
-              height: SizeCompat.px(40),
-              width: SizeCompat.px(40),
+              height: SizeCompat.pxToDp(40),
+              width: SizeCompat.pxToDp(40),
             ),
             Container(
-                margin: EdgeInsets.only(left: SizeCompat.px(10)),
+                margin: EdgeInsets.only(left: SizeCompat.pxToDp(10)),
                 child: Text(
                   data.topic,
                   maxLines: 1,
                   style: TextStyle(
-                      color: FColors.primary, fontSize: SizeCompat.px(35)),
+                      color: FColors.primary, fontSize: SizeCompat.pxToDp(35)),
                 )),
           ],
         ));
@@ -152,16 +153,18 @@ class RecommendUIController {
     RecommendEntity data = entity as RecommendEntity;
     return Container(
       margin: EdgeInsets.only(
-          left: SizeCompat.px(54),
-          right: SizeCompat.px(54),
-          top: SizeCompat.px(30),
-          bottom: SizeCompat.px(26)),
+          left: SizeCompat.pxToDp(54),
+          right: SizeCompat.pxToDp(54),
+          top: SizeCompat.pxToDp(30),
+          bottom: SizeCompat.pxToDp(26)),
       child: Text(
         data.description,
         maxLines: 5,
         overflow: TextOverflow.ellipsis,
         style: TextStyle(
-            color: Color(0xff4A4A4A), fontSize: SizeCompat.px(40), height: 1),
+            color: Color(0xff4A4A4A),
+            fontSize: SizeCompat.pxToDp(40),
+            height: 1),
       ),
     );
   }
@@ -195,46 +198,45 @@ class RecommendUIController {
   }
 
   static Widget _getImages1(List<String> entity) {
-    double w = SizeCompat.dpToPx(SizeCompat.width) * 0.67;
+    double w = SizeCompat.width() * 0.67;
     double h = w / 1.77;
 
     return Container(
       alignment: Alignment.topLeft,
       padding: EdgeInsets.only(
-        left: SizeCompat.px(54),
-        right: SizeCompat.px(54),
+        left: SizeCompat.pxToDp(54),
+        right: SizeCompat.pxToDp(54),
       ),
       child: ClipRRect(
         child: FadeInImage.assetNetwork(
           placeholder: "images/default_place_holder.png",
           image: entity[0],
-          width: SizeCompat.px(w),
-          height: SizeCompat.px(h),
+          width: w,
+          height: h,
           fit: BoxFit.cover,
         ),
-        borderRadius: BorderRadius.circular(SizeCompat.px(10)),
+        borderRadius: BorderRadius.circular(SizeCompat.pxToDp(10)),
       ),
     );
   }
 
   static Widget _getImages4(List<String> entity) {
-    double itemSize =
-        (SizeCompat.dpToPx(SizeCompat.width) - SizeCompat.px(54.0 * 2)) / 3;
+    double itemSize = (SizeCompat.width() - SizeCompat.pxToDp(54.0 * 2)) / 3;
 
     return Container(
       alignment: Alignment.topLeft,
       padding: EdgeInsets.only(
-        left: SizeCompat.px(54),
+        left: SizeCompat.pxToDp(54),
       ),
-      width: SizeCompat.px(itemSize * 2),
+      width: itemSize * 2,
       child: GridView.builder(
           shrinkWrap: true,
           padding: EdgeInsets.all(0),
           physics: new NeverScrollableScrollPhysics(),
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 2,
-            mainAxisSpacing: SizeCompat.px(10),
-            crossAxisSpacing: SizeCompat.px(10),
+            mainAxisSpacing: SizeCompat.pxToDp(10),
+            crossAxisSpacing: SizeCompat.pxToDp(10),
             childAspectRatio: 1.0,
           ),
           itemBuilder: (BuildContext context, int index) {
@@ -244,7 +246,7 @@ class RecommendUIController {
                 image: entity[index],
                 fit: BoxFit.cover,
               ),
-              borderRadius: BorderRadius.circular(SizeCompat.px(10)),
+              borderRadius: BorderRadius.circular(SizeCompat.pxToDp(10)),
             );
           },
           itemCount: entity.length),
@@ -254,8 +256,8 @@ class RecommendUIController {
   static Widget _getImagesGrid(List<String> entity) {
     return Container(
       padding: EdgeInsets.only(
-        left: SizeCompat.px(54),
-        right: SizeCompat.px(54),
+        left: SizeCompat.pxToDp(54),
+        right: SizeCompat.pxToDp(54),
       ),
       child: GridView.builder(
           shrinkWrap: true,
@@ -263,8 +265,8 @@ class RecommendUIController {
           physics: new NeverScrollableScrollPhysics(),
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 3,
-            mainAxisSpacing: SizeCompat.px(10),
-            crossAxisSpacing: SizeCompat.px(10),
+            mainAxisSpacing: SizeCompat.pxToDp(10),
+            crossAxisSpacing: SizeCompat.pxToDp(10),
             childAspectRatio: 1.0,
           ),
           itemBuilder: (BuildContext context, int index) {
@@ -274,7 +276,7 @@ class RecommendUIController {
                 image: entity[index],
                 fit: BoxFit.cover,
               ),
-              borderRadius: BorderRadius.circular(SizeCompat.px(10)),
+              borderRadius: BorderRadius.circular(SizeCompat.pxToDp(10)),
             );
           },
           itemCount: entity.length),
@@ -289,11 +291,11 @@ class RecommendUIController {
     RecommendEntity data = entity as RecommendEntity;
     return Container(
         padding: EdgeInsets.only(
-            left: SizeCompat.px(54),
-            right: SizeCompat.px(54),
-            top: SizeCompat.px(50),
-            bottom: SizeCompat.px(40)),
-        height: SizeCompat.px(148),
+            left: SizeCompat.pxToDp(54),
+            right: SizeCompat.pxToDp(54),
+            top: SizeCompat.pxToDp(50),
+            bottom: SizeCompat.pxToDp(40)),
+        height: SizeCompat.pxToDp(148),
         child: Row(
           mainAxisSize: MainAxisSize.max,
           mainAxisAlignment: MainAxisAlignment.center,
@@ -305,9 +307,9 @@ class RecommendUIController {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   Container(
-                    margin: EdgeInsets.only(top: SizeCompat.px(8)),
-                    height: SizeCompat.px(50),
-                    width: SizeCompat.px(50),
+                    margin: EdgeInsets.only(top: SizeCompat.pxToDp(8)),
+                    height: SizeCompat.pxToDp(50),
+                    width: SizeCompat.pxToDp(50),
                     decoration: BoxDecoration(
                         image: DecorationImage(
                       image: AssetImage(data.thumbed
@@ -318,13 +320,13 @@ class RecommendUIController {
                     )),
                   ),
                   Container(
-                      margin: EdgeInsets.only(left: SizeCompat.px(1)),
+                      margin: EdgeInsets.only(left: SizeCompat.pxToDp(1)),
                       child: Text(
                         "${data.thumbNumber}",
                         maxLines: 1,
                         style: TextStyle(
                             color: FColors.iconColorFilter,
-                            fontSize: SizeCompat.px(30)),
+                            fontSize: SizeCompat.pxToDp(30)),
                       )),
                 ],
               ),
@@ -336,9 +338,9 @@ class RecommendUIController {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   Container(
-                    margin: EdgeInsets.only(top: SizeCompat.px(8)),
-                    height: SizeCompat.px(50),
-                    width: SizeCompat.px(50),
+                    margin: EdgeInsets.only(top: SizeCompat.pxToDp(8)),
+                    height: SizeCompat.pxToDp(50),
+                    width: SizeCompat.pxToDp(50),
                     decoration: BoxDecoration(
                         image: DecorationImage(
                       image: AssetImage(data.commented
@@ -349,13 +351,13 @@ class RecommendUIController {
                     )),
                   ),
                   Container(
-                      margin: EdgeInsets.only(left: SizeCompat.px(1)),
+                      margin: EdgeInsets.only(left: SizeCompat.pxToDp(1)),
                       child: Text(
                         "${data.commentNumber}",
                         maxLines: 1,
                         style: TextStyle(
                             color: FColors.iconColorFilter,
-                            fontSize: SizeCompat.px(30)),
+                            fontSize: SizeCompat.pxToDp(30)),
                       )),
                 ],
               ),
@@ -367,9 +369,9 @@ class RecommendUIController {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   Container(
-                    margin: EdgeInsets.only(top: SizeCompat.px(8)),
-                    height: SizeCompat.px(50),
-                    width: SizeCompat.px(50),
+                    margin: EdgeInsets.only(top: SizeCompat.pxToDp(8)),
+                    height: SizeCompat.pxToDp(50),
+                    width: SizeCompat.pxToDp(50),
                     decoration: BoxDecoration(
                         image: DecorationImage(
                       image: AssetImage(data.forwarded
@@ -380,13 +382,13 @@ class RecommendUIController {
                     )),
                   ),
                   Container(
-                      margin: EdgeInsets.only(left: SizeCompat.px(1)),
+                      margin: EdgeInsets.only(left: SizeCompat.pxToDp(1)),
                       child: Text(
                         "${data.forwardNumber}",
                         maxLines: 1,
                         style: TextStyle(
                             color: FColors.iconColorFilter,
-                            fontSize: SizeCompat.px(30)),
+                            fontSize: SizeCompat.pxToDp(30)),
                       )),
                 ],
               ),
@@ -397,7 +399,7 @@ class RecommendUIController {
 
   static Widget getDivider() {
     return Container(
-      height: SizeCompat.px(20),
+      height: SizeCompat.pxToDp(20),
       color: Color(0xffF4F4F4),
     );
   }

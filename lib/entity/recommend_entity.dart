@@ -33,6 +33,6 @@ class RecommendEntity extends TypeEntity {
 
   @override
   getType() {
-    return TypeEntity.typeData;
+    return TypeEntity.typeRecommendData;
   }
 }

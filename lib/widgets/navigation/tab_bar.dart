@@ -23,12 +23,12 @@ class _FTabBarState extends State<FTabBar> {
 
   var selectTs = new TextStyle(
       color: Color(0xff42BD56),
-      fontSize: SizeCompat.px(40),
+      fontSize: SizeCompat.pxToDp(40),
       decoration: TextDecoration.none,
       fontWeight: FontWeight.w700);
   var unSelectTs = new TextStyle(
       color: Color(0xff959595),
-      fontSize: SizeCompat.px(40),
+      fontSize: SizeCompat.pxToDp(40),
       decoration: TextDecoration.none,
       fontWeight: FontWeight.w200);
 
@@ -93,7 +93,7 @@ class _FTabBarState extends State<FTabBar> {
               Positioned(
                   bottom: 0,
                   child: Container(
-                    height: SizeCompat.px(6),
+                    height: SizeCompat.pxToDp(6),
                     color: currIndex == i ? selectTs.color : Colors.white,
                     child: Center(
                       child: Text(data[i].title,

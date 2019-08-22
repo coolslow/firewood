@@ -30,12 +30,12 @@ class _FBottomNavigationBarState extends State<FBottomNavigationBar> {
 
   var selectTs = new TextStyle(
       color: Color(0xff42BD56),
-      fontSize: SizeCompat.px(30),
+      fontSize: SizeCompat.pxToDp(30),
       decoration: TextDecoration.none,
       fontWeight: FontWeight.w200);
   var unSelectTs = new TextStyle(
       color: Color(0xffa6a6a6),
-      fontSize: SizeCompat.px(30),
+      fontSize: SizeCompat.pxToDp(30),
       decoration: TextDecoration.none,
       fontWeight: FontWeight.w200);
 
@@ -98,9 +98,9 @@ class _FBottomNavigationBarState extends State<FBottomNavigationBar> {
                   Column(
                       children: <Widget>[
                         Container(
-                          width: SizeCompat.px(64),
-                          height: SizeCompat.px(64),
-                          margin: EdgeInsets.only(top: SizeCompat.px(6),),
+                          width: SizeCompat.pxToDp(64),
+                          height: SizeCompat.pxToDp(64),
+                          margin: EdgeInsets.only(top: SizeCompat.pxToDp(6),),
                           child: currIndex == i
                               ? data[i].selectIcon
                               : data[i].unSelectIcon,

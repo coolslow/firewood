@@ -1,3 +1,4 @@
+import 'package:firewood/playground/pageviews/page_view_demo.dart';
 import 'package:firewood/playground/templet_demo.dart';
 import 'package:firewood/playground/util/fcolor.dart';
 import 'package:flutter/cupertino.dart';
@@ -34,7 +35,8 @@ class _PlaygroundPageState extends State<PlaygroundPage> {
             getItem(
                 context, "CircleProgressbarDemo", CircleProgressBarDemoPage()),
             getItem(context, "CircleAvatarDemo", CircleAvatarDemoPage()),
-            getItem(context, "MediaQueryDataDemo", MediaQueryDataScreen())
+            getItem(context, "MediaQueryDataDemo", MediaQueryDataScreen()),
+            getItem(context, "PageViewDemoPage", PageViewDemoPage()),
           ],
         ),
       ),

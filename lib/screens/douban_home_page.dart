@@ -13,8 +13,8 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   List<FTabBarData> tabData;
-  int currentIndex = 1;
-  var _pageController;
+  int currentIndex = 0;
+  PageController _pageController;
   @override
   void initState() {
     _pageController = PageController(initialPage: currentIndex);
@@ -28,21 +28,21 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    double padding = SizeCompat.px(390);
+    double padding = SizeCompat.pxToDp(390);
     return new MaterialApp(
       home: new Scaffold(
           body: Column(
         children: <Widget>[
           FActionSearchBar(searchHint: "村里那个古怪的人", unReadCount: 9),
           Container(
-              height: SizeCompat.px(106),
+              height: SizeCompat.pxToDp(106),
               color: Colors.white,
               padding: EdgeInsets.only(left: padding, right: padding),
               width: double.infinity,
               child: FTabBar(
                   tabData: tabData, currIndex: currentIndex, callback: _onTap)),
           Container(
-            height: SizeCompat.px(2),
+            height: SizeCompat.pxToDp(2),
             color: Color(0xffEBEBEB),
           ),
           Expanded(
@@ -70,6 +70,12 @@ class _HomePageState extends State<HomePage> {
   void _onTap(int index) {
     _pageController.animateToPage(index,
         duration: const Duration(milliseconds: 300), curve: Curves.ease);
+  }
+
+  @override
+  void dispose() {
+    _pageController?.dispose();
+    super.dispose();
   }
 
   void _pageChange(int index) {

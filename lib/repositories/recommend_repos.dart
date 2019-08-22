@@ -69,7 +69,7 @@ class RecommendRepos {
         "你看过哪位导演的全部作品？",
         """一 作为一个悬疑片爱好者，(5)在豆瓣上标记看过的上千部影片里至少一半是悬疑片。可在悬疑片发展中有着煌煌大名的希区柯克，却让我一度望而却步，因为眼睛早已习惯斑斓色彩，总觉得黑白画面少了视觉上的刺激。 所以直到研一，我才第一次观看希区柯克的电影。分析《后窗》，是《电影建筑学》课程的要求。这位大导演似乎很受建""",
         List()
-          ..add("https://img1.doubanio.com/view/note/l/public/p53288958.jpg")
+          ..add("https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2563626309.jpg")
           ..add("https://img3.doubanio.com/view/note/l/public/p53288894.jpg")
           ..add("https://img3.doubanio.com/view/note/l/public/p53288912.jpg")
           ..add("https://img3.doubanio.com/view/note/l/public/p53288890.jpg")
@@ -104,7 +104,7 @@ class RecommendRepos {
         List()
           ..add("https://img1.doubanio.com/view/note/l/public/p52338908.jpg")
           ..add("https://img1.doubanio.com/view/note/l/public/p52339477.jpg")
-          ..add("https://img3.doubanio.com/view/note/l/public/p52339593.jpg")
+          ..add("https://img3.doubanio.com/view/note/l/public/p52339736.jpg")
           ..add("https://img3.doubanio.com/view/note/l/public/p52339612.jpg")
           ..add("https://img3.doubanio.com/view/note/l/public/p52339736.jpg")
           ..add("https://img1.doubanio.com/view/note/l/public/p52339838.jpg")
@@ -127,7 +127,7 @@ class RecommendRepos {
           ..add(
               "https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2555084871.jpg")
           ..add(
-              "https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2561439800.jpg")
+              "https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2563780504.webp")
           ..add(
               "https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2549177902.jpg")
           ..add(

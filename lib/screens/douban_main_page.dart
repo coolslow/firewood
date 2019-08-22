@@ -90,7 +90,7 @@ class _MainPageState extends State<MainPage> {
             child: getBody(),
           ),
           Container(
-              height: SizeCompat.px(126),
+              height: SizeCompat.pxToDp(126),
               color: Colors.white,
               child: FBottomNavigationBar(
                 bottomData: bottomData,

@@ -81,6 +81,8 @@ flutter:
     - images/ic_topic.png
     - images/ic_more.png
     - images/default_place_holder.png
+    - images/bg_compose_artwork.png
+    - images/ic_compose.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
