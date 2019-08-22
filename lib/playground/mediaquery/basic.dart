@@ -16,12 +16,15 @@ class MediaQueryDataScreen extends StatelessWidget {
           Column(
             children: <Widget>[
               Container(
-                  color: Colors.black,
-                  padding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
-                  margin: EdgeInsets.fromLTRB(0.0, 10.0, 10.0, 0.0),
-                  child: Text('MediaQueryData 数据展示',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(color: Colors.white))),
+                color: Colors.black,
+                padding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
+                margin: EdgeInsets.fromLTRB(0.0, 10.0, 10.0, 0.0),
+                child: Text(
+                  'MediaQueryData 数据展示',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(color: Colors.white),
+                ),
+              ),
             ],
           ),
         ],

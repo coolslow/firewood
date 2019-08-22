@@ -95,22 +95,23 @@ class _FBottomNavigationBarState extends State<FBottomNavigationBar> {
               child: Stack(
                 alignment: Alignment.topCenter,
                 children: <Widget>[
-                  Column(
-                      children: <Widget>[
-                        Container(
-                          width: SizeCompat.pxToDp(64),
-                          height: SizeCompat.pxToDp(64),
-                          margin: EdgeInsets.only(top: SizeCompat.pxToDp(6),),
-                          child: currIndex == i
-                              ? data[i].selectIcon
-                              : data[i].unSelectIcon,
-                        ),
-                        Container(
-                          margin: EdgeInsets.fromLTRB(0.0, 0.0, 0.0, 0.0),
-                          child: Text(data[i].title,
-                              style: currIndex == i ? selectTs : unSelectTs),
-                        ),
-                      ]),
+                  Column(children: <Widget>[
+                    Container(
+                      width: SizeCompat.pxToDp(64),
+                      height: SizeCompat.pxToDp(64),
+                      margin: EdgeInsets.only(
+                        top: SizeCompat.pxToDp(6),
+                      ),
+                      child: currIndex == i
+                          ? data[i].selectIcon
+                          : data[i].unSelectIcon,
+                    ),
+                    Container(
+                      margin: EdgeInsets.fromLTRB(0.0, 0.0, 0.0, 0.0),
+                      child: Text(data[i].title,
+                          style: currIndex == i ? selectTs : unSelectTs),
+                    ),
+                  ]),
 //                  Positioned(
 //                    right: 15,
 //                    top: 5,
