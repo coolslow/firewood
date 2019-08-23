@@ -1,9 +1,12 @@
+import 'dart:async';
+
 import 'package:firewood/common/constants.dart';
 import 'package:firewood/common/utils/size_compat.dart';
 import 'package:firewood/entity/dynamic_create_entity.dart';
 import 'package:firewood/entity/dynamic_entity.dart';
 import 'package:firewood/entity/type_entity.dart';
 import 'package:firewood/repositories/dynamic_repos.dart';
+import 'package:firewood/widgets/indicator/indicator.dart';
 import 'package:flutter/material.dart';
 
 // ignore: must_be_immutable
@@ -11,17 +14,18 @@ class DynamicPage extends StatelessWidget {
   double _vpFraction;
 
   DynamicUIController _controller = DynamicUIController();
+  StreamController<int> stream;
 
   List<TypeEntity> mData = List<TypeEntity>();
 
   DynamicRepos mDynamicRepos = DynamicRepos.create();
   double _offset = 145;
 
-  DynamicPage() {
+  DynamicPage(StreamController<int> initStream) {
+    this.stream = initStream;
     double width = SizeCompat.width();
     _vpFraction = (width - SizeCompat.pxToDp(_offset * 2)) / width;
     mData = mDynamicRepos.getData();
-
   }
 
   @override
@@ -43,10 +47,14 @@ class DynamicPage extends StatelessWidget {
             ),
           ),
           Expanded(
-              child: Container(
-                  constraints: BoxConstraints(minHeight: SizeCompat.pxToDp(1000)),
+              child: Stack(
+            children: <Widget>[
+              Container(
+                  constraints:
+                      BoxConstraints(minHeight: SizeCompat.pxToDp(1000)),
                   margin: EdgeInsets.only(bottom: SizeCompat.pxToDp(200)),
                   child: PageView.builder(
+                    onPageChanged: _onPageChanged,
                     controller: PageController(viewportFraction: _vpFraction),
                     scrollDirection: Axis.horizontal,
                     physics: BouncingScrollPhysics(),
@@ -54,11 +62,35 @@ class DynamicPage extends StatelessWidget {
                       return _controller.create(context, mData[index]);
                     },
                     itemCount: mData.length,
-                  ))),
+                  )),
+              Positioned(
+                  bottom: SizeCompat.pxToDp(130),
+                  left: SizeCompat.pxToDeviceDp(
+                      SizeCompat.widthPx() / 2 - 200 / 2),
+                  child: Container(
+                    width: SizeCompat.pxToDeviceDp(200),
+                    height: 8,
+                    alignment: Alignment.center,
+                    child: StreamBuilder(
+                        stream: stream.stream,
+                        initialData: 0,
+                        builder: (BuildContext context,
+                            AsyncSnapshot<int> snapshot) {
+                          return FIndicator(
+                              current: snapshot.data,
+                              indicatorCount: mData.length);
+                        }),
+                  )),
+            ],
+          )),
         ],
       ),
       color: Color(0xFFF4F4F4),
     );
+  }
+
+  void _onPageChanged(int index) {
+    stream.sink.add(index);
   }
 }
 

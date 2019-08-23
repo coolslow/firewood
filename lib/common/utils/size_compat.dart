@@ -34,6 +34,11 @@ class SizeCompat {
     return number * _ratio;
   }
 
+
+  static double pxToDeviceDp(double number) {
+    return number / _devicePixelRatio;
+  }
+
   ///
   ///  dp to px
   ///
@@ -51,9 +56,9 @@ class SizeCompat {
   ///
   ///  width
   ///
-//  static double widthPx() {
-//    return _width * _devicePixelRatio;
-//  }
+  static double widthPx() {
+    return _width * _devicePixelRatio;
+  }
 
   static double width() {
     return _width;

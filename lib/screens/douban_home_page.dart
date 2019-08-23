@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:firewood/common/utils/size_compat.dart';
 import 'package:firewood/widgets/navigation/action_search_bar.dart';
 import 'package:firewood/widgets/navigation/tab_bar.dart';
@@ -15,6 +17,9 @@ class _HomePageState extends State<HomePage> {
   List<FTabBarData> tabData;
   int currentIndex = 0;
   PageController _pageController;
+
+  StreamController<int> _stream = StreamController.broadcast();
+
   @override
   void initState() {
     _pageController = PageController(initialPage: currentIndex);
@@ -52,7 +57,7 @@ class _HomePageState extends State<HomePage> {
               controller: _pageController,
               itemBuilder: (BuildContext context, int index) {
                 if (index == 0) {
-                  return DynamicPage();
+                  return DynamicPage(_stream);
                 } else {
                   return RecommendPage();
                 }
@@ -66,7 +71,6 @@ class _HomePageState extends State<HomePage> {
   }
 
 
-
   void _onTap(int index) {
     _pageController.animateToPage(index,
         duration: const Duration(milliseconds: 300), curve: Curves.ease);
@@ -75,6 +79,7 @@ class _HomePageState extends State<HomePage> {
   @override
   void dispose() {
     _pageController?.dispose();
+    _stream?.close();
     super.dispose();
   }
 
