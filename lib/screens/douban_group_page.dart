@@ -10,18 +10,16 @@ class GroupPage extends StatefulWidget {
 class _GroupPageState extends State<GroupPage> {
   @override
   Widget build(BuildContext context) {
-    return new MaterialApp(
-      home: new Scaffold(
-        body: Column(
-          children: <Widget>[
-            FActionSearchBar(
-                searchHint: "日剧小组",
-                bgColor: Colors.white,
-                connerBgColor: Color(0xffF4F4F4),
-                mailColor: FColors.iconColorFilter,
-                unReadCount: 2),
-          ],
-        ),
+    return new Scaffold(
+      body: Column(
+        children: <Widget>[
+          FActionSearchBar(
+              searchHint: "日剧小组",
+              bgColor: Colors.white,
+              connerBgColor: Color(0xffF4F4F4),
+              mailColor: FColors.iconColorFilter,
+              unReadCount: 2),
+        ],
       ),
     );
   }

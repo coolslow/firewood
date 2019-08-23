@@ -10,17 +10,15 @@ class SubjectPage extends StatefulWidget {
 class _SubjectPageState extends State<SubjectPage> {
   @override
   Widget build(BuildContext context) {
-    return new MaterialApp(
-      home: new Scaffold(
-        body: Column(
-          children: <Widget>[
-            FActionSearchBar(
-                searchHint: "电影票房小组",
-                bgColor: Colors.white,
-                connerBgColor: Color(0xffF4F4F4),
-                mailColor: FColors.iconColorFilter),
-          ],
-        ),
+    return new Scaffold(
+      body: Column(
+        children: <Widget>[
+          FActionSearchBar(
+              searchHint: "电影票房小组",
+              bgColor: Colors.white,
+              connerBgColor: Color(0xffF4F4F4),
+              mailColor: FColors.iconColorFilter),
+        ],
       ),
     );
   }

@@ -48,16 +48,17 @@ class _PlaygroundPageState extends State<PlaygroundPage> {
     return Container(
       alignment: Alignment.centerLeft,
       constraints: BoxConstraints(
-          minWidth: double.maxFinite, minHeight: 48 + statusbarHeight),
+          minWidth: double.maxFinite, minHeight: 58 + statusbarHeight),
       decoration: BoxDecoration(
-        color: FColor.appbarBg,
+        color: Colors.blue,
       ),
       padding: EdgeInsets.fromLTRB(16.0, statusbarHeight, 0.0, 0),
-      child: new Text(title,
-          style: new TextStyle(
-              fontSize: 18,
-              color: FColor.textMajor,
-              decoration: TextDecoration.none)),
+      child: Center(
+          child: Text(title,
+              style: new TextStyle(
+                  fontSize: 18,
+                  color: Colors.white,
+                  decoration: TextDecoration.none))),
     );
   }
 

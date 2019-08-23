@@ -34,9 +34,8 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     double padding = SizeCompat.pxToDp(390);
-    return new MaterialApp(
-      home: new Scaffold(
-          body: Column(
+    return new Scaffold(
+      body: Column(
         children: <Widget>[
           FActionSearchBar(searchHint: "村里那个古怪的人", unReadCount: 9),
           Container(
@@ -66,10 +65,9 @@ class _HomePageState extends State<HomePage> {
             ),
           ),
         ],
-      )),
+      ),
     );
   }
-
 
   void _onTap(int index) {
     _pageController.animateToPage(index,
@@ -84,7 +82,6 @@ class _HomePageState extends State<HomePage> {
   }
 
   void _pageChange(int index) {
-
     if (currentIndex != index) {
       setState(() {
         currentIndex = index;

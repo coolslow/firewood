@@ -63,7 +63,6 @@ class _MainPageState extends State<MainPage> {
   void onPageChange(val) {
     setState(() {
       currentIndex = val;
-      print("onPageChange=$val");
     });
   }
 
@@ -82,8 +81,7 @@ class _MainPageState extends State<MainPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Column(
+    return Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
           Expanded(
@@ -97,7 +95,6 @@ class _MainPageState extends State<MainPage> {
                 callback: onPageChange,
               )),
         ],
-      ),
     );
   }
 }
