@@ -18,5 +18,9 @@ or
   （1）需要真实设备。
   （2）暂时还没有解决打包安装到虚拟机时，因cpu架构引起的安装失败。INSTALL_FAILED_NO_MATCHING_ABIS。
   
-    // 卸载  
+    // adb 卸载  
    adb uninstall  com.example.firewood
+   
+    // gradle 卸载
+   ./gradlew uninstallRelease
+

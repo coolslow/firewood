@@ -1,4 +1,5 @@
 import 'package:firewood/common/utils/size_compat.dart';
+import 'package:firewood/common/utils/utils.dart';
 import 'package:firewood/playground/playground_page.dart';
 import 'package:firewood/screens/douban_home_page.dart';
 import 'package:firewood/screens/douban_subject_page.dart';
@@ -82,19 +83,19 @@ class _MainPageState extends State<MainPage> {
   @override
   Widget build(BuildContext context) {
     return Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          Expanded(
-            child: getBody(),
-          ),
-          Container(
-              height: SizeCompat.pxToDp(126),
-              color: Colors.white,
-              child: FBottomNavigationBar(
-                bottomData: bottomData,
-                callback: onPageChange,
-              )),
-        ],
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: <Widget>[
+        Expanded(
+          child: getBody(),
+        ),
+        Container(
+            height: SizeCompat.pxToDp(126),
+            color: Colors.white,
+            child: FBottomNavigationBar(
+              bottomData: bottomData,
+              callback: onPageChange,
+            )),
+      ],
     );
   }
 }

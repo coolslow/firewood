@@ -1,12 +1,14 @@
 import 'package:firewood/common/utils/size_compat.dart';
+import 'package:firewood/common/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
+// ignore: must_be_immutable
 class FBottomNavigationBar extends StatefulWidget {
   final List<FBottomData> bottomData;
   final ValueChanged<int> callback;
-  final TextStyle selectTs;
-  final TextStyle unSelectTs;
+  TextStyle selectTs;
+  TextStyle unSelectTs;
   final Color selectBg;
 
   final Color unSelectBg;
@@ -17,7 +19,23 @@ class FBottomNavigationBar extends StatefulWidget {
       this.selectTs,
       this.unSelectTs,
       this.selectBg = Colors.white,
-      this.unSelectBg = Colors.white});
+      this.unSelectBg = Colors.white}) {
+    if (selectTs == null) {
+      this.selectTs = TextStyle(
+          color: Color(0xff42BD56),
+          fontSize: SizeCompat.pxToDp(30),
+          decoration: TextDecoration.none,
+          fontWeight: FontWeight.w200);
+    }
+
+    if (unSelectTs == null) {
+      this.unSelectTs = TextStyle(
+          color: Color(0xffa6a6a6),
+          fontSize: SizeCompat.pxToDp(30),
+          decoration: TextDecoration.none,
+          fontWeight: FontWeight.w200);
+    }
+  }
 
   @override
   State<FBottomNavigationBar> createState() {
@@ -28,37 +46,8 @@ class FBottomNavigationBar extends StatefulWidget {
 class _FBottomNavigationBarState extends State<FBottomNavigationBar> {
   var currIndex = 0;
 
-  var selectTs = new TextStyle(
-      color: Color(0xff42BD56),
-      fontSize: SizeCompat.pxToDp(30),
-      decoration: TextDecoration.none,
-      fontWeight: FontWeight.w200);
-  var unSelectTs = new TextStyle(
-      color: Color(0xffa6a6a6),
-      fontSize: SizeCompat.pxToDp(30),
-      decoration: TextDecoration.none,
-      fontWeight: FontWeight.w200);
-
-//  var msgNumTs = new TextStyle(
-//      color: Color(0xFF666666), fontSize: 9, decoration: TextDecoration.none);
-
-  var selectBg = Colors.white;
-  var unSelectBg = Colors.white;
-
   @override
   void initState() {
-    if (widget.selectTs != null) {
-      selectTs = widget.selectTs;
-    }
-    if (widget.unSelectTs != null) {
-      unSelectTs = widget.unSelectTs;
-    }
-    if (widget.selectBg != null) {
-      selectBg = widget.selectBg;
-    }
-    if (widget.unSelectBg != null) {
-      unSelectBg = widget.unSelectBg;
-    }
     super.initState();
   }
 
@@ -72,10 +61,10 @@ class _FBottomNavigationBarState extends State<FBottomNavigationBar> {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      crossAxisAlignment: CrossAxisAlignment.end,
+    return Container(
+        child: Row(
       children: getBar(widget.bottomData),
-    );
+    ));
   }
 
   List<Widget> getBar(List<FBottomData> data) {
@@ -91,7 +80,7 @@ class _FBottomNavigationBarState extends State<FBottomNavigationBar> {
               });
             },
             child: Container(
-              color: currIndex == i ? selectBg : unSelectBg,
+              color: currIndex == i ? widget.selectBg : widget.unSelectBg,
               child: Stack(
                 alignment: Alignment.topCenter,
                 children: <Widget>[
@@ -107,9 +96,14 @@ class _FBottomNavigationBarState extends State<FBottomNavigationBar> {
                           : data[i].unSelectIcon,
                     ),
                     Container(
+                      height: SizeCompat.pxToDp(40),
                       margin: EdgeInsets.fromLTRB(0.0, 0.0, 0.0, 0.0),
-                      child: Text(data[i].title,
-                          style: currIndex == i ? selectTs : unSelectTs),
+                      child: Text(
+                        data[i].title,
+                        style: currIndex == i
+                            ? widget.selectTs
+                            : widget.unSelectTs,
+                      ),
                     ),
                   ]),
 //                  Positioned(
