@@ -115,8 +115,9 @@ class RecommendUIController {
       return Container();
     }
     RecommendEntity data = entity as RecommendEntity;
-    return Container(
-        alignment: Alignment.centerLeft,
+    return Row(children: <Widget>[
+    Container(
+    alignment: Alignment.centerLeft,
         margin: EdgeInsets.only(
             left: SizeCompat.pxToDp(54), right: SizeCompat.pxToDp(54)),
         padding: EdgeInsets.only(
@@ -125,7 +126,7 @@ class RecommendUIController {
         decoration: BoxDecoration(
             color: Color(0xffF7F7F7), //
             borderRadius:
-                BorderRadius.all(Radius.circular(SizeCompat.pxToDp(35)))),
+            BorderRadius.all(Radius.circular(SizeCompat.pxToDp(35)))),
         child: Row(
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
@@ -143,7 +144,15 @@ class RecommendUIController {
                       color: FColors.primary, fontSize: SizeCompat.pxToDp(35)),
                 )),
           ],
-        ));
+        )),
+      Expanded(
+        child: Container(),
+      ),
+    ],);
+
+
+
+
   }
 
   static Widget getDescription(TypeEntity entity) {
