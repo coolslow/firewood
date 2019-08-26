@@ -1,17 +1,17 @@
+import 'package:firewood/playground/bloc/bloc_demo.dart';
+import 'package:firewood/playground/http/http_demo.dart';
+import 'package:firewood/playground/mediaquery/basic.dart';
 import 'package:firewood/playground/pageviews/page_view_demo.dart';
 import 'package:firewood/playground/templet_demo.dart';
-import 'package:firewood/playground/util/fcolor.dart';
+import 'package:firewood/playground/ticker/ticker_demo.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import 'bloc_demo.dart';
 import 'chess/chess_demo.dart';
 import 'circleavatar/circle_avatar_demo.dart';
 import 'circleprogress/circle_progress_bar_demo.dart';
 import 'custompaint/custom_paint_demo.dart';
-import 'package:firewood/playground/http/http_demo.dart';
-import 'list_demo.dart';
-import 'package:firewood/playground/mediaquery/basic.dart';
+import 'package:firewood/playground/listviews/list_demo.dart';
 
 class PlaygroundPage extends StatefulWidget {
   @override
@@ -37,6 +37,7 @@ class _PlaygroundPageState extends State<PlaygroundPage> {
             getItem(context, "CircleAvatarDemo", CircleAvatarDemoPage()),
             getItem(context, "MediaQueryDataDemo", MediaQueryDataScreen()),
             getItem(context, "PageViewDemoPage", PageViewDemoPage()),
+            getItem(context, "TickerDemoPage", TickerDemoPage()),
           ],
         ),
       ),
