@@ -58,6 +58,7 @@ class DouBan extends StatelessWidget {
         ],
       );
     }
+    // 其他平台兼容，返回空页面
     return Container();
   }
 }

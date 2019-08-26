@@ -26,6 +26,12 @@ class _PlaygroundPageState extends State<PlaygroundPage> {
         child: Column(
           children: <Widget>[
             getActionbar(context, "测试Demo"),
+            getItem(
+                context, "CircleProgressbarDemo", CircleProgressBarDemoPage()),
+            getItem(context, "CircleAvatarDemo", CircleAvatarDemoPage()),
+            getItem(context, "MediaQueryDataDemo", MediaQueryDataScreen()),
+            getItem(context, "PageViewDemoPage", PageViewDemoPage()),
+            getItem(context, "TickerDemoPage", TickerDemoPage()),
             getItem(context, "TempletDemo", TempletDemoPage()),
             getItem(context, "BlocDemo", BlocDemoPage()),
             getItem(context, "HttpDemo", HttpDemoPage()),
@@ -35,9 +41,8 @@ class _PlaygroundPageState extends State<PlaygroundPage> {
             getItem(
                 context, "CircleProgressbarDemo", CircleProgressBarDemoPage()),
             getItem(context, "CircleAvatarDemo", CircleAvatarDemoPage()),
-            getItem(context, "MediaQueryDataDemo", MediaQueryDataScreen()),
             getItem(context, "PageViewDemoPage", PageViewDemoPage()),
-            getItem(context, "TickerDemoPage", TickerDemoPage()),
+            getItem(context, "MediaQueryDataDemo", MediaQueryDataScreen()),
           ],
         ),
       ),
