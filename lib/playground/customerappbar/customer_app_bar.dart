@@ -9,13 +9,13 @@ import 'package:flutter/material.dart';
 class CustomAppbarWidget extends StatelessWidget
     implements PreferredSizeWidget {
   final double height; // appbar 高度
-  // final Color backgroundColor; // appbar 背景颜色
+  final Color bgColor; // appbar 背景颜色
   // final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey();
 
   const CustomAppbarWidget({
     Key key,
     @required this.height,
-    // @required this.backgroundColor,
+    @required this.bgColor,
   }) : super(key: key);
 
   @override
@@ -45,7 +45,7 @@ class CustomAppbarWidget extends StatelessWidget
             // ),
             child: FActionSearchBar(
                 searchHint: "微单摄影同学会",
-                bgColor: Colors.black,
+                bgColor: this.bgColor,
                 connerBgColor: Color(0xffF4F4F4),
                 mailColor: FColors.iconColorFilter,
                 unReadCount: 2),
