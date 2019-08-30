@@ -63,7 +63,8 @@ class FActionSearchBar extends StatelessWidget {
                 Expanded(
                   child: Container(
                       margin: EdgeInsets.only(
-                          left: SizeCompat.pxToDp(25), right: SizeCompat.pxToDp(25)),
+                          left: SizeCompat.pxToDp(25),
+                          right: SizeCompat.pxToDp(25)),
                       child: Text(
                         searchHint,
                         maxLines: 1,
@@ -116,8 +117,8 @@ class FActionSearchBar extends StatelessWidget {
                   decoration: BoxDecoration(
                       color: FColors.remind,
                       shape: BoxShape.rectangle,
-                      borderRadius:
-                          BorderRadius.all(Radius.circular(SizeCompat.pxToDp(28)))),
+                      borderRadius: BorderRadius.all(
+                          Radius.circular(SizeCompat.pxToDp(28)))),
                   child: Center(
                     child: Text(
                       "$unReadCount",
