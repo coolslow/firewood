@@ -39,16 +39,22 @@ class FActionSearchBar extends StatelessWidget {
       children: <Widget>[
         Expanded(
           child: Container(
-              margin: EdgeInsets.only(right: SizeCompat.pxToDp(20)),
-              padding: EdgeInsets.only(
-                  left: SizeCompat.pxToDp(45), right: SizeCompat.pxToDp(30)),
-              decoration: BoxDecoration(
-                color: connerBgColor,
-                borderRadius:
-                    BorderRadius.all(Radius.circular(SizeCompat.pxToDp(45))),
+            margin: EdgeInsets.only(right: SizeCompat.pxToDp(20)),
+            padding: EdgeInsets.only(
+              left: SizeCompat.pxToDp(45),
+              right: SizeCompat.pxToDp(30),
+            ),
+            decoration: BoxDecoration(
+              color: connerBgColor,
+              borderRadius: BorderRadius.all(
+                Radius.circular(
+                  SizeCompat.pxToDp(45),
+                ),
               ),
-              height: SizeCompat.pxToDp(90),
-              child: Row(children: [
+            ),
+            height: SizeCompat.pxToDp(90),
+            child: Row(
+              children: [
                 Container(
                   width: SizeCompat.pxToDp(50),
                   height: SizeCompat.pxToDp(50),
@@ -62,16 +68,20 @@ class FActionSearchBar extends StatelessWidget {
                 ),
                 Expanded(
                   child: Container(
-                      margin: EdgeInsets.only(
-                          left: SizeCompat.pxToDp(25), right: SizeCompat.pxToDp(25)),
-                      child: Text(
-                        searchHint,
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
-                        style: TextStyle(
-                            color: Color(0xffDADADA),
-                            fontSize: SizeCompat.pxToDp(40)),
-                      )),
+                    margin: EdgeInsets.only(
+                      left: SizeCompat.pxToDp(25),
+                      right: SizeCompat.pxToDp(25),
+                    ),
+                    child: Text(
+                      searchHint,
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                      style: TextStyle(
+                        color: Color(0xffDADADA),
+                        fontSize: SizeCompat.pxToDp(40),
+                      ),
+                    ),
+                  ),
                 ),
                 Container(
                   width: SizeCompat.pxToDp(50),
@@ -83,16 +93,18 @@ class FActionSearchBar extends StatelessWidget {
                           Color(0xff7E7E7E), BlendMode.srcATop),
                     ),
                   ),
-                )
-              ])),
+                ),
+              ],
+            ),
+          ),
         ),
         Stack(
           children: <Widget>[
             Container(
-                width: SizeCompat.pxToDp(120),
-                height: SizeCompat.pxToDp(100),
-                child: Center(
-                    child: Container(
+              width: SizeCompat.pxToDp(120),
+              height: SizeCompat.pxToDp(100),
+              child: Center(
+                child: Container(
                   width: SizeCompat.pxToDp(60),
                   height: SizeCompat.pxToDp(60),
                   decoration: BoxDecoration(
@@ -102,7 +114,9 @@ class FActionSearchBar extends StatelessWidget {
                           ColorFilter.mode(mailColor, BlendMode.srcATop),
                     ),
                   ),
-                ))),
+                ),
+              ),
+            ),
             Positioned(
               right: 0,
               top: 0,
@@ -110,14 +124,19 @@ class FActionSearchBar extends StatelessWidget {
                 offstage: unReadCount == 0,
                 child: Container(
                   constraints: BoxConstraints(
-                      minWidth: SizeCompat.pxToDp(56),
-                      minHeight: SizeCompat.pxToDp(56),
-                      maxHeight: SizeCompat.pxToDp(56)),
+                    minWidth: SizeCompat.pxToDp(56),
+                    minHeight: SizeCompat.pxToDp(56),
+                    maxHeight: SizeCompat.pxToDp(56),
+                  ),
                   decoration: BoxDecoration(
-                      color: FColors.remind,
-                      shape: BoxShape.rectangle,
-                      borderRadius:
-                          BorderRadius.all(Radius.circular(SizeCompat.pxToDp(28)))),
+                    color: FColors.remind,
+                    shape: BoxShape.rectangle,
+                    borderRadius: BorderRadius.all(
+                      Radius.circular(
+                        SizeCompat.pxToDp(28),
+                      ),
+                    ),
+                  ),
                   child: Center(
                     child: Text(
                       "$unReadCount",
