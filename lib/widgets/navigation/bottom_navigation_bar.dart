@@ -61,10 +61,18 @@ class _FBottomNavigationBarState extends State<FBottomNavigationBar> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-        child: Row(
-      children: getBar(widget.bottomData),
-    ));
+    return Column(
+      children: <Widget>[
+        Container(
+          height: 0.5,
+          color: Color(0xfff0f0f0),
+        ),
+        Container(
+            child: Row(
+          children: getBar(widget.bottomData),
+        ))
+      ],
+    );
   }
 
   List<Widget> getBar(List<FBottomData> data) {
