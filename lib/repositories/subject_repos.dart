@@ -18,7 +18,7 @@ class SubjectRepos {
         "https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2561542272.webp",
         "速度与激情",
         3.5,
-        8.9));
+        8.9,collected: true));
     list.add(MoveGridEntity.create(
         "https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2565751382.webp",
         "送我上青云",

@@ -1,17 +1,10 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:firewood/bloc/recommend/recommend_toolbar_bloc.dart';
 import 'package:firewood/common/constants.dart';
 import 'package:firewood/common/utils/size_compat.dart';
-import 'package:firewood/entity/recommend_entity.dart';
 import 'package:firewood/entity/subject/subject_move_grid_entity.dart';
-import 'package:firewood/entity/type_entity.dart';
-import 'package:firewood/widgets/dialog/loading_dialog.dart';
 import 'package:firewood/widgets/gradestar/gradestar.dart';
-import 'package:firewood/widgets/navigation/tab_bar.dart';
-import 'package:firewood/widgets/toast/Toast.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
 class SubjectViewController {
   double gridViewHeight = ((SizeCompat.width() -
@@ -41,18 +34,70 @@ class SubjectViewController {
 
             return Column(
               children: <Widget>[
-                ClipRRect(
-                  child: Container(
-                    height: gridViewHeight,
-                    child: CachedNetworkImage(
-                      imageUrl: data.imgUrl,
-                      fit: BoxFit.fill,
-                      placeholder: (BuildContext context, String url) {
-                        return Image.asset("images/default_place_holder.png");
-                      },
+                Stack(
+                  children: <Widget>[
+                    ClipRRect(
+                      child: Container(
+                        height: gridViewHeight,
+                        child: CachedNetworkImage(
+                          imageUrl: data.imgUrl,
+                          fit: BoxFit.fill,
+                          placeholder: (BuildContext context, String url) {
+                            return Image.asset(
+                                "images/default_place_holder.png");
+                          },
+                        ),
+                      ),
+                      borderRadius:
+                          BorderRadius.circular(SizeCompat.pxToDp(10)),
                     ),
-                  ),
-                  borderRadius: BorderRadius.circular(SizeCompat.pxToDp(10)),
+                    Positioned(
+                        top: 0,
+                        left: 0,
+                        child: data.collected
+                            ? Container(
+                                width: SizeCompat.pxToDp(70),
+                                height: SizeCompat.pxToDp(70),
+                                decoration: BoxDecoration(
+                                    color: Color(0xffE5A034),
+                                    borderRadius: BorderRadius.only(
+                                        topLeft: Radius.circular(
+                                            SizeCompat.pxToDp(10)),
+                                        bottomRight: Radius.circular(
+                                            SizeCompat.pxToDp(10)))),
+                                child: Padding(
+                                  padding: EdgeInsets.all(0),
+                                  child: Image.asset(
+                                    "images/ic_collected.png",
+                                    color: Colors.white,
+                                    colorBlendMode: BlendMode.srcATop,
+                                    height: SizeCompat.pxToDp(65),
+                                    width: SizeCompat.pxToDp(65),
+                                  ),
+                                ),
+                              )
+                            : Container(
+                                width: SizeCompat.pxToDp(70),
+                                height: SizeCompat.pxToDp(70),
+                                decoration: BoxDecoration(
+                                    color: Color(0xaa616161),
+                                    borderRadius: BorderRadius.only(
+                                        topLeft: Radius.circular(
+                                            SizeCompat.pxToDp(10)),
+                                        bottomRight: Radius.circular(
+                                            SizeCompat.pxToDp(10)))),
+                                child: Padding(
+                                  padding: EdgeInsets.all(5),
+                                  child: Image.asset(
+                                    "images/ic_collecte.png",
+                                    height: SizeCompat.pxToDp(60),
+                                    width: SizeCompat.pxToDp(60),
+                                    color: Colors.white,
+                                    colorBlendMode: BlendMode.srcATop,
+                                  ),
+                                ),
+                              ))
+                  ],
                 ),
                 Padding(
                   padding: EdgeInsets.only(
@@ -85,12 +130,15 @@ class SubjectViewController {
                   ),
                 ),
                 Row(
-                  children: <Widget>[//
+                  children: <Widget>[
+                    //
                     Container(
                         width: SizeCompat.pxToDp(120),
                         margin: EdgeInsets.only(right: SizeCompat.pxToDp(10)),
                         height: SizeCompat.pxToDp(24),
-                        child: GradeStart(data.star, 5,selectColor:Color(0xffFFAC2C),unSelectColor:Color(0xffeE6E6E6) ,
+                        child: GradeStart(data.star, 5,
+                            selectColor: Color(0xffFFAC2C),
+                            unSelectColor: Color(0xffeE6E6E6),
                             size: SizeCompat.pxToDp(24))),
                     Expanded(
                       child: Text(data.score.toString(),
@@ -110,3 +158,6 @@ class SubjectViewController {
     );
   }
 }
+//ic_info_wish
+//ic_mark_todo
+//ic_quick_mark_seen_checked
