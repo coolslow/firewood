@@ -6,6 +6,7 @@ import 'package:firewood/entity/recommend_entity.dart';
 import 'package:firewood/entity/subject/subject_move_grid_entity.dart';
 import 'package:firewood/entity/type_entity.dart';
 import 'package:firewood/widgets/dialog/loading_dialog.dart';
+import 'package:firewood/widgets/gradestar/gradestar.dart';
 import 'package:firewood/widgets/navigation/tab_bar.dart';
 import 'package:firewood/widgets/toast/Toast.dart';
 import 'package:flutter/material.dart';
@@ -84,26 +85,21 @@ class SubjectViewController {
                   ),
                 ),
                 Row(
-                  children: <Widget>[
-                    data.canPlay
-                        ? Container(
-                      margin:
-                      EdgeInsets.only(right: SizeCompat.pxToDp(10)),
-                      child: Image.asset(
-                        "images/ic_can_play.png",
-                        width: SizeCompat.pxToDp(28),
-                        height: SizeCompat.pxToDp(28),
-                      ),
-                    )
-                        : Container(),
+                  children: <Widget>[//
+                    Container(
+                        width: SizeCompat.pxToDp(120),
+                        margin: EdgeInsets.only(right: SizeCompat.pxToDp(10)),
+                        height: SizeCompat.pxToDp(24),
+                        child: GradeStart(data.star, 5,selectColor:Color(0xffFFAC2C),unSelectColor:Color(0xffeE6E6E6) ,
+                            size: SizeCompat.pxToDp(24))),
                     Expanded(
-                      child: Text(data.name,
+                      child: Text(data.score.toString(),
                           overflow: TextOverflow.ellipsis,
                           style: TextStyle(
-                              color: Color(0xff171717),
-                              fontSize: SizeCompat.pxToDp(25),
+                              color: Color(0xff7c7c7c),
+                              fontSize: SizeCompat.pxToDp(24),
                               decoration: TextDecoration.none,
-                              fontWeight: FontWeight.w500)),
+                              fontWeight: FontWeight.w200)),
                     ),
                   ],
                 ),
