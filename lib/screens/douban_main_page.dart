@@ -1,6 +1,6 @@
 import 'package:firewood/common/utils/size_compat.dart';
 import 'package:firewood/playground/playground_page.dart';
-import 'package:firewood/screens/douban_subject_page.dart';
+import 'package:firewood/screens/subject/douban_subject_page.dart';
 import 'package:firewood/screens/home/douban_home_page.dart';
 import 'package:firewood/widgets/navigation/bottom_navigation_bar.dart';
 import 'package:flutter/material.dart';

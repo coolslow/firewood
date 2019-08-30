@@ -10,7 +10,11 @@ class FTabBar extends StatefulWidget {
   final TextStyle unSelectTs;
 
   FTabBar(
-      {@required this.tabData,this.currIndex=0, this.callback, this.selectTs, this.unSelectTs});
+      {@required this.tabData,
+      this.currIndex = 0,
+      this.callback,
+      this.selectTs,
+      this.unSelectTs});
 
   @override
   State<StatefulWidget> createState() {
@@ -21,12 +25,12 @@ class FTabBar extends StatefulWidget {
 class _FTabBarState extends State<FTabBar> {
   var currIndex = 0;
 
-  var selectTs = new TextStyle(
+  var selectTs = TextStyle(
       color: Color(0xff42BD56),
       fontSize: SizeCompat.pxToDp(40),
       decoration: TextDecoration.none,
       fontWeight: FontWeight.w700);
-  var unSelectTs = new TextStyle(
+  var unSelectTs = TextStyle(
       color: Color(0xff959595),
       fontSize: SizeCompat.pxToDp(40),
       decoration: TextDecoration.none,
@@ -60,7 +64,6 @@ class _FTabBarState extends State<FTabBar> {
 
   @override
   Widget build(BuildContext context) {
-
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: getBar(widget.tabData),

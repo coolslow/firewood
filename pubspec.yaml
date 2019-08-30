@@ -88,6 +88,7 @@ flutter:
     - images/ic_default_empty.png
     - images/ic_default_network.png
     - images/bg_skeleton_default.png
+    - images/ic_can_play.png
 
 
   # An image asset can refer to one or more resolution-specific "variants", see

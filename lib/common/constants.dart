@@ -11,3 +11,7 @@ class PageConstant{
   static const int start = 0;
   static const int size = 10;
 }
+
+class Dimens{
+  static const double appEdgeEdge = 40;
+}

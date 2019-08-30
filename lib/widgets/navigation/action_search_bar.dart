@@ -27,8 +27,8 @@ class FActionSearchBar extends StatelessWidget {
         width: double.infinity,
         color: bgColor,
         padding: EdgeInsets.only(
-            left: SizeCompat.pxToDp(40),
-            right: SizeCompat.pxToDp(40),
+            left: SizeCompat.pxToDp(Dimens.appEdgeEdge),
+            right: SizeCompat.pxToDp(Dimens.appEdgeEdge),
             top: statusHeight),
         height: statusHeight + actionBarHeight,
         child: getSearchBar(context));

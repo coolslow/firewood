@@ -8,6 +8,11 @@ import 'package:firewood/entity/type_entity.dart';
 import 'package:flutter/foundation.dart';
 
 class RecommendRepos {
+
+  RecommendRepos(){
+    Utils.resetAutoIncrement();
+  }
+
   List<TypeEntity> _getData() {
     int mode = 10;
     List<TypeEntity> repositories = List<TypeEntity>();

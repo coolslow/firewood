@@ -6,6 +6,9 @@ abstract class TypeEntity {
   static String typeDynamicData = "T_Dynamic_DATA";//
   static String typeDynamicCreate = "T_Dynamic_CREATE";//
 
+
+  static String typeSubject = "T_Dynamic_DATA";//
+
   getType();
 
 }
