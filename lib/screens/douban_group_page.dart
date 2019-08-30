@@ -16,14 +16,7 @@ class _GroupPageState extends State<GroupPage> {
       appBar: CustomAppbarWidget(
           key: UniqueKey(), height: 100.0, bgColor: Colors.black),
       body: Column(
-        children: <Widget>[
-          FActionSearchBar(
-              searchHint: "微单摄影同学会",
-              bgColor: Colors.white,
-              connerBgColor: Color(0xffF4F4F4),
-              mailColor: FColors.iconColorFilter,
-              unReadCount: 2),
-        ],
+        children: <Widget>[],
       ),
     );
   }
