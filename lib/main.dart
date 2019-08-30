@@ -1,6 +1,5 @@
 import 'dart:io';
 
-import 'package:firewood/screens/douban_home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -8,6 +7,7 @@ import 'common/utils/size_compat.dart';
 import 'screens/douban_main_page.dart';
 
 void main() {
+
   runApp(MyApp());
 
   if (Platform.isAndroid) {

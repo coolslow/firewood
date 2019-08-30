@@ -32,7 +32,9 @@ dependencies:
   bloc: ^0.14.0
   flutter_bloc: ^0.20.0
 
-#  fluttertoast: ^3.1.0
+  cached_network_image: ^1.1.1
+
+  fluttertoast: ^3.1.0
 
 #  flutter_statusbarcolor: ^0.2.1
 
@@ -83,6 +85,11 @@ flutter:
     - images/default_place_holder.png
     - images/bg_compose_artwork.png
     - images/ic_compose.png
+    - images/ic_default_empty.png
+    - images/ic_default_network.png
+    - images/bg_skeleton_default.png
+
+
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
   # For details regarding adding assets from package dependencies, see

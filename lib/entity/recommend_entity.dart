@@ -1,6 +1,8 @@
+import 'package:firewood/common/utils/utils.dart';
 import 'package:firewood/entity/type_entity.dart';
 
 class RecommendEntity extends TypeEntity {
+  String id; // 唯一编号
   String portrait; // 头像
   String name; // 名称
   String topic; // 话题
@@ -29,7 +31,9 @@ class RecommendEntity extends TypeEntity {
       {bool thumbed = false,
       bool commented = false,
       bool forwarded = false,
-      bool collected = false});
+      bool collected = false}) {
+    id = Utils.autoIncrement().toString();
+  }
 
   @override
   getType() {

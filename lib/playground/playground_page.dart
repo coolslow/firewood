@@ -1,9 +1,12 @@
 import 'package:firewood/playground/bloc/bloc_demo.dart';
+import 'package:firewood/playground/dialog/dialog_demo.dart';
 import 'package:firewood/playground/http/http_demo.dart';
 import 'package:firewood/playground/mediaquery/basic.dart';
 import 'package:firewood/playground/pageviews/page_view_demo.dart';
-import 'package:firewood/playground/templet_demo.dart';
+import 'package:firewood/playground/popupmenu/popup_meun_demo.dart';
+import 'package:firewood/playground/templet/templet_demo.dart';
 import 'package:firewood/playground/ticker/ticker_demo.dart';
+import 'package:firewood/playground/toast/toast_demo.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -22,29 +25,35 @@ class _PlaygroundPageState extends State<PlaygroundPage> {
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
-      body: SingleChildScrollView(
-        child: Column(
-          children: <Widget>[
-            getActionbar(context, "测试Demo"),
-            getItem(
-                context, "CircleProgressbarDemo", CircleProgressBarDemoPage()),
-            getItem(context, "CircleAvatarDemo", CircleAvatarDemoPage()),
-            getItem(context, "MediaQueryDataDemo", MediaQueryDataScreen()),
-            getItem(context, "PageViewDemoPage", PageViewDemoPage()),
-            getItem(context, "TickerDemoPage", TickerDemoPage()),
-            getItem(context, "TempletDemo", TempletDemoPage()),
-            getItem(context, "BlocDemo", BlocDemoPage()),
-            getItem(context, "HttpDemo", HttpDemoPage()),
-            getItem(context, "ListDemo", ListDemoPage()),
-            getItem(context, "CustomPaintDemo", CustomPaintDemoPage()),
-            getItem(context, "ChessDemo", ChessDemoPage()),
-            getItem(
-                context, "CircleProgressbarDemo", CircleProgressBarDemoPage()),
-            getItem(context, "CircleAvatarDemo", CircleAvatarDemoPage()),
-            getItem(context, "PageViewDemoPage", PageViewDemoPage()),
-            getItem(context, "MediaQueryDataDemo", MediaQueryDataScreen()),
-          ],
-        ),
+      body: Column(
+        children: <Widget>[
+          getActionbar(context, "测试Demo"),
+          Expanded(
+            child: SingleChildScrollView(
+                child: Column(children: <Widget>[
+              getItem(context, "PopupMenuDemoPage", PopupMenuDemoPage()),
+              getItem(context, "CircleProgressbarDemo",
+                  CircleProgressBarDemoPage()),
+              getItem(context, "CircleAvatarDemo", CircleAvatarDemoPage()),
+              getItem(context, "MediaQueryDataDemo", MediaQueryDataScreen()),
+              getItem(context, "PageViewDemoPage", PageViewDemoPage()),
+              getItem(context, "TickerDemoPage", TickerDemoPage()),
+              getItem(context, "TempletDemo", TempletDemoPage()),
+              getItem(context, "BlocDemo", BlocDemoPage()),
+              getItem(context, "HttpDemo", HttpDemoPage()),
+              getItem(context, "ListDemo", ListDemoPage()),
+              getItem(context, "CustomPaintDemo", CustomPaintDemoPage()),
+              getItem(context, "ChessDemo", ChessDemoPage()),
+              getItem(context, "CircleProgressbarDemo",
+                  CircleProgressBarDemoPage()),
+              getItem(context, "CircleAvatarDemo", CircleAvatarDemoPage()),
+              getItem(context, "PageViewDemoPage", PageViewDemoPage()),
+              getItem(context, "MediaQueryDataDemo", MediaQueryDataScreen()),
+              getItem(context, "DialogDemoPage", DialogDemoPage()),
+              getItem(context, "ToastDemoPage", ToastDemoPage()),
+            ])),
+          )
+        ],
       ),
     );
   }
@@ -81,10 +90,10 @@ class _PlaygroundPageState extends State<PlaygroundPage> {
                 width: double.infinity,
                 height: 45.0,
                 padding: EdgeInsets.all(13.0),
-                decoration: BoxDecoration(color: Color(0xff00ffff)),
+                decoration: BoxDecoration(color: Colors.white),
                 child: Text(title))),
         Container(
-          color: Colors.blueGrey,
+          color: Colors.grey,
           height: 0.5,
         ),
       ],

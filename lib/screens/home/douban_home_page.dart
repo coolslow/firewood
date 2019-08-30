@@ -1,12 +1,13 @@
 import 'dart:async';
 
+import 'package:firewood/bloc/recommend/recommend_data_bloc.dart';
 import 'package:firewood/common/utils/size_compat.dart';
+import 'package:firewood/screens/home/douban_home_dynamic_page.dart';
+import 'package:firewood/screens/home/douban_home_recommend_page.dart';
 import 'package:firewood/widgets/navigation/action_search_bar.dart';
 import 'package:firewood/widgets/navigation/tab_bar.dart';
 import 'package:flutter/material.dart';
-
-import 'douban_home_dynamic_page.dart';
-import 'douban_home_recommend_page.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -58,7 +59,12 @@ class _HomePageState extends State<HomePage> {
                 if (index == 0) {
                   return DynamicPage(_stream);
                 } else {
-                  return RecommendPage();
+                  return BlocProvider(
+                    builder: (BuildContext context) {
+                      return RecommendDataBloc()..dispatch(RecommendFetchEvent());
+                    },
+                    child: RecommendPage(),
+                  );
                 }
               },
               itemCount: tabData.length,

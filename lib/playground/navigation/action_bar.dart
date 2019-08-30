@@ -18,7 +18,7 @@ class ActionBarWidget extends StatelessWidget {
             constraints: BoxConstraints(
                 minWidth: double.maxFinite, minHeight: 48 + statusbarHeight),
             decoration: BoxDecoration(
-              color: FColor.appbarBg,
+              color: Colors.blue,
             ),
 //          padding: EdgeInsets.fromLTRB(16.0, statusbarHeight, 0.0, 0),
             child: Stack(children: <Widget>[

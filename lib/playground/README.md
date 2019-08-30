@@ -24,3 +24,7 @@ or
     // gradle 卸载
    ./gradlew uninstallRelease
 
+
+### 常见错误
+有时候更新第三方库，导致ios无法编译，主要问题是cocoapods需要更新。
+    sudo gem install cocoapods --pre

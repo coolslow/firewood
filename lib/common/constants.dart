@@ -6,3 +6,8 @@ class FColors {
   static const Color iconColorFilter = Color(0xff7E7E7E);
 }
 
+
+class PageConstant{
+  static const int start = 0;
+  static const int size = 10;
+}
