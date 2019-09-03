@@ -3,7 +3,7 @@ import 'package:firewood/common/utils/size_compat.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
-class FActionSearchBar extends StatelessWidget {
+class FActionSearchBar extends StatelessWidget implements PreferredSizeWidget {
   final String searchHint;
   final Color bgColor;
   final Color mailColor;
@@ -11,6 +11,9 @@ class FActionSearchBar extends StatelessWidget {
   final int unReadCount;
 
   final double actionBarHeight = SizeCompat.pxToDp(130);
+
+  @override
+  Size get preferredSize => Size.fromHeight(this.actionBarHeight);
 
   FActionSearchBar(
       {@required this.searchHint,
