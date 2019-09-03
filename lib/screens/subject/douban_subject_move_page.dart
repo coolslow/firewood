@@ -19,17 +19,7 @@ class MovePage extends StatelessWidget {
     return SingleChildScrollView(
         child: Column(
       children: <Widget>[
-        SubjectTitle(title: "猜你喜欢"),
 
-
-
-        SubjectTitle(title: "为你推进"),
-        Divider(height: interval, color: Colors.transparent),
-        SubjectRecommend(mSubjectRepos.getSubjectRecommend1()),
-        Divider(height: interval, color: Colors.transparent),
-        SubjectRecommend(mSubjectRepos.getSubjectRecommend2()),
-        Divider(height: interval, color: Colors.transparent),
-        SubjectRecommend(mSubjectRepos.getSubjectRecommend3()),
         Divider(height: interval, color: Colors.transparent),
         SubjectBanner(
             List()
@@ -61,7 +51,15 @@ class MovePage extends StatelessWidget {
         Divider(height: interval, color: Colors.transparent),
         SubjectChampion(mSubjectRepos.getChampionData()),
         Divider(height: interval, color: Colors.transparent),
+        SubjectTitle(title: "猜你喜欢"),
 
+        SubjectTitle(title: "为你推进"),
+        Divider(height: interval, color: Colors.transparent),
+        SubjectRecommend(mSubjectRepos.getSubjectRecommend1()),
+        Divider(height: interval, color: Colors.transparent),
+        SubjectRecommend(mSubjectRepos.getSubjectRecommend2()),
+        Divider(height: interval, color: Colors.transparent),
+        SubjectRecommend(mSubjectRepos.getSubjectRecommend3()),
       ],
     ));
   }
