@@ -31,29 +31,29 @@ class _GroupPageState extends State<GroupPage> {
           Container(
             margin: EdgeInsets.symmetric(vertical: 1.0),
             color: Colors.black,
-            height: 100.0,
+            height: 120.0,
             child: ListView(
               padding: EdgeInsets.all(0.0),
               scrollDirection: Axis.horizontal,
               children: <Widget>[
                 Container(
-                  width: 160.0,
-                  color: Colors.red,
+                  width: 300.0,
+                  // color: Colors.red,
                   child: Card(),
                 ),
                 Container(
-                  width: 160.0,
-                  color: Colors.green,
+                  width: 300.0,
+                  // color: Colors.green,
                   child: Card(),
                 ),
                 Container(
-                  width: 160.0,
-                  color: Colors.yellow,
+                  width: 300.0,
+                  // color: Colors.yellow,
                   child: Card(),
                 ),
                 Container(
-                  width: 160.0,
-                  color: Colors.orange,
+                  width: 300.0,
+                  // color: Colors.orange,
                   child: Card(),
                 ),
               ],
