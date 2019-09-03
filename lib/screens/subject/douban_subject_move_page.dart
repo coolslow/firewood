@@ -51,8 +51,6 @@ class MovePage extends StatelessWidget {
         Divider(height: interval, color: Colors.transparent),
         SubjectChampion(mSubjectRepos.getChampionData()),
         Divider(height: interval, color: Colors.transparent),
-        SubjectTitle(title: "猜你喜欢"),
-
         SubjectTitle(title: "为你推进"),
         Divider(height: interval, color: Colors.transparent),
         SubjectRecommend(mSubjectRepos.getSubjectRecommend1()),
@@ -60,6 +58,9 @@ class MovePage extends StatelessWidget {
         SubjectRecommend(mSubjectRepos.getSubjectRecommend2()),
         Divider(height: interval, color: Colors.transparent),
         SubjectRecommend(mSubjectRepos.getSubjectRecommend3()),
+        Divider(height: interval, color: Colors.transparent),
+        SubjectTitle(title: "猜你喜欢"),
+
       ],
     ));
   }
