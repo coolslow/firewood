@@ -19,7 +19,7 @@ class MainPage extends StatefulWidget {
 class _MainPageState extends State<MainPage> {
   List<FBottomData> bottomData;
   List<Widget> pages = List<Widget>();
-  int currentIndex = 0;
+  int currentIndex = 1;
 
   @override
   void initState() {

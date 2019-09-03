@@ -103,4 +103,10 @@ class _SubjectPageState extends State<SubjectPage> {
   void _onTap(int index) {
     _pageController.jumpToPage(index);
   }
+
+  @override
+  void dispose() {
+    _pageController?.dispose();
+    super.dispose();
+  }
 }
