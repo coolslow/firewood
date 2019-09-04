@@ -1,7 +1,13 @@
 import 'package:firewood/common/constants.dart';
+import 'package:firewood/common/utils/size_compat.dart';
 import 'package:firewood/playground/customerappbar/customer_app_bar.dart';
+import 'package:firewood/playground/pageviews/page_view_demo.dart';
+import 'package:firewood/screens/groups/group_pageview_section.dart';
 import 'package:firewood/widgets/navigation/action_search_bar.dart';
 import 'package:flutter/material.dart';
+
+import 'groups/group_my_discuss_section.dart';
+import 'groups/group_my_joined_section.dart';
 
 class GroupPage extends StatefulWidget {
   @override
@@ -22,43 +28,18 @@ class _GroupPageState extends State<GroupPage> {
         mailColor: FColors.iconColorFilter,
         unReadCount: 2,
       ),
-      body: Column(
+      body: ListView(
         children: <Widget>[
-          // Container(
-          // color: Colors.blue,
-          // height: 10.0,
-          // ),
-          Container(
-            margin: EdgeInsets.symmetric(vertical: 1.0),
-            color: Colors.black,
-            height: 120.0,
-            child: ListView(
-              padding: EdgeInsets.all(0.0),
-              scrollDirection: Axis.horizontal,
-              children: <Widget>[
-                Container(
-                  width: 300.0,
-                  // color: Colors.red,
-                  child: Card(),
-                ),
-                Container(
-                  width: 300.0,
-                  // color: Colors.green,
-                  child: Card(),
-                ),
-                Container(
-                  width: 300.0,
-                  // color: Colors.yellow,
-                  child: Card(),
-                ),
-                Container(
-                  width: 300.0,
-                  // color: Colors.orange,
-                  child: Card(),
-                ),
-              ],
-            ),
-          )
+          // todo 顶部卡片部分的内容展示
+          GroupPageViewSection(),
+          Divider(
+            height: SizeCompat.pxToDp(20.0),
+            color: Colors.red,
+          ),
+          // todo 我加入的部分的内容展示
+          MyJoinedSection(),
+          // todo 小组套路部分内容展示
+          MyGroupDiscussSection(),
         ],
       ),
     );

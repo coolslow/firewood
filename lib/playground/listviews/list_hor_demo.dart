@@ -29,14 +29,14 @@ class _ListHorDemoState extends State<ListHorDemoPage> {
                 itemCount: 10,
                 separatorBuilder: (BuildContext context, int index) =>
                     Container(
-                      width: 1,
-                      color: Colors.white,
-                    ),
+                  width: 1,
+                  color: Colors.white,
+                ),
                 itemBuilder: (BuildContext context, int index) => Container(
-                      color: Colors.deepPurpleAccent,
-                      padding: EdgeInsets.fromLTRB(1, 1, 1, 1),
-                      child: Text("属性详细介绍"),
-                    ),
+                  color: Colors.deepPurpleAccent,
+                  padding: EdgeInsets.fromLTRB(1, 1, 1, 1),
+                  child: Text("属性详细介绍"),
+                ),
               )),
         ],
       ),

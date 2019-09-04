@@ -160,9 +160,4 @@ class _PageViewDemoState extends State<PageViewDemoPage> {
       itemCount: 5,
     );
   }
-
-
-
-
-
 }
