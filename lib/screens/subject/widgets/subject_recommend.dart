@@ -3,6 +3,7 @@ import 'package:firewood/common/constants.dart';
 import 'package:firewood/common/utils/color_util.dart';
 import 'package:firewood/common/utils/size_compat.dart';
 import 'package:firewood/entity/subject/subject_move_recommend_entity.dart';
+import 'package:firewood/widgets/divider/v_divider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
@@ -19,17 +20,16 @@ class SubjectRecommend extends StatelessWidget {
 
   Widget getItem(BuildContext context) {
     return Container(
-      decoration: BoxDecoration(
-          boxShadow: [
+      decoration: BoxDecoration(boxShadow: [
         BoxShadow(
-            color: Color(0xFFBDBDBD),//Color(0xfff7f7f7)
+            color: FColors.shadow, //Color(0xfff7f7f7)
             offset: Offset(1.0, 1.0),
             blurRadius: 10.0,
             spreadRadius: 5.0)
-      ]
-      ),
+      ]),
       margin: EdgeInsets.only(
           left: SizeCompat.pxToDp(Dimens.appEdgeEdge),
+          bottom: SizeCompat.pxToDp(25),
           right: SizeCompat.pxToDp(Dimens.appEdgeEdge)),
       child: Column(
         children: <Widget>[

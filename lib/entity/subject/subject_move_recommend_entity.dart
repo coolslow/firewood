@@ -1,6 +1,7 @@
 import 'package:firewood/common/utils/utils.dart';
+import 'package:firewood/entity/type_entity.dart';
 
-class MoveRecommendEntity {
+class MoveRecommendEntity extends TypeEntity {
   String id; // 唯一编号
   String imgUrl; // 海报
   String title; // 名称
@@ -22,5 +23,10 @@ class MoveRecommendEntity {
       this.desColor = "ff878787",
       this.btnColor = "ffffffff"}) {
     id = Utils.autoIncrement().toString();
+  }
+
+  @override
+  getType() {
+    return TypeEntity.typeSubjectRecommend;
   }
 }

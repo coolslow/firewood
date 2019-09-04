@@ -5,17 +5,19 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
 // ignore: must_be_immutable
-class SubjectChangeTitle extends StatefulWidget {
+class SubjectTitleTab extends StatefulWidget {
+  List<String> tabs;
+  String more;
 
-  SubjectChangeTitle();
+  SubjectTitleTab(this.tabs, this.more);
 
   @override
   State<StatefulWidget> createState() {
-    return _SubjectChangeTitleState();
+    return _SubjectTitleTabState();
   }
 }
 
-class _SubjectChangeTitleState extends State<SubjectChangeTitle> {
+class _SubjectTitleTabState extends State<SubjectTitleTab> {
   PageController _pageController;
   int currentIndex = 0;
   List<Widget> widgetData = List<Widget>();
@@ -23,11 +25,11 @@ class _SubjectChangeTitleState extends State<SubjectChangeTitle> {
 
   @override
   void initState() {
-    tabData.add(FTabBarData("影院热映"));
-    tabData.add(FTabBarData("即将上映"));
-
-//    widgetData.add(SubjectMoveGridView(widget.mSubjectRepos.getGrid()));
-//    widgetData.add(CityWidePage());
+    if (widget.tabs != null) {
+      widget.tabs.forEach((String source) {
+        tabData.add(FTabBarData(source));
+      });
+    }
 
     _pageController = PageController(initialPage: currentIndex);
     super.initState();
@@ -70,7 +72,7 @@ class _SubjectChangeTitleState extends State<SubjectChangeTitle> {
               child: Container(),
             ),
             Text(
-              "全部 45",
+              widget.more,
               style: TextStyle(
                   color: Color(0xff191919),
                   fontSize: SizeCompat.pxToDp(36),

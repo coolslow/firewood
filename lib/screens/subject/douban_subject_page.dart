@@ -1,6 +1,5 @@
 import 'package:firewood/common/constants.dart';
 import 'package:firewood/common/utils/size_compat.dart';
-import 'package:firewood/screens/subject/controller/subject_view_controller.dart';
 import 'package:firewood/screens/subject/douban_subject_citywide_page.dart';
 import 'package:firewood/screens/subject/douban_subject_fiction_page.dart';
 import 'package:firewood/screens/subject/douban_subject_move_page.dart';
@@ -17,7 +16,6 @@ class SubjectPage extends StatefulWidget {
 }
 
 class _SubjectPageState extends State<SubjectPage> {
-  SubjectViewController mSubjectViewController = SubjectViewController();
   List<FTabBarData> tabData = List<FTabBarData>();
   List<Widget> widgetData = List<Widget>();
   int currentIndex = 0;

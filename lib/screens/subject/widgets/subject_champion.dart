@@ -8,7 +8,7 @@ import 'package:flutter/widgets.dart';
 
 // ignore: must_be_immutable
 class SubjectChampion extends StatelessWidget {
-  List<MoveChampionEntity> list;
+  List<MoveChampionItemEntity> list;
 
   SubjectChampion(this.list);
 
@@ -17,14 +17,15 @@ class SubjectChampion extends StatelessWidget {
     return Container(
         height: SizeCompat.pxToDp(660),
         child: ListView.builder(
-            itemBuilder: (BuildContext context, int index) {
-              return getItem(context, list[index]);
-            },
-            itemCount: list.length,
-            scrollDirection: Axis.horizontal));
+          itemBuilder: (BuildContext context, int index) {
+            return getItem(context, list[index]);
+          },
+          itemCount: list.length,
+          scrollDirection: Axis.horizontal,
+        ));
   }
 
-  Widget getItem(BuildContext context, MoveChampionEntity entity) {
+  Widget getItem(BuildContext context, MoveChampionItemEntity entity) {
     return Container(
       width: SizeCompat.pxToDp(660),
       child: Column(
@@ -36,7 +37,7 @@ class SubjectChampion extends StatelessWidget {
     );
   }
 
-  Widget getTop(BuildContext context, MoveChampionEntity entity) {
+  Widget getTop(BuildContext context, MoveChampionItemEntity entity) {
     return Container(
       margin: EdgeInsets.only(left: SizeCompat.pxToDp(Dimens.appEdgeEdge)),
       height: SizeCompat.pxToDp(330),
@@ -84,7 +85,7 @@ class SubjectChampion extends StatelessWidget {
     );
   }
 
-  Widget getBottom(BuildContext context, MoveChampionEntity entity) {
+  Widget getBottom(BuildContext context, MoveChampionItemEntity entity) {
     return Container(
       alignment: Alignment.centerLeft,
       margin: EdgeInsets.only(left: SizeCompat.pxToDp(Dimens.appEdgeEdge)),
@@ -105,25 +106,29 @@ class SubjectChampion extends StatelessWidget {
                 right: SizeCompat.pxToDp(50),
                 bottom: SizeCompat.pxToDp(15),
                 top: SizeCompat.pxToDp(15)),
-            child: Row(children: <Widget>[
-              Text(
-                "${index + 1}.${entity.list[index].name}",
-                style: TextStyle(
-                    color: Colors.white, fontSize: SizeCompat.pxToDp(32)),
-              ),
-              Text(
-                "  ${entity.list[index].score}",
-                style: TextStyle(
-                    color: Color(0xffDC982F), fontSize: SizeCompat.pxToDp(32)),
-              ),
-              Expanded(child: Padding(padding: EdgeInsets.all(0)),),
-              Text(
-                "  ${entity.list[index].sort}",
-                style: TextStyle(
-                    color: Colors.white, fontSize: SizeCompat.pxToDp(32)),
-              ),
-            ],) ,
-
+            child: Row(
+              children: <Widget>[
+                Text(
+                  "${index + 1}.${entity.list[index].name}",
+                  style: TextStyle(
+                      color: Colors.white, fontSize: SizeCompat.pxToDp(32)),
+                ),
+                Text(
+                  "  ${entity.list[index].score}",
+                  style: TextStyle(
+                      color: Color(0xffDC982F),
+                      fontSize: SizeCompat.pxToDp(32)),
+                ),
+                Expanded(
+                  child: Padding(padding: EdgeInsets.all(0)),
+                ),
+                Text(
+                  "  ${entity.list[index].sort}",
+                  style: TextStyle(
+                      color: Colors.white, fontSize: SizeCompat.pxToDp(32)),
+                ),
+              ],
+            ),
           );
         },
         itemCount: entity.list.length,

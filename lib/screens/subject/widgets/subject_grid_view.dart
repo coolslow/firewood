@@ -13,7 +13,7 @@ class SubjectGridView extends StatelessWidget {
           3) /
       0.714;
 
-  final List<MoveGridEntity> entity;
+  final List<MoveGridItemEntity> entity;
 
   SubjectGridView(this.entity);
 
@@ -35,27 +35,32 @@ class SubjectGridView extends StatelessWidget {
             childAspectRatio: 0.56,
           ),
           itemBuilder: (BuildContext context, int index) {
-            MoveGridEntity data = entity[index];
+            MoveGridItemEntity data = entity[index];
 
             return Column(
               children: <Widget>[
                 Stack(
                   children: <Widget>[
-                    ClipRRect(
-                      child: Container(
+                    Container(
                         height: gridViewHeight,
-                        child: CachedNetworkImage(
-                          imageUrl: data.imgUrl,
-                          fit: BoxFit.fill,
-                          placeholder: (BuildContext context, String url) {
-                            return Image.asset(
-                                "images/default_place_holder.png");
-                          },
-                        ),
-                      ),
-                      borderRadius:
-                          BorderRadius.circular(SizeCompat.pxToDp(10)),
-                    ),
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.all(
+                                Radius.circular(SizeCompat.pxToDp(10))),
+                            border: Border.all(
+                              color: Color(0xFFf7f8f9),
+                              width: 0.5,
+                            )),
+                        child: ClipRRect(
+                            borderRadius:
+                                BorderRadius.circular(SizeCompat.pxToDp(10)),
+                            child: CachedNetworkImage(
+                              imageUrl: data.imgUrl,
+                              fit: BoxFit.fill,
+                              placeholder: (BuildContext context, String url) {
+                                return Image.asset(
+                                    "images/default_place_holder.png");
+                              },
+                            ))),
                     Positioned(
                         top: 0,
                         left: 0,
