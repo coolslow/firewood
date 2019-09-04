@@ -1,4 +1,4 @@
-import 'package:firewood/common/utils/Log.dart';
+import 'package:firewood/common/utils/log_util.dart';
 import 'package:firewood/playground/navigation/action_bar.dart';
 import 'package:flutter/material.dart';
 
