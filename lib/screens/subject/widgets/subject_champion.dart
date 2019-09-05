@@ -3,6 +3,7 @@ import 'package:firewood/common/constants.dart';
 import 'package:firewood/common/utils/color_util.dart';
 import 'package:firewood/common/utils/size_compat.dart';
 import 'package:firewood/entity/subject/subject_move_champion_entity.dart';
+import 'package:firewood/widgets/divider/h_divider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
@@ -16,9 +17,15 @@ class SubjectChampion extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
         height: SizeCompat.pxToDp(660),
-        child: ListView.builder(
+        child: ListView.separated(
+          padding: EdgeInsets.only(
+              left: SizeCompat.pxToDp(Dimens.appEdgeEdge),
+              right: SizeCompat.pxToDp(Dimens.appEdgeEdge)),
           itemBuilder: (BuildContext context, int index) {
             return getItem(context, list[index]);
+          },
+          separatorBuilder: (BuildContext context, int index) {
+            return FHDivider(width: SizeCompat.pxToDp(20));
           },
           itemCount: list.length,
           scrollDirection: Axis.horizontal,
@@ -39,7 +46,6 @@ class SubjectChampion extends StatelessWidget {
 
   Widget getTop(BuildContext context, MoveChampionItemEntity entity) {
     return Container(
-      margin: EdgeInsets.only(left: SizeCompat.pxToDp(Dimens.appEdgeEdge)),
       height: SizeCompat.pxToDp(330),
       width: SizeCompat.pxToDp(660),
       child: Stack(
@@ -91,7 +97,6 @@ class SubjectChampion extends StatelessWidget {
   Widget getBottom(BuildContext context, MoveChampionItemEntity entity) {
     return Container(
       alignment: Alignment.centerLeft,
-      margin: EdgeInsets.only(left: SizeCompat.pxToDp(Dimens.appEdgeEdge)),
       height: SizeCompat.pxToDp(330),
       width: SizeCompat.pxToDp(660),
       decoration: BoxDecoration(
