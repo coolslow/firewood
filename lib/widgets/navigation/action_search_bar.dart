@@ -1,8 +1,11 @@
 import 'package:firewood/common/constants.dart';
 import 'package:firewood/common/utils/size_compat.dart';
+import 'package:firewood/common/utils/utils.dart';
+import 'package:firewood/widgets/log/release_log.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
+// ignore: must_be_immutable
 class FActionSearchBar extends StatelessWidget implements PreferredSizeWidget {
   final String searchHint;
   final Color bgColor;
@@ -10,10 +13,10 @@ class FActionSearchBar extends StatelessWidget implements PreferredSizeWidget {
   final Color connerBgColor;
   final int unReadCount;
 
-  final double actionBarHeight = SizeCompat.pxToDp(130);
+  double actionBarHeight;
 
   @override
-  Size get preferredSize => Size.fromHeight(this.actionBarHeight);
+  Size get preferredSize => Size.fromHeight(SizeCompat.pxToDp(130));
 
   FActionSearchBar(
       {@required this.searchHint,
@@ -26,6 +29,8 @@ class FActionSearchBar extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     MediaQueryData mediaQuery = MediaQuery.of(context);
     double statusHeight = mediaQuery.padding.top;
+    actionBarHeight = SizeCompat.pxToDp(130);
+
     return Container(
         width: double.infinity,
         color: bgColor,

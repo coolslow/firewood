@@ -1,3 +1,4 @@
+import 'package:firewood/common/utils/utils.dart';
 import 'package:flutter/material.dart';
 
 class SizeCompat {
@@ -9,6 +10,7 @@ class SizeCompat {
   static double _ratio;
 
   static void init(BuildContext context, double uiWidth) {
+
     MediaQueryData mediaQuery = MediaQuery.of(context);
     _devicePixelRatio = mediaQuery.devicePixelRatio;
     _width = mediaQuery.size.width;
@@ -20,6 +22,8 @@ class SizeCompat {
       uiWidth = 750;
     }
     _ratio = _width / uiWidth;
+
+//    Utils.printReleaseLog(" SizeCompat  _width=$_width _height=$_height  uiWidth=$uiWidth   _ratio=$_ratio  top=$top   bottom=$bottom");
 
 //    print(
 //        "mediaQuery   devicePixelRatio=${mediaQuery.devicePixelRatio}    _ratio=$_ratio");

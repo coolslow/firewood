@@ -10,22 +10,28 @@ import 'package:flutter/widgets.dart';
 class FListView extends StatefulWidget {
   @required
   final IndexedWidgetBuilder itemBuilder;
+  final IndexedWidgetBuilder separatorBuilder;
   final int itemCount;
   final PageStateFactory pageState;
   bool isLoadMoreRunning = false;
 
   VoidCallback onRefresh;
   VoidCallback onLoadMore;
+  EdgeInsets padding;
 
   FListView.builder(
-      {this.itemBuilder,
-      this.itemCount,
+      {this.itemCount,
+      this.itemBuilder,
+      this.separatorBuilder,
       this.onRefresh,
       this.onLoadMore,
       this.isLoadMoreRunning = false,
+      this.padding,
       this.pageState = const PageStateFactory()})
       : assert(itemBuilder != null),
-        assert(itemCount != null && itemCount >= 0);
+        assert(itemCount != null && itemCount >= 0) {
+    padding ??= EdgeInsets.all(0);
+  }
 
   @override
   State<StatefulWidget> createState() {
@@ -37,8 +43,6 @@ class _FListViewState extends State<FListView> {
   PageState pageState = PageState.Empty;
   Completer<Null> _refreshCompleter = Completer<Null>();
   ScrollController _scrollController = ScrollController();
-
-  Future<Null> future = Future.value();
 
   @override
   void initState() {
@@ -63,26 +67,7 @@ class _FListViewState extends State<FListView> {
     }
 
     if (pageState == PageState.Data) {
-      _refreshCompleter?.complete();
-      _refreshCompleter = Completer();
-
-      return RefreshIndicator(
-        child: ListView.builder(
-            padding: EdgeInsets.all(0),
-            physics: BouncingScrollPhysics(),
-            controller: _scrollController,
-            itemBuilder: (BuildContext context, int index) {
-              if (widget.isLoadMoreRunning && widget.itemCount == index) {
-                return _getLoading();
-              } else {
-                return widget.itemBuilder(context, index);
-              }
-            },
-            itemCount: widget.isLoadMoreRunning == true
-                ? widget.itemCount + 1
-                : widget.itemCount),
-        onRefresh: _handleRefresh,
-      );
+      return getListView();
     } else if (pageState == PageState.Empty) {
       // 数据空
       return widget.pageState.getEmpty();
@@ -118,7 +103,6 @@ class _FListViewState extends State<FListView> {
       widget.onRefresh();
     }
     return _refreshCompleter?.future;
-//    return future;
   }
 
   void _handleLoadMore() {
@@ -132,16 +116,102 @@ class _FListViewState extends State<FListView> {
     return Container(
         alignment: Alignment.topCenter,
         color: Colors.white,
-        padding: EdgeInsets.only(top: 10,bottom: 10),
+        padding: EdgeInsets.only(top: 10, bottom: 10),
         height: 50,
         child: Center(
           child: SizedBox(
             width: 20,
             height: 20,
-            child:
-                CircularProgressIndicator(strokeWidth:2,valueColor: AlwaysStoppedAnimation(FColors.iconColorFilter)),
+            child: CircularProgressIndicator(
+                strokeWidth: 2,
+                valueColor: AlwaysStoppedAnimation(FColors.iconColorFilter)),
           ),
         ));
+  }
+
+  Widget getListView() {
+    if (widget.onRefresh != null) {
+      // 支持下拉刷新
+      _refreshCompleter?.complete();
+      _refreshCompleter = Completer();
+
+      if (widget.separatorBuilder == null) {
+        return RefreshIndicator(
+          child: ListView.builder(
+              padding: widget.padding,
+              physics: BouncingScrollPhysics(),
+              controller: _scrollController,
+              itemBuilder: (BuildContext context, int index) {
+                if (widget.isLoadMoreRunning && widget.itemCount == index) {
+                  return _getLoading();
+                } else {
+                  return widget.itemBuilder(context, index);
+                }
+              },
+              itemCount: widget.isLoadMoreRunning == true
+                  ? widget.itemCount + 1
+                  : widget.itemCount),
+          onRefresh: _handleRefresh,
+        );
+      } else {
+        return RefreshIndicator(
+          child: ListView.separated(
+              padding: widget.padding,
+              physics: BouncingScrollPhysics(),
+              controller: _scrollController,
+              separatorBuilder: (BuildContext context, int index) {
+                return widget.separatorBuilder(context, index);
+              },
+              itemBuilder: (BuildContext context, int index) {
+                if (widget.isLoadMoreRunning && widget.itemCount == index) {
+                  return _getLoading();
+                } else {
+                  return widget.itemBuilder(context, index);
+                }
+              },
+              itemCount: widget.isLoadMoreRunning == true
+                  ? widget.itemCount + 1
+                  : widget.itemCount),
+          onRefresh: _handleRefresh,
+        );
+      }
+    } else {
+      // 不支持下拉刷新
+      if (widget.separatorBuilder == null) {
+        return ListView.builder(
+            padding: widget.padding,
+            physics: BouncingScrollPhysics(),
+            controller: _scrollController,
+            itemBuilder: (BuildContext context, int index) {
+              if (widget.isLoadMoreRunning && widget.itemCount == index) {
+                return _getLoading();
+              } else {
+                return widget.itemBuilder(context, index);
+              }
+            },
+            itemCount: widget.isLoadMoreRunning == true
+                ? widget.itemCount + 1
+                : widget.itemCount);
+      } else {
+        return ListView.separated(
+            padding: widget.padding,
+            physics: BouncingScrollPhysics(),
+            controller: _scrollController,
+            separatorBuilder: (BuildContext context, int index) {
+              return widget.separatorBuilder(context, index);
+            },
+            itemBuilder: (BuildContext context, int index) {
+              if (widget.isLoadMoreRunning && widget.itemCount == index) {
+                return _getLoading();
+              } else {
+                return widget.itemBuilder(context, index);
+              }
+            },
+            itemCount: widget.isLoadMoreRunning == true
+                ? widget.itemCount + 1
+                : widget.itemCount);
+      }
+    }
   }
 }
 

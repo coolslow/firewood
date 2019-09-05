@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:firewood/bloc/recommend/recommend_data_bloc.dart';
 import 'package:firewood/common/utils/size_compat.dart';
+import 'package:firewood/common/utils/utils.dart';
 import 'package:firewood/screens/home/douban_home_dynamic_page.dart';
 import 'package:firewood/screens/home/douban_home_recommend_page.dart';
 import 'package:firewood/widgets/navigation/action_search_bar.dart';
@@ -10,16 +11,20 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class HomePage extends StatefulWidget {
+
   @override
   _HomePageState createState() => new _HomePageState();
 }
 
 class _HomePageState extends State<HomePage> {
+
+
   List<FTabBarData> tabData;
   int currentIndex = 0;
   PageController _pageController;
 
   StreamController<int> _stream = StreamController.broadcast();
+
 
   @override
   void initState() {
@@ -35,9 +40,11 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     double padding = SizeCompat.pxToDp(390);
+
     return new Scaffold(
       body: Column(
         children: <Widget>[
+
           FActionSearchBar(searchHint: "村里那个古怪的人", unReadCount: 9),
           Container(
               height: SizeCompat.pxToDp(106),
@@ -84,6 +91,7 @@ class _HomePageState extends State<HomePage> {
   void dispose() {
     _pageController?.dispose();
     _stream?.close();
+
     super.dispose();
   }
 

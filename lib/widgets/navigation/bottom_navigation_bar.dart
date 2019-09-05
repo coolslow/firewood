@@ -13,13 +13,15 @@ class FBottomNavigationBar extends StatefulWidget {
 
   final Color unSelectBg;
 
+  int currIndex;
+
   FBottomNavigationBar(
       {@required this.bottomData,
       this.callback,
       this.selectTs,
       this.unSelectTs,
       this.selectBg = Colors.white,
-      this.unSelectBg = Colors.white}) {
+      this.unSelectBg = Colors.white,this.currIndex = 0}) {
     if (selectTs == null) {
       this.selectTs = TextStyle(
           color: Color(0xff42BD56),
@@ -44,7 +46,6 @@ class FBottomNavigationBar extends StatefulWidget {
 }
 
 class _FBottomNavigationBarState extends State<FBottomNavigationBar> {
-  var currIndex = 0;
 
   @override
   void initState() {
@@ -52,7 +53,7 @@ class _FBottomNavigationBarState extends State<FBottomNavigationBar> {
   }
 
   void notify(int index) {
-    if (currIndex != index) {
+    if (widget.currIndex != index) {
       if (widget.callback != null) {
         widget.callback(index);
       }
@@ -84,11 +85,11 @@ class _FBottomNavigationBarState extends State<FBottomNavigationBar> {
             onTap: () {
               notify(i);
               setState(() {
-                currIndex = i;
+                widget.currIndex = i;
               });
             },
             child: Container(
-              color: currIndex == i ? widget.selectBg : widget.unSelectBg,
+              color: widget.currIndex == i ? widget.selectBg : widget.unSelectBg,
               child: Stack(
                 alignment: Alignment.topCenter,
                 children: <Widget>[
@@ -99,7 +100,7 @@ class _FBottomNavigationBarState extends State<FBottomNavigationBar> {
                       margin: EdgeInsets.only(
                         top: SizeCompat.pxToDp(6),
                       ),
-                      child: currIndex == i
+                      child: widget.currIndex == i
                           ? data[i].selectIcon
                           : data[i].unSelectIcon,
                     ),
@@ -108,7 +109,7 @@ class _FBottomNavigationBarState extends State<FBottomNavigationBar> {
                       margin: EdgeInsets.fromLTRB(0.0, 0.0, 0.0, 0.0),
                       child: Text(
                         data[i].title,
-                        style: currIndex == i
+                        style: widget.currIndex == i
                             ? widget.selectTs
                             : widget.unSelectTs,
                       ),

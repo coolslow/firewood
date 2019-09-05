@@ -9,6 +9,7 @@ import 'package:firewood/playground/popupmenu/popup_meun_demo.dart';
 import 'package:firewood/playground/templet/templet_demo.dart';
 import 'package:firewood/playground/ticker/ticker_demo.dart';
 import 'package:firewood/playground/toast/toast_demo.dart';
+import 'package:firewood/widgets/log/release_log.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -53,6 +54,7 @@ class _PlaygroundPageState extends State<PlaygroundPage> {
               getItem(context, "MediaQueryDataDemo", MediaQueryDataScreen()),
               getItem(context, "DialogDemoPage", DialogDemoPage()),
               getItem(context, "ToastDemoPage", ToastDemoPage()),
+              getItem(context, "LogDemoPage", LogPage()),
             ])),
           )
         ],
