@@ -1,8 +1,10 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:firewood/common/constants.dart';
 import 'package:firewood/common/utils/size_compat.dart';
+import 'package:firewood/common/utils/utils.dart';
 import 'package:flutter/widgets.dart';
 
+// ignore: must_be_immutable
 class SubjectBanner extends StatefulWidget {
   double _ratio;
   List<String> data;
@@ -38,7 +40,12 @@ class _SubjectBannerState extends State<SubjectBanner> {
           height: SizeCompat.width() / widget._ratio,
           fit: BoxFit.cover,
           placeholder: (BuildContext context, String url) {
-            return Image.asset("images/default_place_holder.png");
+            return Image.asset(
+              "images/default_place_holder.png",
+              fit: BoxFit.cover,
+              width: SizeCompat.width(),
+              height: SizeCompat.width() / widget._ratio,
+            );
           },
         ),
       ),

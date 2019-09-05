@@ -65,9 +65,7 @@ class _MovePageState extends State<MovePage> {
       isLoading = true;
     });
 
-    print("1==========>onLoadMore ${DateTime.now()} ");
-    await Future.delayed(Duration(seconds: Utils.randomTime(2, 5)));
-    print("2==========>onLoadMore ${DateTime.now()} ");
+    await Future.delayed(Duration(seconds: Utils.randomTime(2, 4)));
 
     setState(() {
       isLoading = false;

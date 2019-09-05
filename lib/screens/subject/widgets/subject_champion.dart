@@ -52,7 +52,10 @@ class SubjectChampion extends StatelessWidget {
                 imageUrl: entity.imgUrl,
                 fit: BoxFit.cover,
                 placeholder: (BuildContext context, String url) {
-                  return Image.asset("images/default_place_holder.png");
+                  return Image.asset("images/default_place_holder.png",
+                      fit: BoxFit.cover,
+                      height: SizeCompat.pxToDp(330),
+                      width: SizeCompat.pxToDp(660));
                 },
               ),
             ),
