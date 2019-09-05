@@ -225,14 +225,14 @@ class RecommendRepos {
   }
 
   Future<List<TypeEntity>> getData(int start) async {
-    await Future.delayed(Duration(seconds: Utils.randomTime(2, 5)));
+    await Future.delayed(Duration(seconds: Utils.randomTime(2, 3)));
     return _getData();
   }
 
 //  Future<bool> requestThumb(String id, bool thumb) async {
   void requestThumb(RecommendEntity data,
       NetworkValueChanged<RecommendEntity, bool> callback) {
-    Future.delayed(Duration(seconds: Utils.randomTime(2, 5))).then((_) {
+    Future.delayed(Duration(seconds: Utils.randomTime(2, 3))).then((_) {
       if (data.id.endsWith("1")) {
         callback(data, false);
       } else {

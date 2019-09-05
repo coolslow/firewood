@@ -2,7 +2,6 @@ import 'dart:async';
 
 import 'package:firewood/bloc/recommend/recommend_data_bloc.dart';
 import 'package:firewood/common/utils/size_compat.dart';
-import 'package:firewood/common/utils/utils.dart';
 import 'package:firewood/screens/home/douban_home_dynamic_page.dart';
 import 'package:firewood/screens/home/douban_home_recommend_page.dart';
 import 'package:firewood/widgets/navigation/action_search_bar.dart';
@@ -11,20 +10,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class HomePage extends StatefulWidget {
-
   @override
   _HomePageState createState() => new _HomePageState();
 }
 
 class _HomePageState extends State<HomePage> {
-
-
   List<FTabBarData> tabData;
   int currentIndex = 0;
   PageController _pageController;
 
-  StreamController<int> _stream = StreamController.broadcast();
-
+  StreamController<int> _stream = StreamController<int>();
 
   @override
   void initState() {
@@ -44,15 +39,21 @@ class _HomePageState extends State<HomePage> {
     return new Scaffold(
       body: Column(
         children: <Widget>[
-
           FActionSearchBar(searchHint: "村里那个古怪的人", unReadCount: 9),
           Container(
               height: SizeCompat.pxToDp(106),
               color: Colors.white,
               padding: EdgeInsets.only(left: padding, right: padding),
               width: double.infinity,
-              child: FTabBar(
-                  tabData: tabData, currIndex: currentIndex, callback: _onTap)),
+              child: StreamBuilder(
+                  stream: _stream.stream,
+                  initialData: currentIndex,
+                  builder: (BuildContext context, AsyncSnapshot<int> snapshot) {
+                    return FTabBar(
+                        tabData: tabData,
+                        currIndex: snapshot.data,
+                        callback: _onTap);
+                  })),
           Container(
             height: SizeCompat.pxToDp(2),
             color: Color(0xffEBEBEB),
@@ -64,11 +65,12 @@ class _HomePageState extends State<HomePage> {
               controller: _pageController,
               itemBuilder: (BuildContext context, int index) {
                 if (index == 0) {
-                  return DynamicPage(_stream);
+                  return DynamicPage();
                 } else {
                   return BlocProvider(
                     builder: (BuildContext context) {
-                      return RecommendDataBloc()..dispatch(RecommendFetchEvent());
+                      return RecommendDataBloc()
+                        ..dispatch(RecommendFetchEvent());
                     },
                     child: RecommendPage(),
                   );
@@ -91,15 +93,13 @@ class _HomePageState extends State<HomePage> {
   void dispose() {
     _pageController?.dispose();
     _stream?.close();
-
     super.dispose();
   }
 
   void _pageChange(int index) {
     if (currentIndex != index) {
-      setState(() {
-        currentIndex = index;
-      });
+      currentIndex = index;
+      _stream.sink.add(currentIndex);
     }
   }
 }
