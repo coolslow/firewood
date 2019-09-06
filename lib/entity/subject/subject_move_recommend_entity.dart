@@ -27,6 +27,6 @@ class MoveRecommendEntity extends TypeEntity {
 
   @override
   getType() {
-    return TypeEntity.typeSubjectRecommend;
+    return TypeEntity.typeSubjectMoveRecommend;
   }
 }

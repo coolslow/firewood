@@ -2,14 +2,14 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:firewood/common/constants.dart';
 import 'package:firewood/common/utils/color_util.dart';
 import 'package:firewood/common/utils/size_compat.dart';
-import 'package:firewood/entity/subject/subject_move_champion_entity.dart';
+import 'package:firewood/entity/subject/subject_champion_entity.dart';
 import 'package:firewood/widgets/divider/h_divider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
 // ignore: must_be_immutable
 class SubjectChampion extends StatelessWidget {
-  List<MoveChampionItemEntity> list;
+  List<ChampionItemEntity> list;
 
   SubjectChampion(this.list);
 
@@ -32,7 +32,7 @@ class SubjectChampion extends StatelessWidget {
         ));
   }
 
-  Widget getItem(BuildContext context, MoveChampionItemEntity entity) {
+  Widget getItem(BuildContext context, ChampionItemEntity entity) {
     return Container(
       width: SizeCompat.pxToDp(660),
       child: Column(
@@ -44,7 +44,7 @@ class SubjectChampion extends StatelessWidget {
     );
   }
 
-  Widget getTop(BuildContext context, MoveChampionItemEntity entity) {
+  Widget getTop(BuildContext context, ChampionItemEntity entity) {
     return Container(
       height: SizeCompat.pxToDp(330),
       width: SizeCompat.pxToDp(660),
@@ -94,9 +94,9 @@ class SubjectChampion extends StatelessWidget {
     );
   }
 
-  Widget getBottom(BuildContext context, MoveChampionItemEntity entity) {
+  Widget getBottom(BuildContext context, ChampionItemEntity entity) {
     return Container(
-      alignment: Alignment.centerLeft,
+      alignment: Alignment.centerRight,
       height: SizeCompat.pxToDp(330),
       width: SizeCompat.pxToDp(660),
       decoration: BoxDecoration(
@@ -106,7 +106,8 @@ class SubjectChampion extends StatelessWidget {
               bottomRight: Radius.circular(SizeCompat.pxToDp(15)))),
       child: ListView.builder(
         physics: NeverScrollableScrollPhysics(),
-        padding: EdgeInsets.all(0),
+        padding: EdgeInsets.only(
+            top: SizeCompat.pxToDp(5)),
         itemBuilder: (BuildContext context, int index) {
           return Container(
             margin: EdgeInsets.only(
@@ -119,13 +120,13 @@ class SubjectChampion extends StatelessWidget {
                 Text(
                   "${index + 1}.${entity.list[index].name}",
                   style: TextStyle(
-                      color: Colors.white, fontSize: SizeCompat.pxToDp(32)),
+                      color: Colors.white, fontSize: SizeCompat.pxToDp(34)),
                 ),
                 Text(
                   "  ${entity.list[index].score}",
                   style: TextStyle(
                       color: Color(0xffDC982F),
-                      fontSize: SizeCompat.pxToDp(32)),
+                      fontSize: SizeCompat.pxToDp(34)),
                 ),
                 Expanded(
                   child: Padding(padding: EdgeInsets.all(0)),
@@ -133,7 +134,7 @@ class SubjectChampion extends StatelessWidget {
                 Text(
                   "  ${entity.list[index].sort}",
                   style: TextStyle(
-                      color: Colors.white, fontSize: SizeCompat.pxToDp(32)),
+                      color: Colors.white, fontSize: SizeCompat.pxToDp(34)),
                 ),
               ],
             ),

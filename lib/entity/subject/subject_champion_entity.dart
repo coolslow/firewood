@@ -2,10 +2,10 @@ import 'package:firewood/common/utils/utils.dart';
 
 import '../type_entity.dart';
 
-class MoveChampionEntity extends TypeEntity {
-  List<MoveChampionItemEntity> data;
+class ChampionEntity extends TypeEntity {
+  List<ChampionItemEntity> data;
 
-  MoveChampionEntity.create(this.data);
+  ChampionEntity.create(this.data);
 
   @override
   getType() {
@@ -13,25 +13,25 @@ class MoveChampionEntity extends TypeEntity {
   }
 }
 
-class MoveChampionItemEntity {
+class ChampionItemEntity {
   String id; // 唯一编号
   String imgUrl; // 海报
   String name; // 名称
   String des; // 名称
 
   String bgColor; //底色
-  List<MoveChampionItemListEntity> list; // 榜单清单
+  List<ChampionItemListEntity> list; // 榜单清单
 
-  MoveChampionItemEntity.create(
+  ChampionItemEntity.create(
       this.imgUrl, this.name, this.des, this.bgColor, this.list) {
     id = Utils.autoIncrement().toString();
   }
 }
 
-class MoveChampionItemListEntity {
+class ChampionItemListEntity {
   String name; //
   String score; //
   String sort;
 
-  MoveChampionItemListEntity.create(this.name, this.score, this.sort);
+  ChampionItemListEntity.create(this.name, this.score, this.sort);
 }

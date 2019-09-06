@@ -4,23 +4,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
 // ignore: must_be_immutable
-class SubjectTitle extends StatefulWidget {
+class SubjectTitle extends StatelessWidget {
   String title;
   String des;
+  double fontSize;
 
-  SubjectTitle({this.title, this.des});
-
-  @override
-  State<StatefulWidget> createState() {
-    return _SubjectTitleState();
-  }
-}
-
-class _SubjectTitleState extends State<SubjectTitle> {
-  @override
-  void initState() {
-    super.initState();
-  }
+  SubjectTitle({this.title, this.des, this.fontSize});
 
   @override
   Widget build(BuildContext context) {
@@ -35,10 +24,10 @@ class _SubjectTitleState extends State<SubjectTitle> {
               left: SizeCompat.pxToDp(Dimens.appEdgeEdge),
               right: SizeCompat.pxToDp(Dimens.appEdgeEdge),
             ),
-            child: Text(widget.title,
+            child: Text(title,
                 style: TextStyle(
                     color: Color(0xff191919),
-                    fontSize: SizeCompat.pxToDp(50),
+                    fontSize: SizeCompat.pxToDp(fontSize),
                     decoration: TextDecoration.none,
                     fontWeight: FontWeight.w600)),
           ),
@@ -50,13 +39,13 @@ class _SubjectTitleState extends State<SubjectTitle> {
   }
 
   Widget getMore() {
-    if (widget.des == null || widget.des == "") {
+    if (des == null || des == "") {
       return Container();
     } else {
       return Row(
         children: <Widget>[
           Text(
-            widget.des,
+            des,
             style: TextStyle(
                 color: Color(0xff191919),
                 fontSize: SizeCompat.pxToDp(36),
@@ -76,10 +65,5 @@ class _SubjectTitleState extends State<SubjectTitle> {
         ],
       );
     }
-  }
-
-  @override
-  void dispose() {
-    super.dispose();
   }
 }

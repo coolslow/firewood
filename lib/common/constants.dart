@@ -6,6 +6,7 @@ class FColors {
   static const Color iconColorFilter = Color(0xff7E7E7E);
 
   static const Color shadow = Color(0xffd7d8d9);
+  static const Color divider = Color(0xffefefef);
 
 }
 

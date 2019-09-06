@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
 class FHDivider extends StatelessWidget {
@@ -11,7 +12,7 @@ class FHDivider extends StatelessWidget {
     this.width = 16.0,
     this.indent = 0.0,
     this.endIndent = 0.0,
-    this.color,
+    this.color = Colors.transparent,
   });
 
   @override

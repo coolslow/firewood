@@ -1,7 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:firewood/common/constants.dart';
 import 'package:firewood/common/utils/size_compat.dart';
-import 'package:firewood/entity/subject/subject_move_grid_entity.dart';
+import 'package:firewood/entity/subject/subject_grid_entity.dart';
 import 'package:firewood/widgets/gradestar/gradestar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -13,7 +13,7 @@ class SubjectGridView extends StatelessWidget {
           3) /
       0.714;
 
-  final List<MoveGridItemEntity> entity;
+  final List<GridItemEntity> entity;
 
   SubjectGridView(this.entity);
 
@@ -35,7 +35,7 @@ class SubjectGridView extends StatelessWidget {
             childAspectRatio: 0.56,
           ),
           itemBuilder: (BuildContext context, int index) {
-            MoveGridItemEntity data = entity[index];
+            GridItemEntity data = entity[index];
 
             return Column(
               children: <Widget>[
@@ -58,7 +58,9 @@ class SubjectGridView extends StatelessWidget {
                               fit: BoxFit.fill,
                               placeholder: (BuildContext context, String url) {
                                 return Image.asset(
-                                    "images/default_place_holder.png", fit: BoxFit.cover,);
+                                  "images/default_place_holder.png",
+                                  fit: BoxFit.cover,
+                                );
                               },
                             ))),
                     Positioned(

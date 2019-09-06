@@ -12,7 +12,7 @@ class RecommendPage extends StatefulWidget {
   }
 }
 
-class _RecommendPageState extends State<RecommendPage> {
+class _RecommendPageState extends State<RecommendPage>  with AutomaticKeepAliveClientMixin {
   RecommendDataBloc mRecommendDataBloc;
   RecommendViewController mRecommendViewController = RecommendViewController();
 
@@ -65,4 +65,7 @@ class _RecommendPageState extends State<RecommendPage> {
     mRecommendDataBloc.dispatch(RecommendFetchEvent());
 //    print("2==========>onLoadMore ${DateTime.now()} ");
   }
+
+  @override
+  bool get wantKeepAlive => true;
 }

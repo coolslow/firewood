@@ -8,8 +8,13 @@ import 'package:flutter/widgets.dart';
 class SubjectTitleTab extends StatefulWidget {
   List<String> tabs;
   String more;
+  double fontSize;
 
-  SubjectTitleTab(this.tabs, this.more);
+  double horSpace;
+  double verSpace;
+
+  SubjectTitleTab(this.tabs, this.more,
+      {this.fontSize = 50.0, this.horSpace = 100, this.verSpace = 50});
 
   @override
   State<StatefulWidget> createState() {
@@ -23,13 +28,23 @@ class _SubjectTitleTabState extends State<SubjectTitleTab> {
   List<Widget> widgetData = List<Widget>();
   List<FTabBarData> tabData = List<FTabBarData>();
 
+  double initWidth;
+  double initHeight;
+
   @override
   void initState() {
+    double letterCount = 0;
+
     if (widget.tabs != null) {
       widget.tabs.forEach((String source) {
         tabData.add(FTabBarData(source));
+        letterCount += source.length;
       });
     }
+
+    initWidth =
+        letterCount* widget.fontSize + tabData.length  * widget.horSpace;
+    initHeight = widget.fontSize + widget.verSpace * 2;
 
     _pageController = PageController(initialPage: currentIndex);
     super.initState();
@@ -45,9 +60,11 @@ class _SubjectTitleTabState extends State<SubjectTitleTab> {
           children: <Widget>[
             Container(
               alignment: Alignment.topLeft,
-              height: SizeCompat.pxToDp(150),
+//              height: SizeCompat.pxToDp(150),
               color: Colors.white,
-              width: SizeCompat.pxToDp(516),
+//              width: SizeCompat.pxToDp(516),
+              width: SizeCompat.pxToDp(initWidth),
+              height: SizeCompat.pxToDp(initHeight),
               padding: EdgeInsets.only(
                 left: SizeCompat.pxToDp(Dimens.appEdgeEdge),
                 right: SizeCompat.pxToDp(Dimens.appEdgeEdge),
@@ -58,12 +75,12 @@ class _SubjectTitleTabState extends State<SubjectTitleTab> {
                 callback: _onTap,
                 unSelectTs: TextStyle(
                     color: Color(0xff848484),
-                    fontSize: SizeCompat.pxToDp(50),
+                    fontSize: SizeCompat.pxToDp(widget.fontSize),
                     decoration: TextDecoration.none,
                     fontWeight: FontWeight.w400),
                 selectTs: TextStyle(
                     color: Color(0xff191919),
-                    fontSize: SizeCompat.pxToDp(50),
+                    fontSize: SizeCompat.pxToDp(widget.fontSize),
                     decoration: TextDecoration.none,
                     fontWeight: FontWeight.w600),
               ),
@@ -71,24 +88,7 @@ class _SubjectTitleTabState extends State<SubjectTitleTab> {
             Expanded(
               child: Container(),
             ),
-            Text(
-              widget.more,
-              style: TextStyle(
-                  color: Color(0xff191919),
-                  fontSize: SizeCompat.pxToDp(36),
-                  fontWeight: FontWeight.w700),
-            ),
-            Padding(
-              padding:
-                  EdgeInsets.only(right: SizeCompat.pxToDp(Dimens.appEdgeEdge)),
-              child: Image.asset(
-                "images/ic_arrow_forward.png",
-                width: SizeCompat.pxToDp(36),
-                height: SizeCompat.pxToDp(36),
-                color: Color(0xff191919),
-                colorBlendMode: BlendMode.srcATop,
-              ),
-            )
+            getMore(),
           ]),
       Container(
         height: SizeCompat.pxToDp(2),
@@ -105,5 +105,34 @@ class _SubjectTitleTabState extends State<SubjectTitleTab> {
   void dispose() {
     _pageController?.dispose();
     super.dispose();
+  }
+
+  getMore() {
+    if (widget.more == null || widget.more == "") {
+      return Container();
+    } else {
+      return Row(
+        children: <Widget>[
+          Text(
+            widget.more,
+            style: TextStyle(
+                color: Color(0xff191919),
+                fontSize: SizeCompat.pxToDp(36),
+                fontWeight: FontWeight.w700),
+          ),
+          Padding(
+            padding:
+                EdgeInsets.only(right: SizeCompat.pxToDp(Dimens.appEdgeEdge)),
+            child: Image.asset(
+              "images/ic_arrow_forward.png",
+              width: SizeCompat.pxToDp(36),
+              height: SizeCompat.pxToDp(36),
+              color: Color(0xff191919),
+              colorBlendMode: BlendMode.srcATop,
+            ),
+          )
+        ],
+      );
+    }
   }
 }

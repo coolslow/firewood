@@ -15,9 +15,11 @@ abstract class TypeEntity {
   static int typeSubjectGrid = 0x00000201;//
   static int typeSubjectTitleTab = 0x00000202;//
   static int typeSubjectChampion = 0x00000203;// 榜单类型
-  static int typeSubjectRecommend = 0x00000204;// 为您推荐
+  static int typeSubjectMoveRecommend = 0x00000204;// 为您推荐电影
   static int typeSubjectInterest = 0x00000205;// 为您喜欢
 
+  static int typeSubjectTeleplayRecommend = 0x00000206;// 为您推荐电视剧
+  
   getType();
 
 }

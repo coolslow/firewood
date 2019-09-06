@@ -16,7 +16,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   List<FTabBarData> tabData;
-  int currentIndex = 0;
+  int currentIndex = 1;
   PageController _pageController;
 
   StreamController<int> _stream = StreamController<int>();

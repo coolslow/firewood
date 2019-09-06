@@ -1,10 +1,10 @@
 import 'package:firewood/common/utils/utils.dart';
 import 'package:firewood/entity/type_entity.dart';
 
-class MoveGridEntity extends TypeEntity {
-  List<MoveGridItemEntity> data;
+class GridEntity extends TypeEntity {
+  List<GridItemEntity> data;
 
-  MoveGridEntity.create(this.data);
+  GridEntity.create(this.data);
 
   @override
   getType() {
@@ -12,7 +12,7 @@ class MoveGridEntity extends TypeEntity {
   }
 }
 
-class MoveGridItemEntity {
+class GridItemEntity {
   String id; // 唯一编号
   String imgUrl; // 海报
   String name; // 电影名称
@@ -22,7 +22,7 @@ class MoveGridItemEntity {
 
   bool collected = false; // 是否收藏
 
-  MoveGridItemEntity.create(this.imgUrl, this.name, this.star, this.score,
+  GridItemEntity.create(this.imgUrl, this.name, this.star, this.score,
       {this.collected = false, this.canPlay = false}) {
     id = Utils.autoIncrement().toString();
   }
