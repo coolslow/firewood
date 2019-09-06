@@ -16,7 +16,7 @@ class TeleplayPage extends StatefulWidget {
   }
 }
 
-class _TeleplayPageState extends State<TeleplayPage> {
+class _TeleplayPageState extends State<TeleplayPage> with AutomaticKeepAliveClientMixin {
   SubjectTeleplayRepos mSubjectTeleplayRepos = SubjectTeleplayRepos();
   List<TypeEntity> list;
 
@@ -59,4 +59,7 @@ class _TeleplayPageState extends State<TeleplayPage> {
       list.addAll(mSubjectTeleplayRepos.getSubjectLoadMore());
     });
   }
+
+  @override
+  bool get wantKeepAlive => true;
 }

@@ -21,48 +21,53 @@ class _MainPageState extends State<MainPage> {
   List<Widget> pages = List<Widget>();
   int currentIndex = 0;
 
+  PageController _pageController;
+
   @override
   void initState() {
     super.initState();
+    _pageController = PageController(initialPage: currentIndex);
 
     bottomData = new List();
     bottomData.add(FBottomData(
       title: "首页",
-//      page: HomePage(),
+      page: HomePage(),
       selectIcon: Image.asset("images/ic_tab_home_active.png"),
       unSelectIcon: Image.asset("images/ic_tab_home_normal.png"),
     ));
     bottomData.add(FBottomData(
       title: "书影音",
-//      page: SubjectPage(),
+      page: SubjectPage(),
       selectIcon: Image.asset("images/ic_tab_subject_active.png"),
       unSelectIcon: Image.asset("images/ic_tab_subject_normal.png"),
     ));
     bottomData.add(FBottomData(
       title: "小组",
-//      page: GroupPage(),
+      page: GroupPage(),
       selectIcon: Image.asset("images/ic_tab_group_active.png"),
       unSelectIcon: Image.asset("images/ic_tab_group_normal.png"),
     ));
     bottomData.add(FBottomData(
       title: "市集",
-//      page: MarketPage(),
+      page: MarketPage(),
       selectIcon: Image.asset("images/ic_tab_shiji_active.png"),
       unSelectIcon: Image.asset("images/ic_tab_shiji_normal.png"),
     ));
     bottomData.add(FBottomData(
       title: "我的",
 //      page: ProfilePage(),
-//      page: PlaygroundPage(),
+      page: PlaygroundPage(),
       selectIcon: Image.asset("images/ic_tab_profile_active.png"),
       unSelectIcon: Image.asset("images/ic_tab_profile_normal.png"),
     ));
   }
 
   void onPageChange(val) {
-    setState(() {
-      currentIndex = val;
-    });
+//    setState(() {
+//      currentIndex = val;
+//    });
+    currentIndex = val;
+    _pageController.jumpToPage(currentIndex);
   }
 
   Widget getBody() {
@@ -79,19 +84,30 @@ class _MainPageState extends State<MainPage> {
 ////    );
 ////    return stack;
 
-    if (currentIndex == 0) {
-      return HomePage();
-    } else if (currentIndex == 1) {
-      return SubjectPage();
-    } else if (currentIndex == 2) {
-      return GroupPage();
-    } else if (currentIndex == 3) {
-      return MarketPage();
-    } else if (currentIndex == 4) {
-      return PlaygroundPage();
-    } else {
-      return Container();
-    }
+//    if (currentIndex == 0) {
+//      return HomePage();
+//    } else if (currentIndex == 1) {
+//      return SubjectPage();
+//    } else if (currentIndex == 2) {
+//      return GroupPage();
+//    } else if (currentIndex == 3) {
+//      return MarketPage();
+//    } else if (currentIndex == 4) {
+//      return PlaygroundPage();
+//    } else {
+//      return Container();
+//    }
+
+    return PageView.builder(
+//              onPageChanged: _pageChange,
+        physics: NeverScrollableScrollPhysics(),
+        controller: _pageController,
+        itemBuilder: (BuildContext context, int index) {
+          return bottomData[index].page;
+        },
+        itemCount: bottomData.length,
+      );
+
   }
 
   @override
@@ -112,5 +128,11 @@ class _MainPageState extends State<MainPage> {
             )),
       ],
     );
+  }
+
+  @override
+  void dispose() {
+    _pageController?.dispose();
+    super.dispose();
   }
 }

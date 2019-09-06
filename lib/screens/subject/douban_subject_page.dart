@@ -17,7 +17,7 @@ class SubjectPage extends StatefulWidget {
   _SubjectPageState createState() => _SubjectPageState();
 }
 
-class _SubjectPageState extends State<SubjectPage> {
+class _SubjectPageState extends State<SubjectPage> with AutomaticKeepAliveClientMixin{
   List<FTabBarData> tabData = List<FTabBarData>();
   List<Widget> widgetData = List<Widget>();
   int currentIndex = 0;
@@ -109,4 +109,7 @@ class _SubjectPageState extends State<SubjectPage> {
     _pageController?.dispose();
     super.dispose();
   }
+
+  @override
+  bool get wantKeepAlive => true;
 }

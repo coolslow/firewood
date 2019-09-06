@@ -16,7 +16,7 @@ class MovePage extends StatefulWidget {
   }
 }
 
-class _MovePageState extends State<MovePage> {
+class _MovePageState extends State<MovePage> with AutomaticKeepAliveClientMixin {
 
   SubjectMoveRepos mSubjectMoveRepos = SubjectMoveRepos();
   List<TypeEntity> list;
@@ -60,6 +60,9 @@ class _MovePageState extends State<MovePage> {
       list.addAll(mSubjectMoveRepos.getSubjectLoadMore());
     });
   }
+
+  @override
+  bool get wantKeepAlive => true;
 
 
 }

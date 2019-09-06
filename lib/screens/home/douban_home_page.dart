@@ -14,7 +14,7 @@ class HomePage extends StatefulWidget {
   _HomePageState createState() => new _HomePageState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _HomePageState extends State<HomePage> with AutomaticKeepAliveClientMixin{
   List<FTabBarData> tabData;
   int currentIndex = 1;
   PageController _pageController;
@@ -102,4 +102,7 @@ class _HomePageState extends State<HomePage> {
       _stream.sink.add(currentIndex);
     }
   }
+
+  @override
+  bool get wantKeepAlive => true;
 }
