@@ -1,3 +1,4 @@
+import 'package:camera/camera.dart';
 import 'package:firewood/playground/banner/banner_demo.dart';
 import 'package:firewood/playground/bloc/bloc_demo.dart';
 import 'package:firewood/playground/dialog/dialog_demo.dart';
@@ -13,6 +14,7 @@ import 'package:firewood/widgets/log/release_log.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import 'camera/take_pic_screen.dart';
 import 'chess/chess_demo.dart';
 import 'circleavatar/circle_avatar_demo.dart';
 import 'circleprogress/circle_progress_bar_demo.dart';
@@ -21,9 +23,18 @@ import 'custompaint/custom_paint_demo.dart';
 class PlaygroundPage extends StatefulWidget {
   @override
   _PlaygroundPageState createState() => new _PlaygroundPageState();
+
+  // final CameraDescription cameraDescription;
+
+  // const PlaygroundPage({
+  //   Key key,
+  //   @required this.cameraDescription,
+  // }) : super(key: key);
 }
 
 class _PlaygroundPageState extends State<PlaygroundPage> {
+  final CameraDescription cameraDescription = CameraDescription();
+
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
