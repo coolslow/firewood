@@ -1,5 +1,6 @@
 import 'package:firewood/common/constants.dart';
 import 'package:firewood/common/utils/size_compat.dart';
+import 'package:firewood/common/utils/utils.dart';
 import 'package:firewood/screens/subject/douban_subject_citywide_page.dart';
 import 'package:firewood/screens/subject/douban_subject_fiction_page.dart';
 import 'package:firewood/screens/subject/douban_subject_move_page.dart';
@@ -11,6 +12,7 @@ import 'package:firewood/widgets/navigation/tab_bar.dart';
 import 'package:flutter/material.dart';
 
 class SubjectPage extends StatefulWidget {
+
   @override
   _SubjectPageState createState() => _SubjectPageState();
 }

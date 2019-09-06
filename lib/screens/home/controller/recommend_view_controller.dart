@@ -206,16 +206,14 @@ class RecommendViewController {
           height: h,
           fit: BoxFit.cover,
           placeholder: (BuildContext context, String url) {
-            return Image.asset("images/default_place_holder.png");
+            return Image.asset(
+              "images/default_place_holder.png",
+              fit: BoxFit.cover,
+              width: w,
+              height: h,
+            );
           },
         ),
-//        child :FadeInImage.assetNetwork(
-//          placeholder: "images/default_place_holder.png",
-//          image: entity[0],
-//          width: w,
-//          height: h,
-//          fit: BoxFit.cover,
-//        ),
         borderRadius: BorderRadius.circular(SizeCompat.pxToDp(10)),
       ),
     );
@@ -246,7 +244,12 @@ class RecommendViewController {
                 imageUrl: entity[index],
                 fit: BoxFit.cover,
                 placeholder: (BuildContext context, String url) {
-                  return Image.asset("images/default_place_holder.png");
+                  return Image.asset(
+                    "images/default_place_holder.png",
+                    fit: BoxFit.cover,
+                    width: itemSize,
+                    height: itemSize,
+                  );
                 },
               ),
 //              child: FadeInImage.assetNetwork(
@@ -283,7 +286,10 @@ class RecommendViewController {
                 imageUrl: entity[index],
                 fit: BoxFit.cover,
                 placeholder: (BuildContext context, String url) {
-                  return Image.asset("images/default_place_holder.png");
+                  return Image.asset(
+                    "images/default_place_holder.png",
+                    fit: BoxFit.cover,
+                  );
                 },
               ),
 //             child:  FadeInImage.assetNetwork(

@@ -72,6 +72,24 @@ class SubjectRepos {
     return result;
   }
 
+
+  List<TypeEntity> getLoadMore() {
+    List<TypeEntity> result = List<TypeEntity>();
+    result.add(getSubjectRecommend()[0]);
+    result.add(getInterest()[0]);
+    result.add(getSubjectRecommend()[1]);
+    result.add(getInterest()[1]);
+    result.add(getSubjectRecommend()[2]);
+    result.add(getInterest()[2]);
+    result.add(getInterest()[3]);
+    result.add(getInterest()[4]);
+    result.add(getInterest()[5]);
+    result.add(getInterest()[6]);
+    result.add(getInterest()[7]);
+    result.add(getInterest()[8]);
+    return result;
+  }
+
   BannerEntity getBanner({String imgUrl, String router, double ratio}) {
     return BannerEntity.create(imgUrl: imgUrl, router: router, ratio: ratio);
   }

@@ -52,7 +52,12 @@ class SubjectRecommend extends StatelessWidget {
           imageUrl: data.imgUrl,
           fit: BoxFit.cover,
           placeholder: (BuildContext context, String url) {
-            return Image.asset("images/default_place_holder.png");
+            return Image.asset(
+              "images/default_place_holder.png",
+              fit: BoxFit.cover,
+              height: h,
+              width: w,
+            );
           },
         ),
         borderRadius: BorderRadius.only(

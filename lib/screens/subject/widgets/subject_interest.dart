@@ -63,12 +63,17 @@ class SubjectInterest extends StatelessWidget {
                   ]),
                   child: ClipRRect(
                     child: CachedNetworkImage(
-                      height: h,
                       width: w,
+                      height: h,
                       imageUrl: data.leftImgUrls[0],
                       fit: BoxFit.cover,
                       placeholder: (BuildContext context, String url) {
-                        return Image.asset("images/default_place_holder.png");
+                        return Image.asset(
+                          "images/default_place_holder.png",
+                          fit: BoxFit.cover,
+                          width: w,
+                          height: h,
+                        );
                       },
                     ),
                     borderRadius: BorderRadius.all(
@@ -96,7 +101,10 @@ class SubjectInterest extends StatelessWidget {
                     imageUrl: data.rightImgUrls[0],
                     fit: BoxFit.cover,
                     placeholder: (BuildContext context, String url) {
-                      return Image.asset("images/default_place_holder.png");
+                      return Image.asset(
+                        "images/default_place_holder.png",
+                        fit: BoxFit.cover,
+                      );
                     },
                   ),
                   borderRadius:

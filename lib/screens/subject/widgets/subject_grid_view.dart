@@ -58,7 +58,7 @@ class SubjectGridView extends StatelessWidget {
                               fit: BoxFit.fill,
                               placeholder: (BuildContext context, String url) {
                                 return Image.asset(
-                                    "images/default_place_holder.png");
+                                    "images/default_place_holder.png", fit: BoxFit.cover,);
                               },
                             ))),
                     Positioned(

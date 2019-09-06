@@ -1,20 +1,35 @@
 import 'package:firewood/common/utils/size_compat.dart';
+import 'package:firewood/common/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
+// ignore: must_be_immutable
 class FTabBar extends StatefulWidget {
+
   final List<FTabBarData> tabData;
-  final int currIndex;
+  int currIndex;
   final ValueChanged<int> callback;
-  final TextStyle selectTs;
-  final TextStyle unSelectTs;
+  TextStyle selectTs;
+  TextStyle unSelectTs;
 
   FTabBar(
       {@required this.tabData,
       this.currIndex = 0,
       this.callback,
       this.selectTs,
-      this.unSelectTs});
+      this.unSelectTs}) {
+    selectTs ??= TextStyle(
+        color: Color(0xff42BD56),
+        fontSize: SizeCompat.pxToDp(40),
+        decoration: TextDecoration.none,
+        fontWeight: FontWeight.w700);
+
+    unSelectTs ??= TextStyle(
+        color: Color(0xff959595),
+        fontSize: SizeCompat.pxToDp(40),
+        decoration: TextDecoration.none,
+        fontWeight: FontWeight.w200);
+  }
 
   @override
   State<StatefulWidget> createState() {
@@ -23,39 +38,18 @@ class FTabBar extends StatefulWidget {
 }
 
 class _FTabBarState extends State<FTabBar> {
-  var currIndex = 0;
-
-  var selectTs = TextStyle(
-      color: Color(0xff42BD56),
-      fontSize: SizeCompat.pxToDp(40),
-      decoration: TextDecoration.none,
-      fontWeight: FontWeight.w700);
-  var unSelectTs = TextStyle(
-      color: Color(0xff959595),
-      fontSize: SizeCompat.pxToDp(40),
-      decoration: TextDecoration.none,
-      fontWeight: FontWeight.w200);
-
   @override
   void initState() {
-    if (widget.selectTs != null) {
-      selectTs = widget.selectTs;
-    }
-    if (widget.unSelectTs != null) {
-      unSelectTs = widget.unSelectTs;
-    }
-    currIndex = widget.currIndex;
     super.initState();
   }
 
   @override
   void didUpdateWidget(FTabBar oldWidget) {
-    currIndex = widget.currIndex;
     super.didUpdateWidget(oldWidget);
   }
 
   void notify(int index) {
-    if (currIndex != index) {
+    if (widget.currIndex != index) {
       if (widget.callback != null) {
         widget.callback(index);
       }
@@ -77,10 +71,10 @@ class _FTabBarState extends State<FTabBar> {
         Widget item = Container(
           child: GestureDetector(
             onTap: () {
-              if (currIndex != i) {
+              if (widget.currIndex != i) {
                 notify(i);
                 setState(() {
-                  currIndex = i;
+                  widget.currIndex = i;
                 });
               }
             },
@@ -91,16 +85,22 @@ class _FTabBarState extends State<FTabBar> {
                   ),
                   child: Center(
                     child: Text(data[i].title,
-                        style: currIndex == i ? selectTs : unSelectTs),
+                        style: widget.currIndex == i
+                            ? widget.selectTs
+                            : widget.unSelectTs),
                   )),
               Positioned(
                   bottom: 0,
                   child: Container(
                     height: SizeCompat.pxToDp(6),
-                    color: currIndex == i ? selectTs.color : Colors.white,
+                    color: widget.currIndex == i
+                        ? widget.selectTs.color
+                        : Colors.white,
                     child: Center(
                       child: Text(data[i].title,
-                          style: currIndex == i ? selectTs : unSelectTs),
+                          style: widget.currIndex == i
+                              ? widget.selectTs
+                              : widget.unSelectTs),
                     ),
                   ))
 //        )

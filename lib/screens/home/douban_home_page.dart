@@ -19,7 +19,7 @@ class _HomePageState extends State<HomePage> {
   int currentIndex = 0;
   PageController _pageController;
 
-  StreamController<int> _stream = StreamController.broadcast();
+  StreamController<int> _stream = StreamController<int>();
 
   @override
   void initState() {
@@ -35,6 +35,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     double padding = SizeCompat.pxToDp(390);
+
     return new Scaffold(
       body: Column(
         children: <Widget>[
@@ -44,8 +45,15 @@ class _HomePageState extends State<HomePage> {
               color: Colors.white,
               padding: EdgeInsets.only(left: padding, right: padding),
               width: double.infinity,
-              child: FTabBar(
-                  tabData: tabData, currIndex: currentIndex, callback: _onTap)),
+              child: StreamBuilder(
+                  stream: _stream.stream,
+                  initialData: currentIndex,
+                  builder: (BuildContext context, AsyncSnapshot<int> snapshot) {
+                    return FTabBar(
+                        tabData: tabData,
+                        currIndex: snapshot.data,
+                        callback: _onTap);
+                  })),
           Container(
             height: SizeCompat.pxToDp(2),
             color: Color(0xffEBEBEB),
@@ -57,11 +65,12 @@ class _HomePageState extends State<HomePage> {
               controller: _pageController,
               itemBuilder: (BuildContext context, int index) {
                 if (index == 0) {
-                  return DynamicPage(_stream);
+                  return DynamicPage();
                 } else {
                   return BlocProvider(
                     builder: (BuildContext context) {
-                      return RecommendDataBloc()..dispatch(RecommendFetchEvent());
+                      return RecommendDataBloc()
+                        ..dispatch(RecommendFetchEvent());
                     },
                     child: RecommendPage(),
                   );
@@ -89,9 +98,8 @@ class _HomePageState extends State<HomePage> {
 
   void _pageChange(int index) {
     if (currentIndex != index) {
-      setState(() {
-        currentIndex = index;
-      });
+      currentIndex = index;
+      _stream.sink.add(currentIndex);
     }
   }
 }
