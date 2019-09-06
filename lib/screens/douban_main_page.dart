@@ -1,8 +1,7 @@
 import 'package:firewood/common/utils/size_compat.dart';
-import 'package:firewood/common/utils/utils.dart';
 import 'package:firewood/playground/playground_page.dart';
-import 'package:firewood/screens/subject/douban_subject_page.dart';
 import 'package:firewood/screens/home/douban_home_page.dart';
+import 'package:firewood/screens/subject/douban_subject_page.dart';
 import 'package:firewood/widgets/navigation/bottom_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -20,7 +19,7 @@ class MainPage extends StatefulWidget {
 class _MainPageState extends State<MainPage> {
   List<FBottomData> bottomData;
   List<Widget> pages = List<Widget>();
-  int currentIndex = 1;
+  int currentIndex = 0;
 
   @override
   void initState() {
@@ -82,22 +81,21 @@ class _MainPageState extends State<MainPage> {
 
     if (currentIndex == 0) {
       return HomePage();
-    }else if(currentIndex == 1){
+    } else if (currentIndex == 1) {
       return SubjectPage();
-    }else if(currentIndex == 2){
+    } else if (currentIndex == 2) {
       return GroupPage();
-    }else if(currentIndex == 3){
+    } else if (currentIndex == 3) {
       return MarketPage();
-    }else if(currentIndex == 4){
+    } else if (currentIndex == 4) {
       return PlaygroundPage();
-    }else {
+    } else {
       return Container();
     }
   }
 
   @override
   Widget build(BuildContext context) {
-
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[

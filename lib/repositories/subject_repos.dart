@@ -588,8 +588,8 @@ class SubjectTeleplayRepos extends SubjectRepos {
     result.add(getDivider(size: 40));
     result.add(getGridClassifyJapanese());
     result.add(getDivider());
-    result.add(getTitle(title: "即将播出剧集", router: "", more: "全部 340"));
-    result.add(getDivider());
+//    result.add(getTitle(title: "即将播出剧集", router: "", more: "全部 340"));
+//    result.add(getDivider());
 
     result.add(getTitle(title: "为您推荐", router: "", more: ""));
     result.add(getDivider());

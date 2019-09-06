@@ -20,7 +20,7 @@ class SubjectPage extends StatefulWidget {
 class _SubjectPageState extends State<SubjectPage> {
   List<FTabBarData> tabData = List<FTabBarData>();
   List<Widget> widgetData = List<Widget>();
-  int currentIndex = 1;
+  int currentIndex = 0;
 
   PageController _pageController;
 
