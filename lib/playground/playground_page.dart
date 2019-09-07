@@ -7,6 +7,7 @@ import 'package:firewood/playground/listviews/list_demo.dart';
 import 'package:firewood/playground/mediaquery/basic.dart';
 import 'package:firewood/playground/pageviews/page_view_demo.dart';
 import 'package:firewood/playground/popupmenu/popup_meun_demo.dart';
+import 'package:firewood/playground/simple/simple_demo.dart';
 import 'package:firewood/playground/templet/templet_demo.dart';
 import 'package:firewood/playground/ticker/ticker_demo.dart';
 import 'package:firewood/playground/toast/toast_demo.dart';
@@ -24,12 +25,12 @@ class PlaygroundPage extends StatefulWidget {
   @override
   _PlaygroundPageState createState() => new _PlaygroundPageState();
 
-  // final CameraDescription cameraDescription;
+// final CameraDescription cameraDescription;
 
-  // const PlaygroundPage({
-  //   Key key,
-  //   @required this.cameraDescription,
-  // }) : super(key: key);
+// const PlaygroundPage({
+//   Key key,
+//   @required this.cameraDescription,
+// }) : super(key: key);
 }
 
 class _PlaygroundPageState extends State<PlaygroundPage> {
@@ -44,11 +45,12 @@ class _PlaygroundPageState extends State<PlaygroundPage> {
           Expanded(
             child: SingleChildScrollView(
                 child: Column(children: <Widget>[
-              getItem(context, "PopupMenuDemoPage", PopupMenuDemoPage()),
+              getItem(context, "SimpleDemo", SimpleDemoPage()),
               getItem(context, "FBanner", BannerDemoPage()),
               getItem(context, "CircleProgressbarDemo",
                   CircleProgressBarDemoPage()),
               getItem(context, "CircleAvatarDemo", CircleAvatarDemoPage()),
+              getItem(context, "PopupMenuDemoPage", PopupMenuDemoPage()),
               getItem(context, "MediaQueryDataDemo", MediaQueryDataScreen()),
               getItem(context, "PageViewDemoPage", PageViewDemoPage()),
               getItem(context, "TickerDemoPage", TickerDemoPage()),

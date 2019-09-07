@@ -37,16 +37,6 @@ class _BannerDemoPageState extends State<BannerDemoPage> {
               data,
             ),
           ),
-          Container(
-            height: 1,
-            width: double.infinity,
-            child: DashedDivider(horizontal: true,),
-          ),
-          Expanded(
-              child: Container(
-            width: 10,
-            child: DashedDivider(),
-          ))
         ],
       ),
     );
