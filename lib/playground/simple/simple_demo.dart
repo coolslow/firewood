@@ -1,6 +1,8 @@
 import 'package:firewood/entity/pair_entity.dart';
 import 'package:firewood/playground/navigation/action_bar.dart';
 import 'package:firewood/playground/simple/simple_dash_divider_demo.dart';
+import 'package:firewood/playground/simple/simple_font_demo.dart';
+import 'package:firewood/playground/simple/simple_icon_font_demo.dart';
 import 'package:firewood/playground/simple/simple_text_shadow_demo.dart';
 import 'package:firewood/widgets/banner/banner.dart';
 import 'package:firewood/widgets/divider/dashed_divider.dart';
@@ -16,6 +18,8 @@ class SimpleDemoPage extends StatelessWidget {
             children: <Widget>[
               getItem(context, "DashDividerDemo", DashDividerDemo()),
               getItem(context, "TextShadowDemo", TextShadowDemo()),
+              getItem(context, "IconFontDemo", IconFontDemo()),
+              getItem(context, "FontDemo", FontDemo()),
             ],
           ),
         ));

@@ -41,8 +41,8 @@ class ActionBarWidget extends StatelessWidget implements PreferredSizeWidget {
               Center(
                 child: new Text(title,
                     style: new TextStyle(
-                        fontSize: 18,
-                        color: FColor.textMajor,
+                        fontSize: 20,
+                        color: Colors.white,
                         decoration: TextDecoration.none)),
               ),
             ]))

@@ -118,3 +118,23 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
+  fonts:
+    # icon font
+    - family: TaoBao-IconFont
+      fonts:
+        - asset: fonts/TaoBao-IconFont.ttf
+
+    # icon font
+    - family: TaoPiaoPiao-IconFont
+      fonts:
+        - asset: fonts/TaoPiaoPiao-IconFont.ttf
+
+    # font
+    - family: Modak-Regular-Font
+      fonts:
+        - asset: fonts/Modak-Regular-Font.ttf
+
+    # font
+    - family: ShadowsIntoLight-Regular-Font
+      fonts:
+        - asset: fonts/ShadowsIntoLight-Regular-Font.ttf
