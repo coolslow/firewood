@@ -4,6 +4,7 @@ import 'package:firewood/common/utils/color_util.dart';
 import 'package:firewood/common/utils/size_compat.dart';
 import 'package:firewood/entity/subject/subject_move_interest_entity.dart';
 import 'package:firewood/entity/subject/subject_move_recommend_entity.dart';
+import 'package:firewood/widgets/divider/dashed_divider.dart';
 import 'package:firewood/widgets/gradestar/gradestar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -234,7 +235,8 @@ class SubjectInterest extends StatelessWidget {
           Container(
             width: SizeCompat.pxToDp(2),
             height: SizeCompat.pxToDp(85),
-            decoration: BoxDecoration(color: Color(0xffDADADA)),
+            child: DashedDivider(),
+//            decoration: BoxDecoration(color: Color(0xffDADADA)),
           ),
           Padding(
             padding: EdgeInsets.only(

@@ -802,7 +802,7 @@ class SubjectTeleplayRepos extends SubjectRepos {
         canPlay: true));
 
     list.add(GridItemEntity.create(
-        "https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2560954550.jpg",
+        "https://img3.doubanio.com/view/photo/l/public/p2557684694.webp",
         "非正式会谈 第五季",
         4.0,
         8.8,

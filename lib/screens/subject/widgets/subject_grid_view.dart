@@ -6,16 +6,20 @@ import 'package:firewood/widgets/gradestar/gradestar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
+// ignore: must_be_immutable
 class SubjectGridView extends StatelessWidget {
-  final double gridViewHeight = ((SizeCompat.width() -
-              2 * SizeCompat.pxToDp(20) -
-              2 * SizeCompat.pxToDp(Dimens.appEdgeEdge)) /
-          3) /
-      0.714;
+  double gridViewWidth;
+  double gridViewHeight;
 
   final List<GridItemEntity> entity;
 
-  SubjectGridView(this.entity);
+  SubjectGridView(this.entity) {
+    gridViewWidth = (SizeCompat.width() -
+            2 * SizeCompat.pxToDp(20) -
+            2 * SizeCompat.pxToDp(Dimens.appEdgeEdge)) /
+        3;
+    gridViewHeight = gridViewWidth / 0.714;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -42,12 +46,14 @@ class SubjectGridView extends StatelessWidget {
                 Stack(
                   children: <Widget>[
                     Container(
+                        width: gridViewWidth,
                         height: gridViewHeight,
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.all(
                                 Radius.circular(SizeCompat.pxToDp(10))),
                             border: Border.all(
-                              color: Color(0xFFf7f8f9),
+                              color: Color(0xFFe7e8e9),
+//                              color: Colors.red,
                               width: 0.5,
                             )),
                         child: ClipRRect(
@@ -55,11 +61,15 @@ class SubjectGridView extends StatelessWidget {
                                 BorderRadius.circular(SizeCompat.pxToDp(10)),
                             child: CachedNetworkImage(
                               imageUrl: data.imgUrl,
-                              fit: BoxFit.fill,
+                              fit: BoxFit.cover,
+                              width: gridViewWidth,
+                              height: gridViewHeight,
                               placeholder: (BuildContext context, String url) {
                                 return Image.asset(
                                   "images/default_place_holder.png",
                                   fit: BoxFit.cover,
+                                  width: gridViewWidth,
+                                  height: gridViewHeight,
                                 );
                               },
                             ))),

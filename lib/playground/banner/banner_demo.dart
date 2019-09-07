@@ -1,6 +1,7 @@
 import 'package:firewood/entity/pair_entity.dart';
 import 'package:firewood/playground/navigation/action_bar.dart';
 import 'package:firewood/widgets/banner/banner.dart';
+import 'package:firewood/widgets/divider/dashed_divider.dart';
 import 'package:flutter/material.dart';
 
 class BannerDemoPage extends StatefulWidget {
@@ -28,17 +29,26 @@ class _BannerDemoPageState extends State<BannerDemoPage> {
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
-      body: SingleChildScrollView(
-        child: Column(
-          children: <Widget>[ActionBarWidget(""), getBody(context)],
-        ),
+      body: Column(
+        children: <Widget>[
+          ActionBarWidget(""),
+          Container(
+            child: FBanner(
+              data,
+            ),
+          ),
+          Container(
+            height: 1,
+            width: double.infinity,
+            child: DashedDivider(horizontal: true,),
+          ),
+          Expanded(
+              child: Container(
+            width: 10,
+            child: DashedDivider(),
+          ))
+        ],
       ),
-    );
-  }
-
-  Widget getBody(BuildContext context) {
-    return Container(
-      child: FBanner(data,),
     );
   }
 }

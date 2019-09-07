@@ -43,7 +43,7 @@ class _SubjectTitleTabState extends State<SubjectTitleTab> {
     }
 
     initWidth =
-        letterCount* widget.fontSize + tabData.length  * widget.horSpace;
+        letterCount * widget.fontSize + tabData.length  * widget.horSpace +SizeCompat.pxToDp(Dimens.appEdgeEdge) *2;
     initHeight = widget.fontSize + widget.verSpace * 2;
 
     _pageController = PageController(initialPage: currentIndex);
