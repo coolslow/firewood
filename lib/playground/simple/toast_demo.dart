@@ -2,17 +2,8 @@ import 'package:firewood/playground/navigation/action_bar.dart';
 import 'package:flutter/material.dart';
 
 import 'package:fluttertoast/fluttertoast.dart';
-class ToastDemoPage extends StatefulWidget {
-  @override
-  _ToastDemoState createState() => new _ToastDemoState();
-}
 
-class _ToastDemoState extends State<ToastDemoPage> {
-  @override
-  void initState() {
-    super.initState();
-
-  }
+class ToastDemoPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +33,6 @@ class _ToastDemoState extends State<ToastDemoPage> {
                   child: Center(child: Text("Toast long"))),
             ),
           ],
-
         ),
       ),
     );
@@ -56,9 +46,7 @@ class _ToastDemoState extends State<ToastDemoPage> {
         timeInSecForIos: 1,
         backgroundColor: Colors.red,
         textColor: Colors.white,
-        fontSize: 16.0
-    );
-
+        fontSize: 16.0);
   }
 
   void click2() {
@@ -69,9 +57,7 @@ class _ToastDemoState extends State<ToastDemoPage> {
         timeInSecForIos: 3,
         backgroundColor: Colors.red,
         textColor: Colors.white,
-        fontSize: 16.0
-    );
+        fontSize: 16.0);
   }
-
-
 }
+

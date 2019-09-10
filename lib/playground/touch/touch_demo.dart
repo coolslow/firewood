@@ -8,24 +8,18 @@ import 'package:firewood/playground/simple/simple_icon_font_demo.dart';
 import 'package:firewood/playground/simple/simple_text_shadow_demo.dart';
 import 'package:firewood/playground/simple/toast_demo.dart';
 import 'package:firewood/playground/simple/transform_demo.dart';
+import 'package:firewood/playground/touch/pointer_event_demo.dart';
 import 'package:flutter/material.dart';
 
-class SimpleDemoPage extends StatelessWidget {
+class TouchDemoPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
-        appBar: ActionBarWidget("SimpleDemo"),
+        appBar: ActionBarWidget("TouchEventDemo"),
         body: SingleChildScrollView(
           child: Column(
             children: <Widget>[
-              getItem(context, "DashDividerDemo", DashDividerDemo()),
-              getItem(context, "TextShadowDemo", TextShadowDemo()),
-              getItem(context, "CircleAvatarDemoPage", CircleAvatarDemoPage()),
-              getItem(context, "IconFontDemo", IconFontDemo()),
-              getItem(context, "FontDemo", FontDemo()),
-              getItem(context, "TransformDemo", TransformDemo()),
-              getHeroItem(context, "HeroDemo", HeroDemo()),
-              getItem(context, "ToastDemoPage", ToastDemoPage()),
+              getItem(context, "PointerEventDemo", PointerEventDemo()),
             ],
           ),
         ));
@@ -46,41 +40,6 @@ class SimpleDemoPage extends StatelessWidget {
                 padding: EdgeInsets.all(13.0),
                 decoration: BoxDecoration(color: Colors.white),
                 child: Text(title))),
-        Container(
-          color: Colors.grey,
-          height: 0.5,
-        ),
-      ],
-    );
-  }
-
-  Widget getHeroItem(BuildContext context, String title, Widget w) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: <Widget>[
-        InkWell(
-            onTap: () {
-//              clickDemo(context, w);
-              Navigator.push(context, PageRouteBuilder(pageBuilder:
-                  (BuildContext context, Animation animation,
-                      Animation secondaryAnimation) {
-                return new FadeTransition(
-                  opacity: animation,
-                  child: w,
-                );
-              }));
-            },
-            child: ListTile(
-              leading: Hero(
-                tag: "avatar", //唯一标记，前后两个路由页Hero的tag必须相同
-                child: CircleAvatar(
-                  radius: SizeCompat.pxToDp(40),
-                  backgroundImage: NetworkImage(
-                      "https://img3.doubanio.com/icon/up180055214-15.jpg"),
-                ),
-              ),
-              title: Text(title),
-            )),
         Container(
           color: Colors.grey,
           height: 0.5,

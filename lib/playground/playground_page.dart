@@ -8,16 +8,15 @@ import 'package:firewood/playground/mediaquery/basic.dart';
 import 'package:firewood/playground/pageviews/page_view_demo.dart';
 import 'package:firewood/playground/popupmenu/popup_meun_demo.dart';
 import 'package:firewood/playground/simple/simple_demo.dart';
+import 'package:firewood/playground/sliver/sliver_demo.dart';
 import 'package:firewood/playground/templet/templet_demo.dart';
 import 'package:firewood/playground/ticker/ticker_demo.dart';
-import 'package:firewood/playground/toast/toast_demo.dart';
+import 'package:firewood/playground/touch/touch_demo.dart';
 import 'package:firewood/widgets/log/release_log.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import 'camera/take_pic_screen.dart';
 import 'chess/chess_demo.dart';
-import 'circleavatar/circle_avatar_demo.dart';
 import 'circleprogress/circle_progress_bar_demo.dart';
 import 'custompaint/custom_paint_demo.dart';
 
@@ -45,11 +44,12 @@ class _PlaygroundPageState extends State<PlaygroundPage> {
           Expanded(
             child: SingleChildScrollView(
                 child: Column(children: <Widget>[
-              getItem(context, "SimpleDemo", SimpleDemoPage()),
+              getItem(context, "SimpleDemoPage", SimpleDemoPage()),
+              getItem(context, "SliverDemoPage", SliverDemoPage()),
+              getItem(context, "TouchDemoPage", TouchDemoPage()),
               getItem(context, "FBanner", BannerDemoPage()),
               getItem(context, "CircleProgressbarDemo",
                   CircleProgressBarDemoPage()),
-              getItem(context, "CircleAvatarDemo", CircleAvatarDemoPage()),
               getItem(context, "PopupMenuDemoPage", PopupMenuDemoPage()),
               getItem(context, "MediaQueryDataDemo", MediaQueryDataScreen()),
               getItem(context, "PageViewDemoPage", PageViewDemoPage()),
@@ -62,11 +62,9 @@ class _PlaygroundPageState extends State<PlaygroundPage> {
               getItem(context, "ChessDemo", ChessDemoPage()),
               getItem(context, "CircleProgressbarDemo",
                   CircleProgressBarDemoPage()),
-              getItem(context, "CircleAvatarDemo", CircleAvatarDemoPage()),
               getItem(context, "PageViewDemoPage", PageViewDemoPage()),
               getItem(context, "MediaQueryDataDemo", MediaQueryDataScreen()),
               getItem(context, "DialogDemoPage", DialogDemoPage()),
-              getItem(context, "ToastDemoPage", ToastDemoPage()),
               getItem(context, "LogDemoPage", LogPage()),
             ])),
           )
