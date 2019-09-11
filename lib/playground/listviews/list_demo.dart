@@ -1,11 +1,9 @@
-import 'package:english_words/english_words.dart';
 import 'package:firewood/playground/listviews/list_grid_demo.dart';
 import 'package:firewood/playground/listviews/list_hor_demo.dart';
 import 'package:firewood/playground/listviews/list_ver_demo.dart';
 import 'package:firewood/playground/listviews/refresh_list_demo.dart';
 import 'package:firewood/playground/navigation/action_bar.dart';
 import 'package:flutter/material.dart';
-
 
 class ListDemoPage extends StatefulWidget {
   @override
@@ -26,16 +24,16 @@ class _ListDemoState extends State<ListDemoPage> {
       body: SingleChildScrollView(
         child: Column(
           children: <Widget>[
-            ActionBarWidget("ListDemo"),
+            ActionBarWidget("列表"),
             FlatButton(
               onPressed: () {
                 jump(ListVerDemoPage());
               },
               child: Container(
                   height: 40,
-                  color: Colors.blueGrey,
+                  color: Colors.deepOrangeAccent,
                   width: double.maxFinite,
-                  child: Center(child: Text("ListVerDemoPage"))),
+                  child: Center(child: Text("垂直列表"))),
             ),
             FlatButton(
               onPressed: () {
@@ -43,9 +41,9 @@ class _ListDemoState extends State<ListDemoPage> {
               },
               child: Container(
                   height: 40,
-                  color: Colors.blueGrey,
+                  color: Colors.deepOrangeAccent,
                   width: double.maxFinite,
-                  child: Center(child: Text("ListHorDemoPage"))),
+                  child: Center(child: Text("水平列表"))),
             ),
             FlatButton(
               onPressed: () {
@@ -53,9 +51,9 @@ class _ListDemoState extends State<ListDemoPage> {
               },
               child: Container(
                   height: 40,
-                  color: Colors.blueGrey,
+                  color: Colors.deepOrangeAccent,
                   width: double.maxFinite,
-                  child: Center(child: Text("ListGridDemoPage"))),
+                  child: Center(child: Text("九宫格"))),
             ),
             FlatButton(
               onPressed: () {
@@ -63,9 +61,9 @@ class _ListDemoState extends State<ListDemoPage> {
               },
               child: Container(
                   height: 40,
-                  color: Colors.blueGrey,
+                  color: Colors.deepOrangeAccent,
                   width: double.maxFinite,
-                  child: Center(child: Text("Refresh List"))),
+                  child: Center(child: Text("下拉刷新"))),
             ),
 //        ListGridDemoPage
           ],
@@ -74,21 +72,19 @@ class _ListDemoState extends State<ListDemoPage> {
     );
   }
 
-
-  void jump(Widget w){
+  void jump(Widget w) {
     Navigator.push(
         context,
         PageRouteBuilder(
             transitionDuration: Duration(milliseconds: 200),
             pageBuilder: (BuildContext context, Animation animation,
-                Animation secondaryAnimation) =>
+                    Animation secondaryAnimation) =>
                 SlideTransition(
                   position: Tween<Offset>(
-                      begin: Offset(1.0, 0.0), end: Offset(0.0, 0.0))
+                          begin: Offset(1.0, 0.0), end: Offset(0.0, 0.0))
                       .animate(CurvedAnimation(
-                      parent: animation, curve: Curves.fastOutSlowIn)),
+                          parent: animation, curve: Curves.fastOutSlowIn)),
                   child: w,
                 )));
   }
-
 }

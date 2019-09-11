@@ -84,7 +84,7 @@ class SubjectMoveRepos extends SubjectRepos {
         router: "",
         ratio: 6.0));
 
-    result.add(getTitle(title: "豆瓣热门", router: "", more: "全部 500"));
+    result.add(getTitle(title: "热门", router: "", more: "全部 500"));
     result.add(getMoveGridHot());
 
     // Banner
@@ -93,7 +93,7 @@ class SubjectMoveRepos extends SubjectRepos {
         router: "",
         ratio: 3.0));
 
-    result.add(getTitle(title: "豆瓣榜单", router: "", more: "全部 10"));
+    result.add(getTitle(title: "榜单", router: "", more: "全部 10"));
     result.add(getMoveChampion());
     result.add(getTitle(title: "为您推荐", router: "", more: ""));
     result.add(getMoveRecommend()[0]);
@@ -259,8 +259,8 @@ class SubjectMoveRepos extends SubjectRepos {
     list.add(ChampionItemEntity.create(
 //        "https://img3.doubanio.com/view/photo/s_ratio_poster/public/p616779645.webp",
         "https://img3.doubanio.com/view/photo/l/public/p2214452383.webp",
-        "豆瓣电影排行榜",
-        "豆瓣榜单~共250部",
+        "电影排行榜",
+        "共250部",
         "ff564B4B",
         List<ChampionItemListEntity>()
           ..add(ChampionItemListEntity.create("教父", "8.8", "↑"))
@@ -296,7 +296,7 @@ class SubjectMoveRepos extends SubjectRepos {
         canPlay: true));
     result.add(MoveRecommendEntity.create(
         "https://img1.doubanio.com/view/photo/l/public/p2553071917.webp",
-        "豆瓣片单",
+        "片单",
         "有什么很安静的电影，看完以后却又回味无穷",
         "求推荐的博物馆创建/共489部",
         bgColor: "ffffffff",
@@ -334,7 +334,7 @@ class SubjectMoveRepos extends SubjectRepos {
           ..add(
               "https://img3.doubanio.com/view/photo/l/public/p2533776776.webp"),
         tags: List<String>()
-          ..add("豆瓣Top250")
+          ..add("Top250")
           ..add("第68届金像奖")
           ..add("第67届奥斯卡金像奖")
           ..add("第20届报知映画赏")
@@ -561,7 +561,7 @@ class SubjectTeleplayRepos extends SubjectRepos {
 
     result.add(getDivider());
 
-    result.add(getTitle(title: "豆瓣榜单", router: "", more: "全部 8"));
+    result.add(getTitle(title: "榜单", router: "", more: "全部 8"));
 
     result.add(getDivider());
 
@@ -929,7 +929,7 @@ class SubjectTeleplayRepos extends SubjectRepos {
     list.add(ChampionItemEntity.create(
         "https://img3.doubanio.com/view/photo/l/public/p2560892181.webp",
         "全球口碑剧集榜",
-        "豆瓣榜单~共250部",
+        "榜单~共250部",
         "ff4C2D28",
         List<ChampionItemListEntity>()
           ..add(ChampionItemListEntity.create("致命女人", "8.8", "↑"))

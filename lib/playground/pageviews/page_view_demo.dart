@@ -1,4 +1,6 @@
-import 'package:firewood/common/utils/log_util.dart';
+import 'dart:async';
+
+import 'package:english_words/english_words.dart';
 import 'package:firewood/playground/navigation/action_bar.dart';
 import 'package:flutter/material.dart';
 
@@ -10,15 +12,44 @@ class PageViewDemoPage extends StatefulWidget {
 class _PageViewDemoState extends State<PageViewDemoPage> {
   PageController controller = PageController();
 
-  double currentPageValue = 0;
+  StreamController<double> streamController = StreamController<double>();
+
+  List<Widget> transitionList = List<Widget>();
 
   @override
   void initState() {
     controller.addListener(() {
-      setState(() {
-        currentPageValue = controller.page;
-      });
+      streamController.add(controller.page);
     });
+
+    transitionList.add(
+      Container(
+        alignment: Alignment.center,
+        color: Colors.pink,
+        child: Text(
+          WordPair.random().asPascalCase,
+          style: TextStyle(fontSize: 20, color: Colors.white),
+        ),
+      ),
+    );
+    transitionList.add(
+      Container(
+        alignment: Alignment.center,
+        color: Colors.cyan,
+        child: Text(
+          WordPair.random().asPascalCase,
+          style: TextStyle(fontSize: 20, color: Colors.white),
+        ),
+      ),
+    );
+    transitionList.add(Container(
+      alignment: Alignment.center,
+      color: Colors.deepPurple,
+      child: Text(
+        WordPair.random().asPascalCase,
+        style: TextStyle(fontSize: 20, color: Colors.white),
+      ),
+    ));
 
     super.initState();
   }
@@ -29,30 +60,35 @@ class _PageViewDemoState extends State<PageViewDemoPage> {
       body: SingleChildScrollView(
         child: Column(
           children: <Widget>[
-            ActionBarWidget("PageViewDemo"),
-            getTitle("Children方式"),
-            SizedBox.fromSize(
-              child: pvChildren(context),
-              size: Size.fromHeight(100),
-            ),
-            getTitle("Builder方式"),
+            ActionBarWidget("页级列表"),
+//            getTitle("Children方式"),
+//            SizedBox.fromSize(
+//              child: pvChildren(context),
+//              size: Size.fromHeight(100),
+//            ),
+            getTitle("水平方向"),
             SizedBox.fromSize(
               child: pvBuilder(context),
               size: Size.fromHeight(100),
             ),
-            getTitle("Axis.vertical"),
+            getTitle("垂直方向"),
             SizedBox.fromSize(
               child: pvVertical(context),
               size: Size.fromHeight(100),
             ),
-            getTitle("Snapping"),
+            getTitle("水平粘性滑动"),
             SizedBox.fromSize(
-              child: pvSnapping(context),
+              child: pvSnappingHorizontal(context),
               size: Size.fromHeight(100),
             ),
-            getTitle("Transition1"),
+            getTitle("垂直粘性滑动"),
             SizedBox.fromSize(
-              child: pvTransition1(context),
+              child: pvSnappingVertical(context),
+              size: Size.fromHeight(100),
+            ),
+            getTitle("转换过度"),
+            SizedBox.fromSize(
+              child: pvTransition(context),
               size: Size.fromHeight(100),
             ),
           ],
@@ -73,13 +109,28 @@ class _PageViewDemoState extends State<PageViewDemoPage> {
       children: <Widget>[
         // Add children
         Container(
+          alignment: Alignment.center,
           color: Colors.pink,
+          child: Text(
+            WordPair.random().asPascalCase,
+            style: TextStyle(fontSize: 20, color: Colors.white),
+          ),
         ),
         Container(
+          alignment: Alignment.center,
           color: Colors.cyan,
+          child: Text(
+            WordPair.random().asPascalCase,
+            style: TextStyle(fontSize: 20, color: Colors.white),
+          ),
         ),
         Container(
+          alignment: Alignment.center,
           color: Colors.deepPurple,
+          child: Text(
+            WordPair.random().asPascalCase,
+            style: TextStyle(fontSize: 20, color: Colors.white),
+          ),
         ),
       ],
     );
@@ -91,14 +142,33 @@ class _PageViewDemoState extends State<PageViewDemoPage> {
 
   Widget _buildPage(int index) {
     List<Widget> list = List<Widget>();
+    list.add(
+      Container(
+        alignment: Alignment.center,
+        color: Colors.pink,
+        child: Text(
+          WordPair.random().asPascalCase,
+          style: TextStyle(fontSize: 20, color: Colors.white),
+        ),
+      ),
+    );
+    list.add(
+      Container(
+        alignment: Alignment.center,
+        color: Colors.cyan,
+        child: Text(
+          WordPair.random().asPascalCase,
+          style: TextStyle(fontSize: 20, color: Colors.white),
+        ),
+      ),
+    );
     list.add(Container(
-      color: Colors.pink,
-    ));
-    list.add(Container(
-      color: Colors.cyan,
-    ));
-    list.add(Container(
+      alignment: Alignment.center,
       color: Colors.deepPurple,
+      child: Text(
+        WordPair.random().asPascalCase,
+        style: TextStyle(fontSize: 20, color: Colors.white),
+      ),
     ));
     return list[index % list.length];
   }
@@ -122,7 +192,19 @@ class _PageViewDemoState extends State<PageViewDemoPage> {
     );
   }
 
-  Widget pvSnapping(BuildContext context) {
+  Widget pvSnappingHorizontal(BuildContext context) {
+    return PageView.builder(
+      scrollDirection: Axis.horizontal,
+      pageSnapping: false,
+      physics: BouncingScrollPhysics(),
+      itemBuilder: (BuildContext context, int index) {
+        return _buildPage(index);
+      },
+      itemCount: 3,
+    );
+  }
+
+  Widget pvSnappingVertical(BuildContext context) {
     return PageView.builder(
       scrollDirection: Axis.vertical,
       pageSnapping: false,
@@ -134,30 +216,40 @@ class _PageViewDemoState extends State<PageViewDemoPage> {
     );
   }
 
-  Widget pvTransition1(BuildContext context) {
-    return PageView.builder(
-      controller: controller,
-      scrollDirection: Axis.horizontal,
-      physics: BouncingScrollPhysics(),
-      itemBuilder: (BuildContext context, int index) {
-        Log.debug(
-            "index=$index        value=$currentPageValue floor = ${currentPageValue.floor()}   cell=${currentPageValue.ceil()}");
-
-        if (index == currentPageValue.floor()) {
-          return Transform(
-            transform: Matrix4.identity()..rotateX(currentPageValue - index),
-            child: _buildPage(index),
-          );
-        } else if (index == currentPageValue.floor() + 1) {
-          return Transform(
-            transform: Matrix4.identity()..rotateX(currentPageValue - index),
-            child: _buildPage(index),
-          );
-        } else {
-          return _buildPage(index);
-        }
+  Widget pvTransition(BuildContext context) {
+    return StreamBuilder(
+      stream: streamController.stream,
+      initialData: 0.0,
+      builder: (BuildContext context, AsyncSnapshot<double> snapshot) {
+        return PageView.builder(
+          controller: controller,
+          scrollDirection: Axis.horizontal,
+          physics: BouncingScrollPhysics(),
+          itemBuilder: (BuildContext context, int index) {
+            if (index == snapshot.data.floor()) {
+              return Transform(
+                transform: Matrix4.identity()..rotateX(snapshot.data - index),
+                child: transitionList[index % transitionList.length],
+              );
+            } else if (index == snapshot.data.floor() + 1) {
+              return Transform(
+                transform: Matrix4.identity()..rotateX(snapshot.data - index),
+                child: transitionList[index % transitionList.length],
+              );
+            } else {
+              return transitionList[index % transitionList.length];
+            }
+          },
+          itemCount: 15,
+        );
       },
-      itemCount: 5,
     );
+  }
+
+  @override
+  void dispose() {
+    controller?.dispose();
+    streamController?.close();
+    super.dispose();
   }
 }

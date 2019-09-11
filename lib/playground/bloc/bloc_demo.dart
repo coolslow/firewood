@@ -4,7 +4,6 @@ import 'package:firewood/playground/util/fcolor.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-
 class BlocDemoPage extends StatefulWidget {
   @override
   _BlocDemoState createState() => new _BlocDemoState();
@@ -28,9 +27,9 @@ class _BlocDemoState extends State<BlocDemoPage> {
       body: SingleChildScrollView(
         child: Column(
           children: <Widget>[
-            ActionBarWidget("BlocDemo"),
+            ActionBarWidget("状态管理"),
             BlocBuilder<CounterBloc, CounterState>(
-              bloc: _counterBloc..dispatch(CounterEvent.error),
+              bloc: _counterBloc..dispatch(CounterEvent.increment),
               builder: (context, state) {
                 return _getRealChild(state);
               },
@@ -44,15 +43,15 @@ class _BlocDemoState extends State<BlocDemoPage> {
   Widget _getRealChild(CounterState state) {
     Widget descrip;
     if (state is CounterInitState) {
-      descrip = Text("flutter init = ${state.count}");
+      descrip = Text("Init = ${state.count}");
     } else if (state is CounterIncrementState) {
-      descrip = Text("flutter count incrementing = ${state.count}");
+      descrip = Text("Count Incrementing = ${state.count}");
     } else if (state is CounterDecrementState) {
-      descrip = Text("flutter count Decrementing = ${state.count}");
+      descrip = Text("Count Decrementing = ${state.count}");
     } else if (state is CounterErrorState) {
-      descrip = Text("flutter error = ${state.error}");
+      descrip = Text("Error = ${state.error}");
     } else {
-      descrip = Text("flutter loading");
+      descrip = Text("Loading");
     }
 
     return Stack(
@@ -66,26 +65,33 @@ class _BlocDemoState extends State<BlocDemoPage> {
               )),
           FlatButton(
             onPressed: () {
-              print("increment");
+              print("Increment");
               _counterBloc.dispatch(CounterEvent.increment);
             },
             child: Container(
-                width: double.maxFinite, child: Center(child: Text("Plus"))),
+                height: 40,
+                color: Colors.orange,
+                width: double.maxFinite,
+                child: Center(child: Text("Plus"))),
           ),
           FlatButton(
             onPressed: () {
-              print("decrement");
+              print("Decrement");
               _counterBloc.dispatch(CounterEvent.decrement);
             },
             child: Container(
-                width: double.maxFinite, child: Center(child: Text("Minus"))),
+                height: 40,
+                color: Colors.orange,
+                width: double.maxFinite,
+                child: Center(child: Text("Minus"))),
           )
         ]),
         (state is CounterLoadingState)
             ? Container(
+                margin: EdgeInsets.only(top: 5),
                 child: Center(
-                child: CircularProgressIndicator(),
-              ))
+                  child: CircularProgressIndicator(),
+                ))
             : Container(),
       ],
     );
@@ -112,7 +118,7 @@ class CounterErrorState extends CounterState {
 }
 
 class CounterBloc extends Bloc<CounterEvent, CounterState> {
-  int _count = 10;
+  int _count = 0;
 
   @override
   CounterState get initialState {
@@ -136,7 +142,7 @@ class CounterBloc extends Bloc<CounterEvent, CounterState> {
         await Future.delayed(Duration(seconds: 2));
         CounterIncrementState state = new CounterIncrementState();
         state.count = _count = _count + 1;
-        state.description = "Description increment";
+        state.description = "Description Increment";
         yield state;
         break;
       case CounterEvent.decrement:
@@ -144,7 +150,7 @@ class CounterBloc extends Bloc<CounterEvent, CounterState> {
         await Future.delayed(Duration(seconds: 2));
         CounterDecrementState state = new CounterDecrementState();
         state.count = _count = _count - 1;
-        state.description = "Description increment";
+        state.description = "Description Decrement";
         yield state;
         break;
       case CounterEvent.error:
@@ -152,7 +158,7 @@ class CounterBloc extends Bloc<CounterEvent, CounterState> {
 
         await Future.delayed(Duration(seconds: 2));
         CounterErrorState state = new CounterErrorState();
-        state.error = "CounterErrorState";
+        state.error = "ErrorState";
         yield state;
         break;
     }

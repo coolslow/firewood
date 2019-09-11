@@ -18,14 +18,14 @@ class SliverDemoPage extends StatelessWidget {
         body: SingleChildScrollView(
           child: Column(
             children: <Widget>[
-              getItem(context, "SliverAppBarDemoPage", SliverAppBarDemoPage()),
-              getItem(context, "SliverListDemoPage", SliverListDemoPage()),
-              getItem(context, "SliverGridDemoPage", SliverGridDemoPage()),
-              getItem(context, "SliverMixDemoPage", SliverMixDemoPage()),
-              getItem(context, "SliverPersistentHeaderDemo",
+              getItem(context, "AppBar滑动", SliverAppBarDemoPage()),
+              getItem(context, "List滑动", SliverListDemoPage()),
+              getItem(context, "Grid滑动", SliverGridDemoPage()),
+              getItem(context, "Mix滑动", SliverMixDemoPage()),
+              getItem(context, "PersistentHeader滑动",
                   SliverPersistentHeaderDemo()),
               getItem(
-                  context, "SliverToBoxAdapterDemo", SliverToBoxAdapterDemo()),
+                  context, "BoxAdapter滑动", SliverToBoxAdapterDemo()),
             ],
           ),
         ));

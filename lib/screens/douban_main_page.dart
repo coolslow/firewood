@@ -29,37 +29,41 @@ class _MainPageState extends State<MainPage> {
     _pageController = PageController(initialPage: currentIndex);
 
     bottomData = new List();
+
     bottomData.add(FBottomData(
-      title: "首页",
+      title: "Demo",
+//      page: ProfilePage(),
+      page: PlaygroundPage(),
+//      selectIcon: Image.asset("images/ic_tab_profile_active.png"),
+//      unSelectIcon: Image.asset("images/ic_tab_profile_normal.png"),
+      selectIcon: Image.asset("images/ic_tab_shiji_active.png"),
+      unSelectIcon: Image.asset("images/ic_tab_shiji_normal.png"),
+    ));
+
+    bottomData.add(FBottomData(
+      title: "切换",
       page: HomePage(),
       selectIcon: Image.asset("images/ic_tab_home_active.png"),
       unSelectIcon: Image.asset("images/ic_tab_home_normal.png"),
     ));
     bottomData.add(FBottomData(
-      title: "书影音",
+      title: "列表",
       page: SubjectPage(),
       selectIcon: Image.asset("images/ic_tab_subject_active.png"),
       unSelectIcon: Image.asset("images/ic_tab_subject_normal.png"),
     ));
-    bottomData.add(FBottomData(
-      title: "小组",
-      page: GroupPage(),
-      selectIcon: Image.asset("images/ic_tab_group_active.png"),
-      unSelectIcon: Image.asset("images/ic_tab_group_normal.png"),
-    ));
-    bottomData.add(FBottomData(
-      title: "市集",
-      page: MarketPage(),
-      selectIcon: Image.asset("images/ic_tab_shiji_active.png"),
-      unSelectIcon: Image.asset("images/ic_tab_shiji_normal.png"),
-    ));
-    bottomData.add(FBottomData(
-      title: "我的",
-//      page: ProfilePage(),
-      page: PlaygroundPage(),
-      selectIcon: Image.asset("images/ic_tab_profile_active.png"),
-      unSelectIcon: Image.asset("images/ic_tab_profile_normal.png"),
-    ));
+//    bottomData.add(FBottomData(
+//      title: "小组",
+//      page: GroupPage(),
+//      selectIcon: Image.asset("images/ic_tab_group_active.png"),
+//      unSelectIcon: Image.asset("images/ic_tab_group_normal.png"),
+//    ));
+//    bottomData.add(FBottomData(
+//      title: "市集",
+//      page: MarketPage(),
+//      selectIcon: Image.asset("images/ic_tab_shiji_active.png"),
+//      unSelectIcon: Image.asset("images/ic_tab_shiji_normal.png"),
+//    ));
   }
 
   void onPageChange(val) {
@@ -100,14 +104,13 @@ class _MainPageState extends State<MainPage> {
 
     return PageView.builder(
 //              onPageChanged: _pageChange,
-        physics: NeverScrollableScrollPhysics(),
-        controller: _pageController,
-        itemBuilder: (BuildContext context, int index) {
-          return bottomData[index].page;
-        },
-        itemCount: bottomData.length,
-      );
-
+      physics: NeverScrollableScrollPhysics(),
+      controller: _pageController,
+      itemBuilder: (BuildContext context, int index) {
+        return bottomData[index].page;
+      },
+      itemCount: bottomData.length,
+    );
   }
 
   @override

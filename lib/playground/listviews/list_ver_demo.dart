@@ -19,7 +19,7 @@ class _ListVerDemoState extends State<ListVerDemoPage> {
     return Scaffold(
       body: Column(
         children: <Widget>[
-          ActionBarWidget("ListDemo"),
+          ActionBarWidget("垂直列表"),
           Expanded(
             child: ListView.builder(
 //                scrollDirection: Axis.horizontal,

@@ -20,7 +20,7 @@ class _CircleProgressBarDemoState extends State<CircleProgressBarDemoPage> {
       body: SingleChildScrollView(
         child: Column(
           children: <Widget>[
-            ActionBarWidget("CircleProgressBarDemo"),
+            ActionBarWidget("进度条"),
             getBody(context)
           ],
         ),
@@ -31,17 +31,11 @@ class _CircleProgressBarDemoState extends State<CircleProgressBarDemoPage> {
   ProgressBloc progressBloc = ProgressBloc();
 
   Widget getBody(BuildContext context) {
-//    print("====================================Demo build  cpb==${describeIdentity(cpb)}   state=${cpb.state}");
-    print(
-        "===Demo build==================================================================");
-
     return Column(
       children: <Widget>[
         BlocBuilder<ProgressBloc, ProgressState>(
           bloc: progressBloc,
           builder: (context, state) {
-            print("===BlocBuilder");
-
             bool startAnim = false;
             if (state.startAnim) {
               startAnim = true;

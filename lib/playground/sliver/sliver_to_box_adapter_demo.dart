@@ -1,5 +1,6 @@
 import 'dart:math' as math;
 
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:firewood/common/font.dart';
 import 'package:flutter/material.dart';
 
@@ -13,12 +14,14 @@ class SliverToBoxAdapterDemo extends StatelessWidget {
             actions: <Widget>[
               _buildAction(),
             ],
-            title: Text('SliverToBoxAdapterDemo'),
+            title: Text('BoxAdapter滑动'),
             backgroundColor: Theme.of(context).accentColor,
             expandedHeight: 200.0,
             flexibleSpace: FlexibleSpaceBar(
-              background: Image.asset('images/bg_compose_artwork.png',
-                  fit: BoxFit.cover),
+              background: CachedNetworkImage(
+                  fit: BoxFit.cover,
+                  imageUrl:
+                      "https://img3.doubanio.com/view/photo/l/public/p2567921571.webp"),
             ),
             floating: false,
             snap: false,
@@ -27,7 +30,10 @@ class SliverToBoxAdapterDemo extends StatelessWidget {
           SliverToBoxAdapter(
             child: Container(
               color: Colors.red,
-              child: Text("Header"),
+              child: CachedNetworkImage(
+                  fit: BoxFit.cover,
+                  imageUrl:
+                      "https://img1.doubanio.com/view/photo/l/public/p497127279.webp"),
             ),
           ),
           SliverList(
@@ -38,13 +44,13 @@ class SliverToBoxAdapterDemo extends StatelessWidget {
               childCount: 10,
             ),
           ),
-//          Container(
-//            child: Text("Common"),
-//          ),
           SliverToBoxAdapter(
             child: Container(
               color: Colors.deepOrangeAccent,
-              child: Text("Ad"),
+              child: CachedNetworkImage(
+                  fit: BoxFit.cover,
+                  imageUrl:
+                      "https://img1.doubanio.com/view/photo/l/public/p497120517.webp"),
             ),
           ),
           SliverList(
@@ -58,8 +64,11 @@ class SliverToBoxAdapterDemo extends StatelessWidget {
           SliverToBoxAdapter(
             child: Container(
               color: Colors.green,
-              child: Text("Footer"),
-            ),
+              child: CachedNetworkImage(
+                  fit: BoxFit.cover,
+                  imageUrl:
+                      "https://img1.doubanio.com/view/photo/l/public/p497178938.webp"),
+            ), //
           ),
         ],
       ),
@@ -77,8 +86,22 @@ class SliverToBoxAdapterDemo extends StatelessWidget {
   }
 
   Widget _buildItem(int index) {
-    return ListTile(
-      title: Text("Item $index"),
+//    return ListTile(
+//      title: Text("Item $index"),
+//    );
+    return Container(
+      height: 100,
+      color: colors[index % colors.length],
     );
   }
+
+  List<Color> colors = [
+    Color(0xffFF4040),
+    Color(0xffFF8C00),
+    Color(0xffFFFF00),
+    Color(0xffC0FF3E),
+    Color(0xff9FB6CD),
+    Color(0xff5CACEE),
+    Color(0xff008B8B)
+  ];
 }

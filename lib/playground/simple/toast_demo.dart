@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
 class ToastDemoPage extends StatelessWidget {
-
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
@@ -18,9 +17,13 @@ class ToastDemoPage extends StatelessWidget {
               },
               child: Container(
                   height: 40,
-                  color: Colors.blueGrey,
+                  color: Colors.deepOrangeAccent,
                   width: double.maxFinite,
-                  child: Center(child: Text("Toast short"))),
+                  child: Center(
+                      child: Text(
+                    "Toast Center",
+                    style: TextStyle(color: Colors.white),
+                  ))),
             ),
             FlatButton(
               onPressed: () {
@@ -28,9 +31,13 @@ class ToastDemoPage extends StatelessWidget {
               },
               child: Container(
                   height: 40,
-                  color: Colors.blueGrey,
+                  color: Colors.deepOrangeAccent,
                   width: double.maxFinite,
-                  child: Center(child: Text("Toast long"))),
+                  child: Center(
+                      child: Text(
+                    "Toast Bottom",
+                    style: TextStyle(color: Colors.white),
+                  ))),
             ),
           ],
         ),
@@ -60,4 +67,3 @@ class ToastDemoPage extends StatelessWidget {
         fontSize: 16.0);
   }
 }
-

@@ -16,9 +16,6 @@ class _DialogDemoState extends State<DialogDemoPage> {
 
   @override
   Widget build(BuildContext context) {
-
-//    LoadingDialog.show(context);
-
     return new Scaffold(
       body: SingleChildScrollView(
         child: Column(

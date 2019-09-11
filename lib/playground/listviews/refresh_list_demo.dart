@@ -17,7 +17,7 @@ class _RefreshListDemoState extends State<RefreshListDemoPage> {
     return Scaffold(
       body: Column(
         children: <Widget>[
-          ActionBarWidget("ListDemo"),
+          ActionBarWidget("下拉刷新"),
           Expanded(
             child: RefreshIndicator(
                 child: ListView.builder(

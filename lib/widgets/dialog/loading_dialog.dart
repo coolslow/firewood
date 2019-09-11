@@ -4,12 +4,17 @@ import 'package:flutter/material.dart';
 class LoadingDialog extends StatefulWidget {
   static LoadingDialog _loadingDialog;
   static bool _barrierDismissible;
+  static Color _color;
 
-  static void show(BuildContext context, {barrierDismissible: true}) {
-    print("show     $_loadingDialog ");
+  static void show(
+    BuildContext context, {
+    color: const Color(0x99ffffff),
+    barrierDismissible: true,
+  }) {
     if (_loadingDialog == null) {
       _loadingDialog = LoadingDialog();
       _barrierDismissible = barrierDismissible;
+      _color ??= color;
       showDialog(
           context: context,
           barrierDismissible: _barrierDismissible,
@@ -20,7 +25,6 @@ class LoadingDialog extends StatefulWidget {
   }
 
   static void hide(BuildContext context) {
-    print("hide     $_loadingDialog ");
     if (_loadingDialog != null) {
       Navigator.of(context, rootNavigator: true).pop();
       _loadingDialog = null;
@@ -58,7 +62,7 @@ class _LoadingDialogState extends State<LoadingDialog> {
         child: GestureDetector(
           onTapUp: _onTapUp,
           child: Container(
-            color: Color(0x99ffffff),
+            color: LoadingDialog._color,
             child: Center(
                 child: SizedBox(
                     width: 120.0,

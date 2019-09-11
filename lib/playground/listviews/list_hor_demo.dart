@@ -19,7 +19,7 @@ class _ListHorDemoState extends State<ListHorDemoPage> {
     return Scaffold(
       body: Column(
         children: <Widget>[
-          ActionBarWidget("ListDemo"),
+          ActionBarWidget("水平列表"),
           Container(
               height: 150,
               child: ListView.separated(
@@ -35,7 +35,7 @@ class _ListHorDemoState extends State<ListHorDemoPage> {
                 itemBuilder: (BuildContext context, int index) => Container(
                   color: Colors.deepPurpleAccent,
                   padding: EdgeInsets.fromLTRB(1, 1, 1, 1),
-                  child: Text("属性详细介绍"),
+                  child: Text("属性详细介绍=$index"),
                 ),
               )),
         ],

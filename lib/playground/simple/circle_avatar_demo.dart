@@ -3,7 +3,6 @@ import 'package:firewood/playground/navigation/action_bar.dart';
 import 'package:flutter/material.dart';
 
 class CircleAvatarDemoPage extends StatelessWidget {
-
   final String portrait = "https://img3.doubanio.com/icon/up180055214-15.jpg";
 
   @override
@@ -12,14 +11,14 @@ class CircleAvatarDemoPage extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: <Widget>[
-            ActionBarWidget("CircleAvatarDemo"),
+            ActionBarWidget("圆角图片"),
             Container(
               padding: EdgeInsets.only(top: SizeCompat.pxToDp(54)),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: <Widget>[
                   CircleAvatar(
-                    radius: SizeCompat.pxToDp(40),
+                    radius: SizeCompat.pxToDp(80),
                     backgroundImage: NetworkImage(portrait),
                   ),
                   Container(
@@ -29,7 +28,7 @@ class CircleAvatarDemoPage extends StatelessWidget {
                     decoration: BoxDecoration(
                         image: DecorationImage(image: NetworkImage(portrait)),
                         borderRadius:
-                            BorderRadius.circular(SizeCompat.pxToDp(40))),
+                            BorderRadius.circular(SizeCompat.pxToDp(80))),
                   ),
                   Container(
                     margin: EdgeInsets.only(top: 20),
@@ -38,6 +37,15 @@ class CircleAvatarDemoPage extends StatelessWidget {
                     decoration: BoxDecoration(
                         image: DecorationImage(image: NetworkImage(portrait)),
                         shape: BoxShape.circle),
+                  ),
+                  Container(
+                    margin: EdgeInsets.only(top: 20),
+                    height: SizeCompat.pxToDp(160),
+                    width: SizeCompat.pxToDp(160),
+                    decoration: BoxDecoration(
+                        image: DecorationImage(image: NetworkImage(portrait)),
+                        borderRadius: BorderRadius.all(Radius.circular(10)),
+                        shape: BoxShape.rectangle),
                   ),
                 ],
               ),

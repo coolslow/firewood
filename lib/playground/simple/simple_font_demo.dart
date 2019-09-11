@@ -14,7 +14,7 @@ class FontDemo extends StatelessWidget {
             alignment: Alignment.center,
             margin: EdgeInsets.only(top: 30),
             child: Text(
-              "系统字体，我爱中国！",
+              "系统字体",
               style: TextStyle(color: Colors.orange, fontSize: 20),
             ),
           ),
@@ -22,7 +22,7 @@ class FontDemo extends StatelessWidget {
             alignment: Alignment.center,
             margin: EdgeInsets.only(top: 30),
             child: Text(
-              "ModakRegular字体，我爱中国！",
+              "ModakRegular字体",
               style: TextStyle(
                   fontFamily: FFontModakRegular.family,
                   color: Colors.red,
@@ -33,7 +33,7 @@ class FontDemo extends StatelessWidget {
             alignment: Alignment.center,
             margin: EdgeInsets.only(top: 30),
             child: Text(
-              "ShadowsIntoLight-Regular字体，我爱中国！",
+              "ShadowsIntoLight-Regular字体",
               style: TextStyle(
                   fontFamily: FFontShadowsIntoLightRegular.family,
                   color: Colors.greenAccent,

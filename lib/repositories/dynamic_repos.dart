@@ -60,7 +60,7 @@ class DynamicRepos {
 
     repositories.add(DynamicEntity.create(
         "",
-        "豆瓣",
+        "运动",
         "FIRE运动践行计划",
         """FIRE（Financial independence,Retire early）生活——即以“尽早实现经济独立，提前过上退休生活”为目标的一种生活方式。为了过上 FIRE 生活，人们放弃对财富和事业的追求，改为对自身和时间的提炼与向往，即真正为了自己而活。聊聊你理想中的 FIRE 生活，以及为了过上这样的生活，你正在付出怎样的努力？""",
         314,
@@ -100,6 +100,6 @@ class DynamicRepos {
   }
 
   String getLabel() {
-    return "初来豆瓣，写点什么吧...";
+    return "写点什么吧...";
   }
 }

@@ -6,7 +6,7 @@ class TextShadowDemo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
-        appBar: ActionBarWidget(""),
+        appBar: ActionBarWidget("文字阴影"),
         body: SingleChildScrollView(
           child: Column(
             children: <Widget>[
@@ -15,7 +15,7 @@ class TextShadowDemo extends StatelessWidget {
                   width: double.infinity,
                   child: Center(
                     child: Text(
-                      "我爱中国！ I love China...",
+                      "文字阴影  Text Shadow...",
                       style: TextStyle(
                           fontSize: 20,
                           color: Color(0xff666666),

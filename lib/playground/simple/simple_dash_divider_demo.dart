@@ -6,7 +6,7 @@ class DashDividerDemo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
-      appBar: ActionBarWidget(""),
+      appBar: ActionBarWidget("分割线"),
       body: Column(
         children: <Widget>[
           Container(
@@ -15,16 +15,43 @@ class DashDividerDemo extends StatelessWidget {
             width: double.infinity,
             child: DashedDivider(
               horizontal: true,
+              color: Colors.red,
             ),
           ),
-          Expanded(
-              child: Container(
-            width: 10,
-            child: DashedDivider(),
-          ))
+          Container(
+            margin: EdgeInsets.only(top: 10),
+            height: 1,
+            width: double.infinity,
+            child: DashedDivider(
+              solidWidth: 8,
+              color: Colors.green,
+              horizontal: true,
+            ),
+          ),
+          Container(
+              alignment: Alignment.center,
+              height: 100,
+              child: Row(
+                children: <Widget>[
+                  DashedDivider(
+                    horizontal: false,
+                    color: Colors.red,
+                  ),
+                ],
+              )),
+          Container(
+            alignment: Alignment.center,
+            height: 100,
+            width: 100,
+            color: Colors.blueGrey,
+            child: DashedDivider(
+//              solidWidth: 8,
+              horizontal: false,
+              color: Colors.green,
+            ),
+          ),
         ],
       ),
     );
   }
 }
-

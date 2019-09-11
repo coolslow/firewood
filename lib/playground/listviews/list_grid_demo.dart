@@ -19,7 +19,7 @@ class _ListGridDemoState extends State<ListGridDemoPage> {
     return Scaffold(
       body: Column(
         children: <Widget>[
-          ActionBarWidget("ListDemo"),
+          ActionBarWidget("九宫格"),
           Expanded(
               child: GridView.builder(
                   padding: EdgeInsets.all(0.0),
@@ -30,6 +30,7 @@ class _ListGridDemoState extends State<ListGridDemoPage> {
                       crossAxisSpacing: 10,
                       childAspectRatio: 1.5),
                   itemBuilder: (BuildContext context, int index) => Container(
+                        alignment: Alignment.center,
                         color: Colors.deepOrangeAccent,
                         padding: EdgeInsets.fromLTRB(1, 1, 1, 1),
                         child: Text(new WordPair.random().asPascalCase),

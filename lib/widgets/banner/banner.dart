@@ -17,6 +17,7 @@ class FBanner extends StatefulWidget {
   EdgeInsets padding = EdgeInsets.all(0);
 
   double left;
+  double right;
   double bottom;
   double space;
   double size;
@@ -26,6 +27,9 @@ class FBanner extends StatefulWidget {
 
   bool autoStart;
 
+  Duration duration;
+  FBannerAlignment alignment;
+
   BoxDecoration decoration = BoxDecoration(boxShadow: [
     BoxShadow(
         color: Color(0xFFBDBDBD), //Color(0xfff7f7f7)
@@ -34,12 +38,26 @@ class FBanner extends StatefulWidget {
         spreadRadius: 0.0)
   ]);
 
-  FBanner(this.data, {this.ratio, this.width}) {
+  FBanner(this.data,
+      {this.ratio,
+      this.width,
+      this.size,
+      this.space,
+      this.alignment,
+      this.left,
+      this.right,
+      this.bottom,
+      this.selectedColor,
+      this.unSelectedColor,
+      this.autoStart,
+      this.duration}) {
     this.ratio ??= 3;
     this.width ??= SizeCompat.width();
     this.borderRadius ??= BorderRadius.all(Radius.circular(10));
 
+    this.alignment ??= FBannerAlignment.center;
     this.left = 20;
+    this.right = 20;
     this.bottom = 20;
 
     this.space ??= 10;
@@ -48,6 +66,8 @@ class FBanner extends StatefulWidget {
     this.selectedColor ??= Colors.greenAccent;
     this.unSelectedColor ??= Colors.grey;
     this.autoStart ??= true;
+
+    this.duration ??= Duration(milliseconds: 2000);
   }
 
   @override
@@ -78,22 +98,17 @@ class _FBannerState extends State<FBanner> {
     super.initState();
   }
 
-  void startTimer(){
+  void startTimer() {
     if (widget.autoStart) {
-      print("Ticker====1=${DateTime.now()}");
-      timer = Timer.periodic(Duration(seconds: 2), (time) {
+      timer = Timer.periodic(widget.duration, (time) {
         // 只在倒计时结束时回调
-        print(
-            "Ticker====2=${DateTime.now()}     ${timer.tick}     ${pageController.page}");
-
-//        stream.sink.add(pageController.page.toInt() + 1);
         pageController.nextPage(
             duration: Duration(milliseconds: 200), curve: Curves.ease);
       });
     }
   }
 
-  void stopTimer(){
+  void stopTimer() {
     if (widget.autoStart) {
       timer?.cancel();
     }
@@ -101,66 +116,16 @@ class _FBannerState extends State<FBanner> {
 
   @override
   Widget build(BuildContext context) {
-    print("build===");
     return Container(
         padding: widget.padding,
         margin: widget.margin,
         width: widget.width,
         height: widget.width / widget.ratio,
         child: Stack(
+          alignment: Alignment.center,
           children: <Widget>[
-            PageView.builder(
-              onPageChanged: _onPageChanged,
-              controller: pageController,
-              scrollDirection: Axis.horizontal,
-              physics: BouncingScrollPhysics(),
-              itemBuilder: (BuildContext context, int index) {
-                return ClipRRect(
-                  borderRadius: widget.borderRadius,
-                  child: CachedNetworkImage(
-                    imageUrl: widget.data[index % widget.data.length].name,
-                    width: widget.width,
-                    height: widget.width / widget.ratio,
-                    fit: BoxFit.cover,
-                    placeholder: (BuildContext context, String url) {
-                      return Image.asset("images/default_place_holder.png");
-                    },
-                  ),
-                );
-              },
-              itemCount: itemCount,
-            ),
-            Positioned(
-              left: widget.left,
-              bottom: widget.bottom,
-              height: widget.size,
-              child: StreamBuilder<int>(
-                stream: stream.stream,
-                initialData: initialPage,
-                builder: (BuildContext context, AsyncSnapshot<int> snapshot) {
-                  print("StreamBuilder===${snapshot.data}");
-                  return ListView.builder(
-                      scrollDirection: Axis.horizontal,
-                      itemCount: widget.data.length,
-                      physics: NeverScrollableScrollPhysics(),
-                      shrinkWrap: true,
-                      itemBuilder: (BuildContext context, int index) {
-                        return Container(
-                          margin: EdgeInsets.only(
-                              left: widget.space / 2, right: widget.space / 2),
-                          width: widget.size,
-                          height: widget.size,
-                          decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            color: (snapshot.data % widget.data.length) == index
-                                ? widget.selectedColor
-                                : widget.unSelectedColor,
-                          ),
-                        );
-                      });
-                },
-              ),
-            ),
+            getBanner(),
+            getIndicator(),
           ],
         ));
   }
@@ -176,4 +141,154 @@ class _FBannerState extends State<FBanner> {
     timer?.cancel();
     super.dispose();
   }
+
+  Widget getBanner() {
+    return Listener(
+//      onNotification: (ScrollNotification notification) {
+//        switch (notification.runtimeType) {
+//          case ScrollStartNotification:
+////            print("开始滚动");
+//
+//            break;
+//          case ScrollUpdateNotification:
+////            print("正在滚动");
+//            break;
+//          case ScrollEndNotification:
+////            print("滚动停止");
+//            startTimer();
+//            break;
+//          case OverscrollNotification:
+////            print("滚动到边界");
+//            break;
+//        }
+//        return false;
+//      },
+      onPointerDown: (PointerDownEvent event) {
+        stopTimer();
+      },
+      onPointerMove: (PointerMoveEvent event) {},
+      onPointerUp: (PointerUpEvent event) {
+        startTimer();
+      },
+      child: PageView.builder(
+        onPageChanged: _onPageChanged,
+        controller: pageController,
+        scrollDirection: Axis.horizontal,
+        physics: BouncingScrollPhysics(),
+        itemBuilder: (BuildContext context, int index) {
+          return ClipRRect(
+            borderRadius: widget.borderRadius,
+            child: CachedNetworkImage(
+              imageUrl: widget.data[index % widget.data.length].name,
+              width: widget.width,
+              height: widget.width / widget.ratio,
+              fit: BoxFit.cover,
+              placeholder: (BuildContext context, String url) {
+                return Image.asset("images/default_place_holder.png");
+              },
+            ),
+          );
+        },
+        itemCount: itemCount,
+      ),
+    );
+  }
+
+  Widget getIndicator() {
+    if (widget.alignment == FBannerAlignment.left) {
+      return Positioned(
+        left: widget.left,
+        bottom: widget.bottom,
+        height: widget.size,
+        child: StreamBuilder<int>(
+          stream: stream.stream,
+          initialData: initialPage,
+          builder: (BuildContext context, AsyncSnapshot<int> snapshot) {
+            return ListView.builder(
+                scrollDirection: Axis.horizontal,
+                itemCount: widget.data.length,
+                physics: NeverScrollableScrollPhysics(),
+                shrinkWrap: true,
+                itemBuilder: (BuildContext context, int index) {
+                  return Container(
+                    margin: EdgeInsets.only(
+                        left: widget.space / 2, right: widget.space / 2),
+                    width: widget.size,
+                    height: widget.size,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: (snapshot.data % widget.data.length) == index
+                          ? widget.selectedColor
+                          : widget.unSelectedColor,
+                    ),
+                  );
+                });
+          },
+        ),
+      );
+    } else if (widget.alignment == FBannerAlignment.right) {
+      return Positioned(
+        right: widget.right,
+        bottom: widget.bottom,
+        height: widget.size,
+        child: StreamBuilder<int>(
+          stream: stream.stream,
+          initialData: initialPage,
+          builder: (BuildContext context, AsyncSnapshot<int> snapshot) {
+            return ListView.builder(
+                scrollDirection: Axis.horizontal,
+                itemCount: widget.data.length,
+                physics: NeverScrollableScrollPhysics(),
+                shrinkWrap: true,
+                itemBuilder: (BuildContext context, int index) {
+                  return Container(
+                    margin: EdgeInsets.only(
+                        left: widget.space / 2, right: widget.space / 2),
+                    width: widget.size,
+                    height: widget.size,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: (snapshot.data % widget.data.length) == index
+                          ? widget.selectedColor
+                          : widget.unSelectedColor,
+                    ),
+                  );
+                });
+          },
+        ),
+      );
+    } else {
+      return Positioned(
+        bottom: widget.bottom,
+        height: widget.size,
+        child: StreamBuilder<int>(
+          stream: stream.stream,
+          initialData: initialPage,
+          builder: (BuildContext context, AsyncSnapshot<int> snapshot) {
+            return ListView.builder(
+                scrollDirection: Axis.horizontal,
+                itemCount: widget.data.length,
+                physics: NeverScrollableScrollPhysics(),
+                shrinkWrap: true,
+                itemBuilder: (BuildContext context, int index) {
+                  return Container(
+                    margin: EdgeInsets.only(
+                        left: widget.space / 2, right: widget.space / 2),
+                    width: widget.size,
+                    height: widget.size,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: (snapshot.data % widget.data.length) == index
+                          ? widget.selectedColor
+                          : widget.unSelectedColor,
+                    ),
+                  );
+                });
+          },
+        ),
+      );
+    }
+  }
 }
+
+enum FBannerAlignment { left, right, center }

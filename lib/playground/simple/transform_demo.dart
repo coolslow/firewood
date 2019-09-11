@@ -12,7 +12,7 @@ class TransformDemo extends StatefulWidget {
 
 class _TransformDemoState extends State<TransformDemo> {
   int _counter = 0;
-  Offset _offset = Offset(0.4, 0.7); // new
+  Offset _offset = Offset(0.5, -0.3); // new
 
   @override
   Widget build(BuildContext context) {
