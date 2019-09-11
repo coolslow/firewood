@@ -12,12 +12,12 @@ import 'package:firewood/widgets/navigation/tab_bar.dart';
 import 'package:flutter/material.dart';
 
 class SubjectPage extends StatefulWidget {
-
   @override
   _SubjectPageState createState() => _SubjectPageState();
 }
 
-class _SubjectPageState extends State<SubjectPage> with AutomaticKeepAliveClientMixin{
+class _SubjectPageState extends State<SubjectPage>
+    with AutomaticKeepAliveClientMixin {
   List<FTabBarData> tabData = List<FTabBarData>();
   List<Widget> widgetData = List<Widget>();
   int currentIndex = 0;
@@ -26,8 +26,8 @@ class _SubjectPageState extends State<SubjectPage> with AutomaticKeepAliveClient
 
   @override
   void initState() {
-    tabData.add(FTabBarData("好看的电影"));
-    tabData.add(FTabBarData("好看的电视"));
+    tabData.add(FTabBarData("电影"));
+    tabData.add(FTabBarData("电视"));
 //    tabData.add(FTabBarData("读书"));
 //    tabData.add(FTabBarData("原创小说"));
 //    tabData.add(FTabBarData("音乐"));
@@ -51,11 +51,9 @@ class _SubjectPageState extends State<SubjectPage> with AutomaticKeepAliveClient
       body: Column(
         children: <Widget>[
           FActionSearchBar(
-              searchHint: "有哪些好看的电影",
-              bgColor: Colors.white,
-              connerBgColor: Color(0xffF4F4F4),
-              unReadCount: 9,
-              mailColor: FColors.iconColorFilter),
+            searchHint: "有哪些好看的电影",
+            unReadCount: 9,
+          ),
           // TabBar
 //          Container(
 //              height: SizeCompat.pxToDp(106),
