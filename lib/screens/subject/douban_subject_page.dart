@@ -1,6 +1,5 @@
 import 'package:firewood/common/constants.dart';
 import 'package:firewood/common/utils/size_compat.dart';
-import 'package:firewood/common/utils/utils.dart';
 import 'package:firewood/screens/subject/douban_subject_citywide_page.dart';
 import 'package:firewood/screens/subject/douban_subject_fiction_page.dart';
 import 'package:firewood/screens/subject/douban_subject_move_page.dart';
@@ -51,11 +50,9 @@ class _SubjectPageState extends State<SubjectPage>
       body: Column(
         children: <Widget>[
           FActionSearchBar(
-              searchHint: "有哪些好看的电影",
-              bgColor: Colors.white,
-              connerBgColor: Color(0xffF4F4F4),
-              unReadCount: 9,
-              mailColor: FColors.iconColorFilter),
+            searchHint: "有哪些好看的电影",
+            unReadCount: 9,
+          ),
           // TabBar
           Container(
               height: SizeCompat.pxToDp(106),
