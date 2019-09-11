@@ -12,12 +12,12 @@ import 'package:firewood/widgets/navigation/tab_bar.dart';
 import 'package:flutter/material.dart';
 
 class SubjectPage extends StatefulWidget {
-
   @override
   _SubjectPageState createState() => _SubjectPageState();
 }
 
-class _SubjectPageState extends State<SubjectPage> with AutomaticKeepAliveClientMixin{
+class _SubjectPageState extends State<SubjectPage>
+    with AutomaticKeepAliveClientMixin {
   List<FTabBarData> tabData = List<FTabBarData>();
   List<Widget> widgetData = List<Widget>();
   int currentIndex = 0;
@@ -26,19 +26,19 @@ class _SubjectPageState extends State<SubjectPage> with AutomaticKeepAliveClient
 
   @override
   void initState() {
-    tabData.add(FTabBarData("好看的电影"));
-    tabData.add(FTabBarData("好看的电视"));
-//    tabData.add(FTabBarData("读书"));
-//    tabData.add(FTabBarData("原创小说"));
-//    tabData.add(FTabBarData("音乐"));
-//    tabData.add(FTabBarData("同城"));
+    tabData.add(FTabBarData("电影"));
+    tabData.add(FTabBarData("电视"));
+    tabData.add(FTabBarData("读书"));
+    tabData.add(FTabBarData("原创小说"));
+    tabData.add(FTabBarData("音乐"));
+    tabData.add(FTabBarData("同城"));
 
     widgetData.add(MovePage());
     widgetData.add(TeleplayPage());
-//    widgetData.add(ReadPage());
-//    widgetData.add(FictionPage());
-//    widgetData.add(MusicPage());
-//    widgetData.add(CityWidePage());
+    widgetData.add(ReadPage());
+    widgetData.add(FictionPage());
+    widgetData.add(MusicPage());
+    widgetData.add(CityWidePage());
 
     _pageController = PageController(initialPage: currentIndex);
 
@@ -57,33 +57,33 @@ class _SubjectPageState extends State<SubjectPage> with AutomaticKeepAliveClient
               unReadCount: 9,
               mailColor: FColors.iconColorFilter),
           // TabBar
-//          Container(
-//              height: SizeCompat.pxToDp(106),
-//              color: Colors.white,
-//              width: double.infinity,
-//              padding: EdgeInsets.only(
-//                left: SizeCompat.pxToDp(Dimens.appEdgeEdge),
-//                right: SizeCompat.pxToDp(Dimens.appEdgeEdge),
-//              ),
-//              child: FTabBar(
-//                tabData: tabData,
-//                currIndex: currentIndex,
-//                callback: _onTap,
-//                unSelectTs: TextStyle(
-//                    color: Color(0xff818181),
-//                    fontSize: SizeCompat.pxToDp(40),
-//                    decoration: TextDecoration.none,
-//                    fontWeight: FontWeight.w400),
-//                selectTs: TextStyle(
-//                    color: Color(0xff121212),
-//                    fontSize: SizeCompat.pxToDp(40),
-//                    decoration: TextDecoration.none,
-//                    fontWeight: FontWeight.w400),
-//              )),
-//          Container(
-//            height: SizeCompat.pxToDp(2),
-//            color: Color(0xffEBEBEB),
-//          ),
+          Container(
+              height: SizeCompat.pxToDp(106),
+              color: Colors.white,
+              width: double.infinity,
+              padding: EdgeInsets.only(
+                left: SizeCompat.pxToDp(Dimens.appEdgeEdge),
+                right: SizeCompat.pxToDp(Dimens.appEdgeEdge),
+              ),
+              child: FTabBar(
+                tabData: tabData,
+                currIndex: currentIndex,
+                callback: _onTap,
+                unSelectTs: TextStyle(
+                    color: Color(0xff818181),
+                    fontSize: SizeCompat.pxToDp(40),
+                    decoration: TextDecoration.none,
+                    fontWeight: FontWeight.w400),
+                selectTs: TextStyle(
+                    color: Color(0xff121212),
+                    fontSize: SizeCompat.pxToDp(40),
+                    decoration: TextDecoration.none,
+                    fontWeight: FontWeight.w400),
+              )),
+          Container(
+            height: SizeCompat.pxToDp(2),
+            color: Color(0xffEBEBEB),
+          ),
           Expanded(
             child: PageView.builder(
 //              onPageChanged: _pageChange,

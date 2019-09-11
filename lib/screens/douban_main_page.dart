@@ -31,39 +31,36 @@ class _MainPageState extends State<MainPage> {
     bottomData = new List();
 
     bottomData.add(FBottomData(
-      title: "Demo",
-//      page: ProfilePage(),
-      page: PlaygroundPage(),
-//      selectIcon: Image.asset("images/ic_tab_profile_active.png"),
-//      unSelectIcon: Image.asset("images/ic_tab_profile_normal.png"),
-      selectIcon: Image.asset("images/ic_tab_shiji_active.png"),
-      unSelectIcon: Image.asset("images/ic_tab_shiji_normal.png"),
-    ));
-
-    bottomData.add(FBottomData(
-      title: "切换",
+      title: "首页",
       page: HomePage(),
       selectIcon: Image.asset("images/ic_tab_home_active.png"),
       unSelectIcon: Image.asset("images/ic_tab_home_normal.png"),
     ));
     bottomData.add(FBottomData(
-      title: "列表",
+      title: "书影音",
       page: SubjectPage(),
       selectIcon: Image.asset("images/ic_tab_subject_active.png"),
       unSelectIcon: Image.asset("images/ic_tab_subject_normal.png"),
     ));
-//    bottomData.add(FBottomData(
-//      title: "小组",
-//      page: GroupPage(),
-//      selectIcon: Image.asset("images/ic_tab_group_active.png"),
-//      unSelectIcon: Image.asset("images/ic_tab_group_normal.png"),
-//    ));
-//    bottomData.add(FBottomData(
-//      title: "市集",
-//      page: MarketPage(),
-//      selectIcon: Image.asset("images/ic_tab_shiji_active.png"),
-//      unSelectIcon: Image.asset("images/ic_tab_shiji_normal.png"),
-//    ));
+    bottomData.add(FBottomData(
+      title: "小组",
+      page: GroupPage(),
+      selectIcon: Image.asset("images/ic_tab_group_active.png"),
+      unSelectIcon: Image.asset("images/ic_tab_group_normal.png"),
+    ));
+    bottomData.add(FBottomData(
+      title: "市集",
+      page: MarketPage(),
+      selectIcon: Image.asset("images/ic_tab_shiji_active.png"),
+      unSelectIcon: Image.asset("images/ic_tab_shiji_normal.png"),
+    ));
+    bottomData.add(FBottomData(
+      title: "我的",
+//      page: ProfilePage(),
+      page: PlaygroundPage(),
+      selectIcon: Image.asset("images/ic_tab_profile_active.png"),
+      unSelectIcon: Image.asset("images/ic_tab_profile_normal.png"),
+    ));
   }
 
   void onPageChange(val) {
