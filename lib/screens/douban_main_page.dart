@@ -119,13 +119,18 @@ class _MainPageState extends State<MainPage> {
           child: getBody(),
         ),
         Container(
-            height: SizeCompat.pxToDp(126),
-            color: Colors.white,
-            child: FBottomNavigationBar(
-              currIndex: currentIndex,
-              bottomData: bottomData,
-              callback: onPageChange,
-            )),
+          height: SizeCompat.pxToDp(126),
+          color: Colors.white,
+          child: FBottomNavigationBar(
+            currIndex: currentIndex,
+            bottomData: bottomData,
+            callback: onPageChange,
+          ),
+        ),
+        Container(
+          height: SizeCompat.pxToDp(20),
+          child: null,
+        )
       ],
     );
   }
