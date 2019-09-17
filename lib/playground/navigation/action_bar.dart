@@ -1,6 +1,6 @@
 import 'package:firewood/common/utils/size_compat.dart';
-import 'package:firewood/playground/util/fcolor.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class ActionBarWidget extends StatelessWidget implements PreferredSizeWidget {
   final String title;
@@ -24,8 +24,13 @@ class ActionBarWidget extends StatelessWidget implements PreferredSizeWidget {
 //          padding: EdgeInsets.fromLTRB(16.0, statusbarHeight, 0.0, 0),
             child: Stack(children: <Widget>[
               GestureDetector(
-                onTap: () {
-                  Navigator.of(context).pop();
+                onTap: () async {
+                  bool canPop = Navigator.of(context).canPop();
+                  if (!canPop) {
+                    SystemNavigator.pop();
+                  } else {
+                    Navigator.of(context).pop();
+                  }
                 },
                 child: Container(
                   padding: EdgeInsets.only(left: 16),

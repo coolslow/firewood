@@ -31,7 +31,7 @@ class FToast {
     }
 
     Fluttertoast.showToast(
-        msg: "This is Center Short Toast with center",
+        msg: msg,
         toastLength: Toast.LENGTH_LONG,
         gravity: gravity,
         timeInSecForIos: 3,

@@ -1,4 +1,5 @@
 import 'package:camera/camera.dart';
+import 'package:firewood/playground/animate/animate_demo.dart';
 import 'package:firewood/playground/banner/banner_demo.dart';
 import 'package:firewood/playground/bloc/bloc_demo.dart';
 import 'package:firewood/playground/dialog/dialog_demo.dart';
@@ -72,6 +73,7 @@ class _PlaygroundPageState extends State<PlaygroundPage> {
               getItem(context, "定时器", TickerDemoPage()),
 
               getItem(context, "手势", PointerEventDemo()),
+              getItem(context, "动画", AnimateDemoPage()),
 //              getItem(context, "TempletDemo", TempletDemoPage()),
               getItem(context, "状态管理", BlocDemoPage()),
               getItem(context, "网络服务", HttpDemoPage()),
