@@ -21,7 +21,8 @@ class FBottomNavigationBar extends StatefulWidget {
       this.selectTs,
       this.unSelectTs,
       this.selectBg = Colors.white,
-      this.unSelectBg = Colors.white,this.currIndex = 0}) {
+      this.unSelectBg = Colors.white,
+      this.currIndex = 0}) {
     if (selectTs == null) {
       this.selectTs = TextStyle(
           color: Color(0xff42BD56),
@@ -46,7 +47,6 @@ class FBottomNavigationBar extends StatefulWidget {
 }
 
 class _FBottomNavigationBarState extends State<FBottomNavigationBar> {
-
   @override
   void initState() {
     super.initState();
@@ -69,9 +69,10 @@ class _FBottomNavigationBarState extends State<FBottomNavigationBar> {
           color: Color(0xfff0f0f0),
         ),
         Container(
-            child: Row(
-          children: getBar(widget.bottomData),
-        ))
+          child: Row(
+            children: getBar(widget.bottomData),
+          ),
+        ),
       ],
     );
   }
@@ -89,7 +90,8 @@ class _FBottomNavigationBarState extends State<FBottomNavigationBar> {
               });
             },
             child: Container(
-              color: widget.currIndex == i ? widget.selectBg : widget.unSelectBg,
+              color:
+                  widget.currIndex == i ? widget.selectBg : widget.unSelectBg,
               child: Stack(
                 alignment: Alignment.topCenter,
                 children: <Widget>[
@@ -115,23 +117,6 @@ class _FBottomNavigationBarState extends State<FBottomNavigationBar> {
                       ),
                     ),
                   ]),
-//                  Positioned(
-//                    right: 15,
-//                    top: 5,
-//                    child: Container(
-//                      padding: const EdgeInsets.fromLTRB(3.0, 1.0, 3.0, 1.0),
-//                      decoration: BoxDecoration(
-//                          borderRadius: BorderRadius.horizontal(
-//                              left: Radius.elliptical(8.0, 8.0),
-//                              right: Radius.elliptical(8.0, 8.0)),
-//                          color: Color(0xFFFF0000)),
-//                      child: Text("3",
-//                          style: new TextStyle(
-//                              color: Color(0xFFffffff),
-//                              fontSize: 8,
-//                              decoration: TextDecoration.none)),
-//                    ),
-//                  ),
                 ],
               ),
             ),
