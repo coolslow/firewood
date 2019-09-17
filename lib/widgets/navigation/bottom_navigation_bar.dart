@@ -117,23 +117,6 @@ class _FBottomNavigationBarState extends State<FBottomNavigationBar> {
                       ),
                     ),
                   ]),
-//                  Positioned(
-//                    right: 15,
-//                    top: 5,
-//                    child: Container(
-//                      padding: const EdgeInsets.fromLTRB(3.0, 1.0, 3.0, 1.0),
-//                      decoration: BoxDecoration(
-//                          borderRadius: BorderRadius.horizontal(
-//                              left: Radius.elliptical(8.0, 8.0),
-//                              right: Radius.elliptical(8.0, 8.0)),
-//                          color: Color(0xFFFF0000)),
-//                      child: Text("3",
-//                          style: new TextStyle(
-//                              color: Color(0xFFffffff),
-//                              fontSize: 8,
-//                              decoration: TextDecoration.none)),
-//                    ),
-//                  ),
                 ],
               ),
             ),
