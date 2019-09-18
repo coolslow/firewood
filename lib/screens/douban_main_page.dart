@@ -127,10 +127,10 @@ class _MainPageState extends State<MainPage> {
             callback: onPageChange,
           ),
         ),
-        Container(
-          height: SizeCompat.pxToDp(20),
-          child: null,
-        )
+//        Container(
+//          height: SizeCompat.pxToDp(20),
+//          child: null,
+//        )
       ],
     );
   }

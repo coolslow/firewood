@@ -2,6 +2,8 @@ import 'dart:async';
 
 import 'package:firewood/bloc/recommend/recommend_data_bloc.dart';
 import 'package:firewood/common/utils/size_compat.dart';
+import 'package:firewood/routers/router_animate.dart';
+import 'package:firewood/routers/router_table.dart';
 import 'package:firewood/screens/home/douban_home_dynamic_page.dart';
 import 'package:firewood/screens/home/douban_home_recommend_page.dart';
 import 'package:firewood/widgets/navigation/action_search_bar.dart';
@@ -14,7 +16,8 @@ class HomePage extends StatefulWidget {
   _HomePageState createState() => new _HomePageState();
 }
 
-class _HomePageState extends State<HomePage> with AutomaticKeepAliveClientMixin{
+class _HomePageState extends State<HomePage>
+    with AutomaticKeepAliveClientMixin {
   List<FTabBarData> tabData;
   int currentIndex = 1;
   PageController _pageController;
@@ -37,6 +40,36 @@ class _HomePageState extends State<HomePage> with AutomaticKeepAliveClientMixin{
     double padding = SizeCompat.pxToDp(390);
 
     return new Scaffold(
+      floatingActionButton: GestureDetector(
+        onTap: () {
+          RouterTable.handle(context, RouterTable.COMPOSE,
+              animateType: RouterAnimate.SlideLeftIn);
+        },
+        child: Container(
+          alignment: Alignment.center,
+          height: SizeCompat.pxToDp(130),
+          width: SizeCompat.pxToDp(130),
+          decoration: BoxDecoration(
+              boxShadow: <BoxShadow>[
+                BoxShadow(
+                  color: Color(0x33cdcdcd),
+                  offset: Offset(3, 3),
+                  blurRadius: 3.0,
+                  spreadRadius: 1.0,
+                ),
+              ],
+              color: Color(0xff494949),
+              borderRadius:
+                  BorderRadius.all(Radius.circular(SizeCompat.pxToDp(65)))),
+          child: Image.asset(
+            "images/ic_compose.png",
+            width: SizeCompat.pxToDp(60),
+            height: SizeCompat.pxToDp(60),
+            color: Colors.white,
+            colorBlendMode: BlendMode.srcATop,
+          ),
+        ),
+      ),
       body: Column(
         children: <Widget>[
           FActionSearchBar(searchHint: "村里那个古怪的人", unReadCount: 9),
