@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:firewood/widgets/compat/safe_area.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -7,7 +8,6 @@ import 'common/utils/size_compat.dart';
 import 'screens/douban_main_page.dart';
 
 void main() {
-
   runApp(MyApp());
 
   if (Platform.isAndroid) {
@@ -43,22 +43,6 @@ class DouBan extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     SizeCompat.init(context, 1080);
-
-    if (Platform.isAndroid) {
-      return MainPage();
-    } else if (Platform.isIOS) {
-      return Column(
-        children: <Widget>[
-          Expanded(child: MainPage()),
-          Container(
-            color: Colors.white,
-            height: SizeCompat.bottom / 2,
-            width: double.infinity,
-          )
-        ],
-      );
-    }
-    // 其他平台兼容，返回空页面
-    return Container();
+    return FSafeArea(MainPage());
   }
 }

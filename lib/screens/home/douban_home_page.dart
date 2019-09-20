@@ -42,8 +42,7 @@ class _HomePageState extends State<HomePage>
     return new Scaffold(
       floatingActionButton: GestureDetector(
         onTap: () {
-          RouterTable.handle(context, RouterTable.COMPOSE,
-              animateType: RouterAnimate.SlideLeftIn);
+          RouterTable.handle(context, RouterTable.COMPOSE);
         },
         child: Container(
           alignment: Alignment.center,

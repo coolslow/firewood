@@ -95,6 +95,10 @@ flutter:
     - images/ic_can_play.png
     - images/ic_collecte.png
     - images/ic_collected.png
+    - images/ic_globe.png
+    - images/ic_photo_album.png
+    - images/ic_dustbin.png
+    - images/ic_add.png
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
   # For details regarding adding assets from package dependencies, see

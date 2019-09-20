@@ -16,7 +16,7 @@ class RouterTable {
     BuildContext context,
     String url, {
     Object arguments,
-    RouterAnimate animateType: RouterAnimate.SlideLeftIn,
+    RouterAnimate animateType: RouterAnimate.SlideRightIn,
   }) {
     return Router.handle(context, url,
         arguments: arguments, animateType: animateType);
