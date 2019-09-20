@@ -4,7 +4,6 @@ import 'package:dio/dio.dart';
 /// Http 相关配置信息类
 class HttpSettings {
   static const _apiBaseUrl = 'http://www.yuque.com/api/v2/';
-
   // todo you need to add the yuque auth token here ...
   static const _authToken = '';
   static const _connectTimeout = 5000;
