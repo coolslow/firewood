@@ -3,23 +3,13 @@ import 'package:firewood/playground/listviews/refresh_list_demo.dart';
 import 'package:firewood/playground/navigation/action_bar.dart';
 import 'package:flutter/material.dart';
 
-class ListGridDemoPage extends StatefulWidget {
-  @override
-  _ListGridDemoState createState() => _ListGridDemoState();
-}
-
-class _ListGridDemoState extends State<ListGridDemoPage> {
-  @override
-  void initState() {
-    super.initState();
-  }
-
+class ListGridDemoPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: ActionBarWidget("九宫格"),
       body: Column(
         children: <Widget>[
-          ActionBarWidget("九宫格"),
           Expanded(
               child: GridView.builder(
                   padding: EdgeInsets.all(0.0),

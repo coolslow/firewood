@@ -9,40 +9,21 @@ class ActionBarWidget extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
-    var statusbarHeight = MediaQuery.of(context).padding.top; //
+    var statusBarHeight = MediaQuery.of(context).padding.top; //
     return Column(
       children: <Widget>[
         Container(
             alignment: Alignment.centerLeft,
-            padding: EdgeInsets.only(top: statusbarHeight),
+            padding: EdgeInsets.only(top: statusBarHeight),
             constraints: BoxConstraints(
                 minWidth: double.maxFinite,
-                minHeight: SizeCompat.pxToDp(130) + statusbarHeight),
+                minHeight: SizeCompat.pxToDp(130) + statusBarHeight),
             decoration: BoxDecoration(
               color: Colors.blue,
             ),
 //          padding: EdgeInsets.fromLTRB(16.0, statusbarHeight, 0.0, 0),
             child: Stack(children: <Widget>[
-              GestureDetector(
-                onTap: () async {
-                  bool canPop = Navigator.of(context).canPop();
-                  if (!canPop) {
-                    SystemNavigator.pop();
-                  } else {
-                    Navigator.of(context).pop();
-                  }
-                },
-                child: Container(
-                  padding: EdgeInsets.only(left: 16),
-                  child: Image.asset(
-                    "images/ic_arrow_back.png",
-                    width: 20,
-                    height: 20,
-                    color: Colors.white,
-                    colorBlendMode: BlendMode.srcATop,
-                  ),
-                ),
-              ),
+              getNavigationBack(context),
               Center(
                 child: new Text(title,
                     style: new TextStyle(
@@ -53,6 +34,33 @@ class ActionBarWidget extends StatelessWidget implements PreferredSizeWidget {
             ]))
       ],
     );
+  }
+
+  Widget getNavigationBack(BuildContext context) {
+    bool canPop = Navigator.of(context).canPop();
+    if (canPop) {
+      return GestureDetector(
+        onTap: () async {
+          if (!canPop) {
+            SystemNavigator.pop();
+          } else {
+            Navigator.of(context).pop();
+          }
+        },
+        child: Container(
+          padding: EdgeInsets.only(left: 16),
+          child: Image.asset(
+            "images/ic_arrow_back.png",
+            width: 20,
+            height: 20,
+            color: Colors.white,
+            colorBlendMode: BlendMode.srcATop,
+          ),
+        ),
+      );
+    } else {
+      return Container();
+    }
   }
 
   @override

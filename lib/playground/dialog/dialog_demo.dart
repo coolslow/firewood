@@ -17,10 +17,10 @@ class _DialogDemoState extends State<DialogDemoPage> {
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
+      appBar: ActionBarWidget("Dialog"),
       body: SingleChildScrollView(
         child: Column(
           children: <Widget>[
-            ActionBarWidget(""),
             FlatButton(
               onPressed: () {
                 show();
@@ -75,6 +75,5 @@ class _DialogDemoState extends State<DialogDemoPage> {
 
   void hide() {
     LoadingDialog.hide(context);
-
   }
 }

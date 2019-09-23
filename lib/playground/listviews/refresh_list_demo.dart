@@ -1,17 +1,7 @@
 import 'package:firewood/playground/navigation/action_bar.dart';
 import 'package:flutter/material.dart';
 
-class RefreshListDemoPage extends StatefulWidget {
-  @override
-  _RefreshListDemoState createState() => _RefreshListDemoState();
-}
-
-class _RefreshListDemoState extends State<RefreshListDemoPage> {
-  @override
-  void initState() {
-    super.initState();
-  }
-
+class RefreshListDemoPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,11 +17,11 @@ class _RefreshListDemoState extends State<RefreshListDemoPage> {
                   padding: EdgeInsets.all(0.0),
                   itemCount: 20,
                   itemBuilder: (BuildContext context, int index) => ListTile(
-                        leading: Icon(Icons.list),
-                        title: Text("顾名思义=$index"),
-                        subtitle: Text("属性详细介绍"),
-                        trailing: Icon(Icons.keyboard_arrow_right),
-                      ),
+                    leading: Icon(Icons.list),
+                    title: Text("顾名思义=$index"),
+                    subtitle: Text("属性详细介绍"),
+                    trailing: Icon(Icons.keyboard_arrow_right),
+                  ),
                 ),
                 onRefresh: _onRefresh),
           ),
@@ -40,7 +30,7 @@ class _RefreshListDemoState extends State<RefreshListDemoPage> {
     );
   }
 
-  Future<void> _onRefresh()async {
+  Future<void> _onRefresh() async {
     print("====");
 //    await new Future.delayed(new Duration(seconds: 5));
 //    setState(() {});

@@ -1,20 +1,12 @@
 import 'package:firewood/entity/pair_entity.dart';
 import 'package:firewood/playground/navigation/action_bar.dart';
 import 'package:firewood/widgets/banner/banner.dart';
-import 'package:firewood/widgets/divider/dashed_divider.dart';
 import 'package:flutter/material.dart';
 
-class BannerDemoPage extends StatefulWidget {
-  @override
-  _BannerDemoPageState createState() => new _BannerDemoPageState();
-}
+class BannerDemoPage extends StatelessWidget {
+  final List<Pair> data = List<Pair>();
 
-class _BannerDemoPageState extends State<BannerDemoPage> {
-  List<Pair> data = List<Pair>();
-
-  @override
-  void initState() {
-    super.initState();
+  BannerDemoPage() {
     data.add(Pair.create(
         name: "https://img3.doubanio.com/view/photo/l/public/p2531065846.webp",
         value: ""));
@@ -29,9 +21,9 @@ class _BannerDemoPageState extends State<BannerDemoPage> {
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
+      appBar: ActionBarWidget("轮播图"),
       body: Column(
         children: <Widget>[
-          ActionBarWidget("轮播图"),
           Container(
             child: FBanner(
               data,

@@ -23,22 +23,23 @@ class _AdvanceAnimateDemoPageState extends State<AdvanceAnimateDemoPage>
     animation = IntTween(begin: 0, end: 255).animate(controller);
 
     controller2 = AnimationController(
-        duration: const Duration(milliseconds: 2500), vsync: this)..addListener((){
-      print("Controller2 addListener = ${controller2.value}     ${animation2.value}     ${controller2.isAnimating}");
-    });
+        duration: const Duration(milliseconds: 2500), vsync: this)
+      ..addListener(() {
+        print(
+            "Controller2 addListener = ${controller2.value}     ${animation2.value}     ${controller2.isAnimating}");
+      });
     animation2 = controller2.view;
-
   }
 
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
+      appBar: ActionBarWidget("Animate高级用法"),
       body: SingleChildScrollView(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            ActionBarWidget("Animate高级用法"),
             Row(children: <Widget>[
               FlatButton(
                 child: Text("开始"),

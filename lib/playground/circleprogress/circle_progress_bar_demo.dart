@@ -17,12 +17,10 @@ class _CircleProgressBarDemoState extends State<CircleProgressBarDemoPage> {
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
+      appBar: ActionBarWidget("进度条"),
       body: SingleChildScrollView(
         child: Column(
-          children: <Widget>[
-            ActionBarWidget("进度条"),
-            getBody(context)
-          ],
+          children: <Widget>[getBody(context)],
         ),
       ),
     );

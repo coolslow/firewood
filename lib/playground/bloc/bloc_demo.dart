@@ -21,13 +21,11 @@ class _BlocDemoState extends State<BlocDemoPage> {
 
   @override
   Widget build(BuildContext context) {
-    var statusbarHeight = MediaQuery.of(context).padding.top; //
-
     return new Scaffold(
+      appBar: ActionBarWidget("状态管理"),
       body: SingleChildScrollView(
         child: Column(
           children: <Widget>[
-            ActionBarWidget("状态管理"),
             BlocBuilder<CounterBloc, CounterState>(
               bloc: _counterBloc..dispatch(CounterEvent.increment),
               builder: (context, state) {

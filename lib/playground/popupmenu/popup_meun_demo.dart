@@ -4,30 +4,19 @@ import 'package:firewood/playground/util/frouter.dart';
 import 'package:firewood/widgets/divider/h_divider.dart';
 import 'package:flutter/material.dart';
 
-import 'package:fluttertoast/fluttertoast.dart';
-
-class PopupMenuDemoPage extends StatefulWidget {
-  @override
-  _PopupMenuDemoState createState() => new _PopupMenuDemoState();
-}
-
-class _PopupMenuDemoState extends State<PopupMenuDemoPage> {
-  @override
-  void initState() {
-    super.initState();
-  }
+class PopupMenuDemoPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
+      appBar: ActionBarWidget("PopupMenu菜单"),
       body: SingleChildScrollView(
         child: Column(
           children: <Widget>[
-            ActionBarWidget("PopupMenu菜单"),
             Container(
               child: FlatButton(
                 onPressed: () {
-                  click1();
+                  click1(context);
                 },
                 child: Container(
                     height: 40,
@@ -39,7 +28,7 @@ class _PopupMenuDemoState extends State<PopupMenuDemoPage> {
             Container(
               child: FlatButton(
                 onPressed: () {
-                  click2();
+                  click2(context);
                 },
                 child: Container(
                     height: 40,
@@ -66,7 +55,7 @@ class _PopupMenuDemoState extends State<PopupMenuDemoPage> {
     );
   }
 
-  void click1() async {
+  void click1(BuildContext context) async {
     final result = await showMenu(
         context: context,
         position: RelativeRect.fromLTRB(10.0, 90.0, 0.0, 0.0),
@@ -82,7 +71,7 @@ class _PopupMenuDemoState extends State<PopupMenuDemoPage> {
     print("文字菜单 选中项=$result");
   }
 
-  void click2() async {
+  void click2(BuildContext context) async {
     final result = await showMenu(
         context: context,
         position: RelativeRect.fromLTRB(10.0, 90.0, 0.0, 0.0),

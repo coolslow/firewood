@@ -7,10 +7,10 @@ class ToastDemoPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
+      appBar: ActionBarWidget("Toast"),
       body: SingleChildScrollView(
         child: Column(
           children: <Widget>[
-            ActionBarWidget("Toast"),
             FlatButton(
               onPressed: () {
                 click1();

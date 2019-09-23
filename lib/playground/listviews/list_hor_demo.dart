@@ -3,23 +3,13 @@ import 'package:firewood/playground/listviews/refresh_list_demo.dart';
 import 'package:firewood/playground/navigation/action_bar.dart';
 import 'package:flutter/material.dart';
 
-class ListHorDemoPage extends StatefulWidget {
-  @override
-  _ListHorDemoState createState() => _ListHorDemoState();
-}
-
-class _ListHorDemoState extends State<ListHorDemoPage> {
-  @override
-  void initState() {
-    super.initState();
-  }
-
+class ListHorDemoPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: ActionBarWidget("水平列表"),
       body: Column(
         children: <Widget>[
-          ActionBarWidget("水平列表"),
           Container(
               height: 150,
               child: ListView.separated(

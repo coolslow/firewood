@@ -8,45 +8,39 @@ class DashDividerDemo extends StatelessWidget {
     return new Scaffold(
       appBar: ActionBarWidget("分割线"),
       body: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
           Container(
             margin: EdgeInsets.only(top: 10),
             height: 1,
             width: double.infinity,
             child: DashedDivider(
-              horizontal: true,
+              direction: Axis.horizontal,
               color: Colors.red,
             ),
           ),
           Container(
             margin: EdgeInsets.only(top: 10),
             height: 1,
-            width: double.infinity,
+            width: 200,
             child: DashedDivider(
               solidWidth: 8,
               color: Colors.green,
-              horizontal: true,
+              direction: Axis.horizontal,
             ),
           ),
-          Container(
-              alignment: Alignment.center,
-              height: 100,
-              child: Row(
-                children: <Widget>[
-                  DashedDivider(
-                    horizontal: false,
-                    color: Colors.red,
-                  ),
-                ],
-              )),
-          Container(
-            alignment: Alignment.center,
+          SizedBox(
+            height: 100,
+            width: 10,
+            child: DashedDivider(
+              color: Colors.red,
+            ),
+          ),
+          SizedBox(
             height: 100,
             width: 100,
-            color: Colors.blueGrey,
             child: DashedDivider(
 //              solidWidth: 8,
-              horizontal: false,
               color: Colors.green,
             ),
           ),

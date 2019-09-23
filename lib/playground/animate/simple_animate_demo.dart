@@ -26,8 +26,7 @@ class _SimpleAnimateDemoPageState extends State<SimpleAnimateDemoPage>
       })
       ..addStatusListener((status) {
         if (status == AnimationStatus.completed) {
-        } else if (status == AnimationStatus.dismissed) {
-        }
+        } else if (status == AnimationStatus.dismissed) {}
         FToast.showLong("AnimationStatus=$status");
       });
 
@@ -44,12 +43,12 @@ class _SimpleAnimateDemoPageState extends State<SimpleAnimateDemoPage>
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
+      appBar: ActionBarWidget("简单动画"),
       body: SingleChildScrollView(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            ActionBarWidget("简单动画"),
             Row(children: <Widget>[
               FlatButton(
                 child: Text("开始"),

@@ -10,7 +10,6 @@ class TickerDemoPage extends StatefulWidget {
 }
 
 class _TickerDemoState extends State<TickerDemoPage> {
-
   StreamController<String> secondStreamController = StreamController<String>();
   StreamController<String> microsecondsStreamController =
       StreamController<String>();
@@ -26,9 +25,12 @@ class _TickerDemoState extends State<TickerDemoPage> {
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
+      appBar: ActionBarWidget("定时器"),
       body: SingleChildScrollView(
         child: Column(
-          children: <Widget>[ActionBarWidget("定时器"), getBody(context)],
+          children: <Widget>[
+            getBody(context),
+          ],
         ),
       ),
     );

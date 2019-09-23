@@ -9,7 +9,7 @@ class DashedDivider extends StatelessWidget {
   final double gapWidth;
   final double indent;
   final double endIndent;
-  final bool horizontal;
+  final Axis direction;
 
   DashedDivider({
 //    this.color = Colors.transparent,
@@ -19,17 +19,17 @@ class DashedDivider extends StatelessWidget {
     this.gapWidth = 2.0,
     this.indent = 0.0,
     this.endIndent = 0.0,
-    this.horizontal = false,
+    this.direction = Axis.vertical,
   });
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-        padding: horizontal
+    return Container(
+        padding: direction == Axis.horizontal
             ? EdgeInsets.only(left: indent, right: endIndent)
             : EdgeInsets.only(top: indent, bottom: endIndent),
         child: CustomPaint(
-          painter: _DashRectPainter(horizontal,
+          painter: _DashRectPainter(direction,
               color: color,
               strokeWidth: strokeWidth,
               solidWidth: solidWidth,
@@ -43,10 +43,10 @@ class _DashRectPainter extends CustomPainter {
   final double gapWidth;
   final double solidWidth;
   final Color color;
-  bool horizontal;
+  Axis direction;
   Paint dashedPaint;
 
-  _DashRectPainter(this.horizontal,
+  _DashRectPainter(this.direction,
       {this.strokeWidth, this.solidWidth, this.gapWidth, this.color}) {
     dashedPaint = Paint()
       ..color = color
@@ -56,7 +56,10 @@ class _DashRectPainter extends CustomPainter {
 
   @override
   void paint(Canvas canvas, Size size) {
-    if (horizontal) {
+
+    print("size=$size");
+
+    if (direction == Axis.horizontal) {
       drawHorizontal(canvas, size);
     } else {
       drawVertical(canvas, size);

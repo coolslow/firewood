@@ -29,12 +29,12 @@ class _AnimatedBuilderDemoPageState extends State<AnimatedBuilderDemoPage>
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
+      appBar: ActionBarWidget("AnimatedBuilder动画"),
       body: SingleChildScrollView(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            ActionBarWidget("AnimatedBuilder动画"),
             Row(children: <Widget>[
               FlatButton(
                 child: Text("开始"),

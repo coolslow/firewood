@@ -57,10 +57,10 @@ class _PageViewDemoState extends State<PageViewDemoPage> {
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
+      appBar: ActionBarWidget("页级列表"),
       body: SingleChildScrollView(
         child: Column(
           children: <Widget>[
-            ActionBarWidget("页级列表"),
 //            getTitle("Children方式"),
 //            SizedBox.fromSize(
 //              child: pvChildren(context),

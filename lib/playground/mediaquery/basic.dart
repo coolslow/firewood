@@ -16,9 +16,9 @@ class MediaQueryDataScreen extends StatelessWidget {
     var _hashCode = data.hashCode;
 
     return Scaffold(
+      appBar: ActionBarWidget("MediaQuery相关数据"),
       body: Column(
         children: <Widget>[
-          ActionBarWidget("MediaQuery相关数据"),
           Column(
             children: <Widget>[
               Container(
