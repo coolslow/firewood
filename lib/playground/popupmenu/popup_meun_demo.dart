@@ -1,4 +1,6 @@
 import 'package:firewood/playground/navigation/action_bar.dart';
+import 'package:firewood/playground/popupmenu/dropdown_meun_demo.dart';
+import 'package:firewood/playground/util/frouter.dart';
 import 'package:firewood/widgets/divider/h_divider.dart';
 import 'package:flutter/material.dart';
 
@@ -44,6 +46,18 @@ class _PopupMenuDemoState extends State<PopupMenuDemoPage> {
                     color: Colors.deepOrangeAccent,
                     width: double.maxFinite,
                     child: Center(child: Text("Popup Menu图文菜单"))),
+              ),
+            ),
+            Container(
+              child: FlatButton(
+                onPressed: () {
+                  FRouter.to(context, DropdownMenuDemoPage());
+                },
+                child: Container(
+                    height: 40,
+                    color: Colors.deepOrangeAccent,
+                    width: double.maxFinite,
+                    child: Center(child: Text("DropdownButton"))),
               ),
             )
           ],

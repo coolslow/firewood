@@ -1,10 +1,14 @@
 import 'dart:async';
 
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:firewood/common/constants.dart';
 import 'package:firewood/common/utils/size_compat.dart';
+import 'package:firewood/playground/navigation/action_bar.dart';
 import 'package:firewood/widgets/compat/safe_area.dart';
 import 'package:firewood/widgets/divider/h_divider.dart';
 import 'package:firewood/widgets/divider/v_divider.dart';
+import 'package:firewood/widgets/navigation/action_search_bar.dart';
+import 'package:firewood/widgets/overlay/overlay.dart';
 import 'package:firewood/widgets/photo/photo_album.dart';
 import 'package:flutter/material.dart';
 
@@ -30,93 +34,108 @@ class _ComposePageState extends State<ComposePage> {
   @override
   Widget build(BuildContext context) {
     return FSafeArea(Scaffold(
-      appBar: AppBar(
-        title: Text('编辑'),
-      ),
+//      appBar: AppBar(
+//        title: Text('编辑'),
+//      ),
       body: Container(
         color: Colors.white,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
+            ActionBarWidget("编辑"),
             Expanded(
               child: SingleChildScrollView(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    StreamBuilder(
-                        initialData: hasEditingText,
-                        stream: streamController.stream,
-                        builder: (BuildContext context,
-                            AsyncSnapshot<bool> snapshot) {
-                          return Container(
-                            color: Colors.white,
-                            padding: EdgeInsets.only(
-                                left: SizeCompat.pxToDp(40),
-                                right: SizeCompat.pxToDp(40)),
-                            child: TextField(
+                child: Container(
+                  constraints: BoxConstraints(
+                    minHeight: SizeCompat.height() -
+                        SizeCompat.pxToDp(210) -
+                        SizeCompat.pxToDp(130) -
+                        SizeCompat.top -
+                        SizeCompat.bottom -
+                        2,
+                  ),
+                  color: Colors.white,
+                  child: Column(
+                    mainAxisSize: MainAxisSize.max,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: <Widget>[
+                      StreamBuilder(
+                          initialData: hasEditingText,
+                          stream: streamController.stream,
+                          builder: (BuildContext context,
+                              AsyncSnapshot<bool> snapshot) {
+                            return Container(
+                              color: Colors.white,
+                              padding: EdgeInsets.only(
+                                  left: SizeCompat.pxToDp(40),
+                                  right: SizeCompat.pxToDp(40)),
+                              child: TextField(
 //                          scrollPadding: const EdgeInsets.only(left:0.0,top: 60),
-                                maxLines: snapshot.data ? 120 : 1,
-                                maxLength: 100,
-                                maxLengthEnforced: true,
+//                                maxLines: snapshot.data ? 100 : 1,
+                                  maxLines: null,
+                                  maxLength: 2000,
+                                  maxLengthEnforced: true,
 
 //                    obscureText: true,
 //                    cursorWidth: 20,
 //                    cursorRadius: Radius.circular(10),
 //                    cursorColor: Colors.pinkAccent,
 //                    readOnly: true,
-                                showCursor: true,
-                                style: TextStyle(
-                                    fontSize: SizeCompat.pxToDp(44),
-                                    height: 1.25,
-                                    color: Color(0xff1a1a1a)),
-                                controller: textEditingController,
-                                keyboardType: TextInputType.text,
-                                autofocus: !snapshot.data,
-                                textInputAction: TextInputAction.done,
-                                onChanged: (val) {
-                                  if (val.isEmpty) {
-                                    if (hasEditingText) {
-                                      streamController
-                                          .add(hasEditingText = false);
+                                  showCursor: true,
+                                  style: TextStyle(
+                                      fontSize: SizeCompat.pxToDp(44),
+                                      height: 1.25,
+                                      color: Color(0xff1a1a1a)),
+                                  controller: textEditingController,
+                                  keyboardType: TextInputType.text,
+                                  autofocus: !snapshot.data,
+                                  textInputAction: TextInputAction.done,
+                                  onChanged: (val) {
+                                    if (val.isEmpty) {
+                                      if (hasEditingText) {
+                                        streamController
+                                            .add(hasEditingText = false);
+                                      }
+                                    } else {
+                                      if (!hasEditingText) {
+                                        streamController
+                                            .add(hasEditingText = true);
+                                      }
                                     }
-                                  } else {
-                                    if (!hasEditingText) {
-                                      streamController
-                                          .add(hasEditingText = true);
-                                    }
-                                  }
-                                },
-                                onSubmitted: (val) {
-                                  print("onSubmitted value=$val");
-                                },
-                                decoration: InputDecoration(
-                                  border: InputBorder.none,
-                                  counterText: "",
+                                  },
+                                  onSubmitted: (val) {
+                                    print("onSubmitted value=$val");
+                                  },
+                                  decoration: InputDecoration(
+                                    border: InputBorder.none,
+                                    counterText: "",
 //                                  counter: null,
 //                            contentPadding:
 //                                EdgeInsets.only(top: SizeCompat.pxToDp(60)),
-                                  icon: hasEditingText
-                                      ? null
-                                      : Icon(
-                                          Icons.camera,
-                                          size: SizeCompat.pxToDp(80),
-                                          color: Color(0xffbfbfbf),
-                                        ),
-                                  hintText: "思绪在无人的地方生长...",
-                                  hintStyle: TextStyle(
-                                      fontSize: SizeCompat.pxToDp(44),
-                                      color: Color(0xff9f9f9f)),
-                                )),
-                          );
-                        }),
-                    Container(
-                      margin: EdgeInsets.only(
-                          left: SizeCompat.pxToDp(40),
-                          right: SizeCompat.pxToDp(40)),
-                      child: PhotoAlbum(
-                          data: photos, size: SizeCompat.width() * 3 / 4),
-                    ),
-                  ],
+                                    icon: hasEditingText
+                                        ? null
+                                        : Icon(
+                                            Icons.camera,
+                                            size: SizeCompat.pxToDp(80),
+                                            color: Color(0xffbfbfbf),
+                                          ),
+                                    hintText: "思绪在无人的地方生长...",
+                                    hintStyle: TextStyle(
+                                        fontSize: SizeCompat.pxToDp(44),
+                                        color: Color(0xff9f9f9f)),
+                                  )),
+                            );
+                          }),
+                      Container(
+                        margin: EdgeInsets.only(
+                            left: SizeCompat.pxToDp(40),
+                            right: SizeCompat.pxToDp(40)),
+                        child: PhotoAlbum(
+                            data: photos, size: SizeCompat.width() * 3 / 4),
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),
@@ -131,6 +150,7 @@ class _ComposePageState extends State<ComposePage> {
                 GestureDetector(
                   onTap: () {
                     print("公开....");
+                    clickAuthority();
                   },
                   child: Container(
                     height: SizeCompat.pxToDp(60),
@@ -170,7 +190,6 @@ class _ComposePageState extends State<ComposePage> {
               onTap: () {
                 print("相册....");
                 print(photos.toString());
-
               },
               child: Container(
                 height: SizeCompat.pxToDp(120),
@@ -196,5 +215,10 @@ class _ComposePageState extends State<ComposePage> {
     textEditingController.dispose();
     streamController.close();
     super.dispose();
+  }
+
+  FOverlay overlay = FOverlay();
+  void clickAuthority() {
+    overlay.open(context, null);
   }
 }
