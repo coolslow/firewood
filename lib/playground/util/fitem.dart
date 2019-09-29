@@ -4,13 +4,18 @@ import 'package:flutter/widgets.dart';
 
 class FItem {
   ///
-  static Widget getItem(BuildContext context, String title, Widget w) {
+  static Widget getItem(BuildContext context, String title, Widget w,
+      {VoidCallback onPressed}) {
     return Column(
       children: <Widget>[
         FlatButton(
             padding: EdgeInsets.all(0.0),
             materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
             onPressed: () {
+              if (onPressed != null) {
+                onPressed();
+                return;
+              }
               FRouter.to(context, w);
             },
             child: Container(

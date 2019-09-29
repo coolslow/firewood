@@ -5,7 +5,8 @@
 ### iOS 常用命令
     
     pod install
-
+    
+    pod setup
 
 
 ### Android 下安装正式版本命令

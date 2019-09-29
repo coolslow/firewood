@@ -1,10 +1,10 @@
 import 'package:firewood/playground/animate/animate_demo.dart';
 import 'package:firewood/playground/banner/banner_demo.dart';
 import 'package:firewood/playground/bloc/bloc_demo.dart';
-import 'package:firewood/playground/camera/camera_demo.dart';
 import 'package:firewood/playground/dialog/dialog_demo.dart';
 import 'package:firewood/playground/http/http_demo.dart';
 import 'package:firewood/playground/listviews/list_demo.dart';
+import 'package:firewood/playground/media/media_demo.dart';
 import 'package:firewood/playground/mediaquery/basic.dart';
 import 'package:firewood/playground/navigation/action_bar.dart';
 import 'package:firewood/playground/pageviews/page_view_demo.dart';
@@ -47,7 +47,7 @@ class PlaygroundPage extends StatelessWidget {
         FItem.getItem(context, "定时器", TickerDemoPage()),
         FItem.getItem(context, "手势", PointerEventDemo()),
         FItem.getItem(context, "动画", AnimateDemoPage()),
-        FItem.getItem(context, "媒体", CameraDemoPage()),
+        FItem.getItem(context, "媒体", MediaDemoPage()),
         FItem.getItem(context, "状态管理", BlocDemoPage()),
         FItem.getItem(context, "网络服务", HttpDemoPage()),
         FItem.getItem(context, "加载", DialogDemoPage()),
