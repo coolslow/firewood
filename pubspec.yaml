@@ -44,6 +44,8 @@ dependencies:
 
   image_picker: ^0.6.1+4
 
+  barcode_scan: ^1.0.0
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
