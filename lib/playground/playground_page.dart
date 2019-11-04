@@ -1,6 +1,7 @@
 import 'package:firewood/playground/animate/animate_demo.dart';
 import 'package:firewood/playground/banner/banner_demo.dart';
 import 'package:firewood/playground/bloc/bloc_demo.dart';
+import 'package:firewood/playground/cools/cools_demo_page.dart';
 import 'package:firewood/playground/dialog/dialog_demo.dart';
 import 'package:firewood/playground/http/http_demo.dart';
 import 'package:firewood/playground/listviews/list_demo.dart';
@@ -53,6 +54,7 @@ class PlaygroundPage extends StatelessWidget {
         FItem.getItem(context, "加载", DialogDemoPage()),
         FItem.getItem(context, "分割线", DashDividerDemo()),
         FItem.getItem(context, "MediaQuery", MediaQueryDataScreen()),
+        FItem.getItem(context, "Cools", CoolsPage()),
       ])),
     );
   }
