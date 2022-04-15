@@ -16,11 +16,11 @@ class FBanner extends StatefulWidget {
   EdgeInsets margin = EdgeInsets.all(0);
   EdgeInsets padding = EdgeInsets.all(0);
 
-  double left;
-  double right;
-  double bottom;
-  double space;
-  double size;
+  double left = 0;
+  double right = 0;
+  double bottom = 0;
+  double space = 10;
+  double size  = 0;
 
   Color selectedColor;
   Color unSelectedColor;
@@ -39,35 +39,22 @@ class FBanner extends StatefulWidget {
   ]);
 
   FBanner(this.data,
-      {this.ratio,
-      this.width,
-      this.size,
-      this.space,
-      this.alignment,
-      this.left,
-      this.right,
-      this.bottom,
-      this.selectedColor,
-      this.unSelectedColor,
-      this.autoStart,
-      this.duration}) {
-    this.ratio ??= 3;
-    this.width ??= SizeCompat.width();
-    this.borderRadius ??= BorderRadius.all(Radius.circular(10));
-
-    this.alignment ??= FBannerAlignment.center;
+      {required this.ratio,
+      required this.width,
+      required this.size,
+      required this.space,
+      required this.alignment,
+      required this.left,
+      required this.right,
+      required this.bottom,
+      required this.selectedColor,
+      required this.unSelectedColor,
+      required this.autoStart,
+      required this.duration}) {
     this.left = 20;
     this.right = 20;
     this.bottom = 20;
 
-    this.space ??= 10;
-    this.size ??= 10;
-
-    this.selectedColor ??= Colors.greenAccent;
-    this.unSelectedColor ??= Colors.grey;
-    this.autoStart ??= true;
-
-    this.duration ??= Duration(milliseconds: 2000);
   }
 
   @override
@@ -79,12 +66,12 @@ class FBanner extends StatefulWidget {
 class _FBannerState extends State<FBanner> {
   StreamController<int> stream = StreamController<int>();
 
-  PageController pageController;
-  Timer timer;
+  late PageController pageController;
+  late Timer timer;
 
   final int maxCount = 1000;
-  int itemCount;
-  int initialPage;
+  int itemCount = 0;
+  int initialPage = 0;
 
   @override
   void initState() {
@@ -110,7 +97,7 @@ class _FBannerState extends State<FBanner> {
 
   void stopTimer() {
     if (widget.autoStart) {
-      timer?.cancel();
+      timer.cancel();
     }
   }
 
@@ -136,9 +123,9 @@ class _FBannerState extends State<FBanner> {
 
   @override
   void dispose() {
-    stream?.close();
-    pageController?.dispose();
-    timer?.cancel();
+    stream.close();
+    pageController.dispose();
+    timer.cancel();
     super.dispose();
   }
 
@@ -217,7 +204,7 @@ class _FBannerState extends State<FBanner> {
                     height: widget.size,
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
-                      color: (snapshot.data % widget.data.length) == index
+                      color: (snapshot.data! % widget.data.length) == index
                           ? widget.selectedColor
                           : widget.unSelectedColor,
                     ),
@@ -248,7 +235,7 @@ class _FBannerState extends State<FBanner> {
                     height: widget.size,
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
-                      color: (snapshot.data % widget.data.length) == index
+                      color: (snapshot.data! % widget.data.length) == index
                           ? widget.selectedColor
                           : widget.unSelectedColor,
                     ),
@@ -278,7 +265,7 @@ class _FBannerState extends State<FBanner> {
                     height: widget.size,
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
-                      color: (snapshot.data % widget.data.length) == index
+                      color: (snapshot.data! % widget.data.length) == index
                           ? widget.selectedColor
                           : widget.unSelectedColor,
                     ),

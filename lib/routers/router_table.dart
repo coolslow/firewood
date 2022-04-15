@@ -12,13 +12,13 @@ class RouterTable {
   static const String PH = "(:)";
   static const String COMPOSE = "$PREFIX/compose/$PH";
 
-  static Future handle(
+  static Future<dynamic>? handle(
     BuildContext context,
     String url, {
-    Object arguments,
+    Object? arguments,
     RouterAnimate animateType: RouterAnimate.SlideRightIn,
   }) {
-    return Router.handle(context, url,
+    return RouterUtils.handle(context, url,
         arguments: arguments, animateType: animateType);
   }
 

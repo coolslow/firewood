@@ -2,7 +2,6 @@ import 'dart:async';
 
 import 'package:firewood/bloc/recommend/recommend_data_bloc.dart';
 import 'package:firewood/common/utils/size_compat.dart';
-import 'package:firewood/routers/router_animate.dart';
 import 'package:firewood/routers/router_table.dart';
 import 'package:firewood/screens/home/douban_home_dynamic_page.dart';
 import 'package:firewood/screens/home/douban_home_recommend_page.dart';
@@ -16,11 +15,10 @@ class HomePage extends StatefulWidget {
   _HomePageState createState() => new _HomePageState();
 }
 
-class _HomePageState extends State<HomePage>
-    with AutomaticKeepAliveClientMixin {
-  List<FTabBarData> tabData;
+class _HomePageState extends State<HomePage> with AutomaticKeepAliveClientMixin {
+  late List<FTabBarData> tabData;
   int currentIndex = 1;
-  PageController _pageController;
+  late PageController _pageController;
 
   StreamController<int> _stream = StreamController<int>();
 
@@ -28,7 +26,7 @@ class _HomePageState extends State<HomePage>
   void initState() {
     _pageController = PageController(initialPage: currentIndex);
 
-    tabData = new List();
+    tabData = [];
     tabData.add(FTabBarData("动态"));
     tabData.add(FTabBarData("推荐"));
 
@@ -37,6 +35,7 @@ class _HomePageState extends State<HomePage>
 
   @override
   Widget build(BuildContext context) {
+    super.build(context);
     double padding = SizeCompat.pxToDp(390);
 
     return new Scaffold(
@@ -83,7 +82,17 @@ class _HomePageState extends State<HomePage>
                   builder: (BuildContext context, AsyncSnapshot<int> snapshot) {
                     return FTabBar(
                         tabData: tabData,
-                        currIndex: snapshot.data,
+                        currIndex: snapshot.data!,
+                        selectTs: TextStyle(
+                            color: Color(0xff42BD56),
+                            fontSize: SizeCompat.pxToDp(40),
+                            decoration: TextDecoration.none,
+                            fontWeight: FontWeight.w700),
+                        unSelectTs: TextStyle(
+                            color: Color(0xff959595),
+                            fontSize: SizeCompat.pxToDp(40),
+                            decoration: TextDecoration.none,
+                            fontWeight: FontWeight.w200),
                         callback: _onTap);
                   })),
           Container(
@@ -100,12 +109,15 @@ class _HomePageState extends State<HomePage>
                   return DynamicPage();
                 } else {
                   return BlocProvider(
-                    builder: (BuildContext context) {
-                      return RecommendDataBloc()
-                        ..dispatch(RecommendFetchEvent());
-                    },
-                    child: RecommendPage(),
-                  );
+                      create: (context) => RecommendDataBloc(RecommendInitState()),
+                      child: RecommendPage());
+                  // return BlocProvider(
+                  //   builder: (BuildContext context) {
+                  //     return RecommendDataBloc()
+                  //       ..dispatch(RecommendFetchEvent());
+                  //   },
+                  //   child: RecommendPage(),
+                  // );
                 }
               },
               itemCount: tabData.length,
@@ -123,8 +135,8 @@ class _HomePageState extends State<HomePage>
 
   @override
   void dispose() {
-    _pageController?.dispose();
-    _stream?.close();
+    _pageController.dispose();
+    _stream.close();
     super.dispose();
   }
 

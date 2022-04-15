@@ -2,7 +2,7 @@ import 'package:firewood/common/utils/utils.dart';
 import 'package:firewood/entity/type_entity.dart';
 
 class MoveInterestEntity extends TypeEntity{
-  String id; // 唯一编号
+  late String id; // 唯一编号
 
   String name; // 电影名称
   String beOnTime; // 上映时间
@@ -18,15 +18,15 @@ class MoveInterestEntity extends TypeEntity{
   List<String> tags;
 
   MoveInterestEntity.create(
-      {this.name,
-      this.beOnTime,
-      this.star,
-      this.score,
-      this.des,
-      this.leftImgUrls,
-      this.rightImgUrls,
+      {required this.name,
+      required this.beOnTime,
+      required this.star,
+      required this.score,
+      required this.des,
+      required this.leftImgUrls,
+      required this.rightImgUrls,
       this.collected = false,
-      this.tags}) {
+      required this.tags}) {
     id = Utils.autoIncrement().toString();
   }
 

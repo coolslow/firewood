@@ -43,11 +43,14 @@ class _DashRectPainter extends CustomPainter {
   final double gapWidth;
   final double solidWidth;
   final Color color;
-  Axis direction;
-  Paint dashedPaint;
+  Axis direction = Axis.vertical;
+  late Paint dashedPaint;
 
   _DashRectPainter(this.direction,
-      {this.strokeWidth, this.solidWidth, this.gapWidth, this.color}) {
+      {required this.strokeWidth,
+      required this.solidWidth,
+      required this.gapWidth,
+      required this.color}) {
     dashedPaint = Paint()
       ..color = color
       ..strokeWidth = strokeWidth
@@ -56,7 +59,6 @@ class _DashRectPainter extends CustomPainter {
 
   @override
   void paint(Canvas canvas, Size size) {
-
     print("size=$size");
 
     if (direction == Axis.horizontal) {

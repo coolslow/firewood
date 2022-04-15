@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 ///
 /// 实践 MediaQueryData 类中的方法，flutter 中获取屏幕尺寸及相关信息
 ///
-
+// deprecated zhl
 class MediaQueryDataScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {

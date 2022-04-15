@@ -115,7 +115,7 @@ class _LayerBackgroundPaint extends CustomPainter {
   }
 
   List<Offset> _getPlaceholder() {
-    List<Offset> data = List<Offset>();
+    List<Offset> data = <Offset>[];
     int referencePoint = 2;
     if (chessController.boardSize <= 12) {
       referencePoint = 2;

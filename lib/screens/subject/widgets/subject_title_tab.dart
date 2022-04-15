@@ -23,13 +23,13 @@ class SubjectTitleTab extends StatefulWidget {
 }
 
 class _SubjectTitleTabState extends State<SubjectTitleTab> {
-  PageController _pageController;
+  late PageController _pageController;
   int currentIndex = 0;
-  List<Widget> widgetData = List<Widget>();
-  List<FTabBarData> tabData = List<FTabBarData>();
+  List<Widget> widgetData = <Widget>[];
+  List<FTabBarData> tabData = <FTabBarData>[];
 
-  double initWidth;
-  double initHeight;
+  late double initWidth;
+  late double initHeight;
 
   @override
   void initState() {
@@ -103,7 +103,7 @@ class _SubjectTitleTabState extends State<SubjectTitleTab> {
 
   @override
   void dispose() {
-    _pageController?.dispose();
+    _pageController.dispose();
     super.dispose();
   }
 

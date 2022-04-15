@@ -7,19 +7,19 @@ import 'package:flutter/widgets.dart';
 
 // ignore: must_be_immutable
 class FActionSearchBar extends StatelessWidget implements PreferredSizeWidget {
-  final String searchHint;
-  final Color bgColor;
-  final Color mailColor;
-  final Color connerBgColor;
-  final int unReadCount;
+  late  String searchHint;
+  late Color bgColor;
+  late  Color mailColor;
+  late Color connerBgColor;
+  int unReadCount = 1;
 
-  double actionBarHeight;
+  double actionBarHeight  = 0;
 
   @override
   Size get preferredSize => Size.fromHeight(SizeCompat.pxToDp(130));
 
   FActionSearchBar(
-      {@required this.searchHint,
+      {required this.searchHint,
       this.bgColor = FColors.primary,
       this.mailColor = Colors.white,
       this.connerBgColor = Colors.white,

@@ -11,13 +11,14 @@ class RecommendFetchEvent extends RecommendDataEvent {
 //  int pageStart = PageConstant.start;
 //  int pageSize = PageConstant.size;
   bool isRefresh;
+  bool isNow;
 
-  RecommendFetchEvent({this.isRefresh = false});
+  RecommendFetchEvent({this.isRefresh = false,this.isNow = false});
 }
 
 /// state
 class RecommendDataState {
-  List<TypeEntity> data;
+   List<TypeEntity> data = <TypeEntity>[];
 }
 
 class RecommendInitState extends RecommendDataState {}
@@ -32,13 +33,9 @@ class RecommendThumbState extends RecommendDataState {}
 class RecommendDataBloc extends Bloc<RecommendDataEvent, RecommendDataState> {
   int currPage = PageConstant.start;
   RecommendRepos mRecommendRepos = RecommendRepos();
-  List<TypeEntity> mData = List<TypeEntity>();
+  List<TypeEntity> mData = <TypeEntity>[];
 
-  @override
-  RecommendDataState get initialState {
-//    print("initialState===");
-    return RecommendInitState();
-  }
+  RecommendDataBloc(RecommendDataState initialState) : super(initialState);
 
   @override
   Stream<RecommendDataState> mapEventToState(RecommendDataEvent event) async* {
@@ -55,12 +52,25 @@ class RecommendDataBloc extends Bloc<RecommendDataEvent, RecommendDataState> {
         yield loadingState;
       }
 
-      List<TypeEntity> data = await mRecommendRepos.getData(currPage);
-      mData.addAll(data);
-      currPage++;
-      RecommendLoadedState loadedState = RecommendLoadedState();
-      loadedState.data = mData;
-      yield loadedState;
+      if(event.isNow){
+        List<TypeEntity> data =  mRecommendRepos.getDataNow(currPage);
+        mData.addAll(data);
+        currPage++;
+        RecommendLoadedState loadedState = RecommendLoadedState();
+        loadedState.data = mData;
+        yield loadedState;
+      }else{
+        List<TypeEntity> data = await mRecommendRepos.getData(currPage);
+        mData.addAll(data);
+        currPage++;
+        RecommendLoadedState loadedState = RecommendLoadedState();
+        loadedState.data = mData;
+        yield loadedState;
+      }
+
     }
+    // else if (event is RecommendFetchEvent) {
+    //
+    // }
   }
 }

@@ -9,8 +9,6 @@ import 'package:firewood/playground/sliver/sliver_to_box_adapter_demo.dart';
 import 'package:firewood/playground/util/fitem.dart';
 import 'package:flutter/material.dart';
 
-import 'package:fluttertoast/fluttertoast.dart';
-
 class SliverDemoPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {

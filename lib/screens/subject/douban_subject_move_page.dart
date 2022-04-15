@@ -19,7 +19,7 @@ class MovePage extends StatefulWidget {
 class _MovePageState extends State<MovePage> with AutomaticKeepAliveClientMixin {
 
   SubjectMoveRepos mSubjectMoveRepos = SubjectMoveRepos();
-  List<TypeEntity> list;
+  late List<TypeEntity> list;
 
   bool isLoading = false;
 
@@ -37,6 +37,7 @@ class _MovePageState extends State<MovePage> with AutomaticKeepAliveClientMixin 
           padding: EdgeInsets.only(top: SizeCompat.pxToDp(50)),
           isLoadMoreRunning: isLoading,
           onLoadMore: _onLoadMore,
+          onRefresh: () {},
           itemBuilder: (BuildContext context, int index) {
             return SubjectViewController.transform(list[index]);
           },

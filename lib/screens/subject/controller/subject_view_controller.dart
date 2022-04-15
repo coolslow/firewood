@@ -41,7 +41,7 @@ class SubjectViewController {
     } else if (entity.getType() == TypeEntity.typeBanner) {
       // Banner
       BannerEntity data = entity as BannerEntity;
-      return SubjectBanner(List()..add(data.imgUrl), ratio: data.ratio);
+      return SubjectBanner([]..add(data.imgUrl), ratio: data.ratio);
     } else if (entity.getType() == TypeEntity.typeSubjectGrid) {
       // 九宫格布局
       GridEntity data = entity as GridEntity;

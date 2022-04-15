@@ -1,14 +1,13 @@
 import 'package:firewood/common/utils/size_compat.dart';
-import 'package:firewood/common/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
 // ignore: must_be_immutable
 class FBottomNavigationBar extends StatefulWidget {
-  final List<FBottomData> bottomData;
-  final ValueChanged<int> callback;
-  TextStyle selectTs;
-  TextStyle unSelectTs;
+  List<FBottomData> bottomData;
+  late ValueChanged<int> callback;
+  late TextStyle selectTs;
+  late TextStyle unSelectTs;
   final Color selectBg;
 
   final Color unSelectBg;
@@ -16,10 +15,10 @@ class FBottomNavigationBar extends StatefulWidget {
   int currIndex;
 
   FBottomNavigationBar(
-      {@required this.bottomData,
-      this.callback,
-      this.selectTs,
-      this.unSelectTs,
+      {required this.bottomData,
+      required this.callback,
+      required this.selectTs,
+      required this.unSelectTs,
       this.selectBg = Colors.white,
       this.unSelectBg = Colors.white,
       this.currIndex = 0}) {
@@ -78,7 +77,7 @@ class _FBottomNavigationBarState extends State<FBottomNavigationBar> {
   }
 
   List<Widget> getBar(List<FBottomData> data) {
-    List<Widget> body = List<Widget>();
+    List<Widget> body = <Widget>[];
     if (data != null && data.length > 0) {
       for (int i = 0; i < data.length; i++) {
         Widget item = Expanded(
@@ -132,12 +131,16 @@ class _FBottomNavigationBarState extends State<FBottomNavigationBar> {
 }
 
 class FBottomData {
-  String title;
+  String title = "";
 
-  Widget selectIcon;
-  Widget unSelectIcon;
+  late Widget selectIcon;
+  late Widget unSelectIcon;
 
-  Widget page;
+  late Widget page;
 
-  FBottomData({this.page, this.title, this.selectIcon, this.unSelectIcon});
+  FBottomData(
+      {required this.page,
+      required this.title,
+      required this.selectIcon,
+      required this.unSelectIcon});
 }

@@ -15,9 +15,9 @@ class FToast {
         msg: msg,
         toastLength: Toast.LENGTH_SHORT,
         gravity: ToastGravity.BOTTOM,
-        timeInSecForIos: 2,
         backgroundColor: backgroundColor,
         textColor: textColor,
+        timeInSecForIosWeb: 3,
         fontSize: 16.0);
   }
 
@@ -34,7 +34,7 @@ class FToast {
         msg: msg,
         toastLength: Toast.LENGTH_LONG,
         gravity: gravity,
-        timeInSecForIos: 3,
+        timeInSecForIosWeb: 3,
         backgroundColor: Colors.grey,
         textColor: Colors.white,
         fontSize: 16.0);

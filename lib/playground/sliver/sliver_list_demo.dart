@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 
 import 'package:fluttertoast/fluttertoast.dart';
 
+// deprecated zhl
 class SliverListDemoPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {

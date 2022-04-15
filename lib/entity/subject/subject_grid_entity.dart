@@ -13,11 +13,11 @@ class GridEntity extends TypeEntity {
 }
 
 class GridItemEntity {
-  String id; // 唯一编号
-  String imgUrl; // 海报
-  String name; // 电影名称
-  double star; // 星评
-  double score; // 分数
+  late String id; // 唯一编号
+  late String imgUrl; // 海报
+  late String name; // 电影名称
+  late double star; // 星评
+  late double score; // 分数
   bool canPlay; // 是否可播放
 
   bool collected = false; // 是否收藏

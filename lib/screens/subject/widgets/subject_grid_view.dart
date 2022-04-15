@@ -8,10 +8,10 @@ import 'package:flutter/widgets.dart';
 
 // ignore: must_be_immutable
 class SubjectGridView extends StatelessWidget {
-  double gridViewWidth;
-  double gridViewHeight;
+  late double gridViewWidth;
+  late double gridViewHeight;
 
-  final List<GridItemEntity> entity;
+  late List<GridItemEntity> entity ;
 
   SubjectGridView(this.entity) {
     gridViewWidth = (SizeCompat.width() -

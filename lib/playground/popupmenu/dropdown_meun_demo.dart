@@ -27,7 +27,7 @@ class _DropdownMenuDemoPageState extends State<DropdownMenuDemoPage> {
         child: Column(
           children: <Widget>[
             ActionBarWidget("DropDownMenu"),
-            DropdownButton(
+            DropdownButton<dynamic>(
               isExpanded:false,
               items: getListData(),
               underline: Container(),
@@ -60,8 +60,8 @@ class _DropdownMenuDemoPageState extends State<DropdownMenuDemoPage> {
     );
   }
 
-  List<DropdownMenuItem> getListData() {
-    List<DropdownMenuItem> items = new List();
+  List<DropdownMenuItem<dynamic>> getListData() {
+    List<DropdownMenuItem> items = [];
     DropdownMenuItem dropdownMenuItem1 = new DropdownMenuItem(
       child: new Text('1'),
       value: '1',

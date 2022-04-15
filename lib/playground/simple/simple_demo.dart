@@ -62,7 +62,7 @@ class SimpleDemoPage extends StatelessWidget {
             onTap: () {
 //              clickDemo(context, w);
               Navigator.push(context, PageRouteBuilder(pageBuilder:
-                  (BuildContext context, Animation animation,
+                  (BuildContext context, Animation<double> animation,
                       Animation secondaryAnimation) {
                 return new FadeTransition(
                   opacity: animation,
@@ -94,7 +94,7 @@ class SimpleDemoPage extends StatelessWidget {
         context,
         PageRouteBuilder(
             transitionDuration: Duration(milliseconds: 200),
-            pageBuilder: (BuildContext context, Animation animation,
+            pageBuilder: (BuildContext context, Animation<double> animation,
                     Animation secondaryAnimation) =>
                 SlideTransition(
                   position: Tween<Offset>(

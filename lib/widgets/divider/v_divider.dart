@@ -7,11 +7,10 @@ class FVDivider extends StatelessWidget {
   final Color color;
 
   const FVDivider({
-    Key key,
     this.height = 16.0,
     this.indent = 0.0,
     this.endIndent = 0.0,
-    this.color,
+    required this.color,
   });
 
   @override

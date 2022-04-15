@@ -4,5 +4,5 @@ class Pair {
   String name;
   String value;
 
-  Pair.create({this.name, this.value});
+  Pair.create({required this.name, required this.value});
 }

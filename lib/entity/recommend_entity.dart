@@ -2,7 +2,7 @@ import 'package:firewood/common/utils/utils.dart';
 import 'package:firewood/entity/type_entity.dart';
 
 class RecommendEntity extends TypeEntity {
-  String id; // 唯一编号
+  String id = ""; // 唯一编号
   String portrait; // 头像
   String name; // 名称
   String topic; // 话题

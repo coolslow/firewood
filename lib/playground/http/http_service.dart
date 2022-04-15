@@ -8,7 +8,7 @@ class HttpService {
 //  static var _baseURL = "http://172.16.41.131:8080/";
   static var _baseURL = "https://github.com/xsbailong/douban-api/blob/master/";
 
-  static HttpService _instance;
+  static late HttpService _instance;
 
   static HttpService getInstance() {
     if (_instance == null) {
@@ -27,18 +27,15 @@ class HttpService {
     _dio.options = options;
     _dio.interceptors.add(
       InterceptorsWrapper(
-        onRequest: (RequestOptions options) {
+        onRequest: (RequestOptions options, RequestInterceptorHandler handler) {
           print("=========>onRequest");
 //          _dio.resolve("aaaaaaaaa");
-          return options; //continue
         },
-        onResponse: (Response e) {
+        onResponse: (Response e, ResponseInterceptorHandler handler) {
           print("=========>onResponse");
-          return e;
         },
-        onError: (DioError e) {
+        onError: (DioError e, ErrorInterceptorHandler handler) {
           print("=========>onError ${e.message}");
-          return e; //continue
         },
       ),
     );
@@ -58,7 +55,8 @@ class HttpService {
 //    };
   }
 
-  Future<String> get(String path, {Map<String, dynamic> parameters}) async {
+  Future<String> get(String path,
+      {required Map<String, dynamic> parameters}) async {
     Response<String> response;
     try {
       response = await _dio.get<String>(path, queryParameters: parameters);

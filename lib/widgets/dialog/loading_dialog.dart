@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 
 // ignore: must_be_immutable
 class LoadingDialog extends StatefulWidget {
-  static LoadingDialog _loadingDialog;
-  static bool _barrierDismissible;
-  static Color _color;
+  static LoadingDialog? _loadingDialog;
+  static late bool _barrierDismissible;
+  static late Color _color;
 
   static void show(
     BuildContext context, {
@@ -14,12 +14,11 @@ class LoadingDialog extends StatefulWidget {
     if (_loadingDialog == null) {
       _loadingDialog = LoadingDialog();
       _barrierDismissible = barrierDismissible;
-      _color ??= color;
       showDialog(
           context: context,
           barrierDismissible: _barrierDismissible,
           builder: (BuildContext context) {
-            return _loadingDialog;
+            return _loadingDialog!;
           });
     }
   }

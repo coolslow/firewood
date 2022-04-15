@@ -5,13 +5,13 @@ import 'package:flutter/widgets.dart';
 
 class CircleProgressPainterView extends CustomPainter {
   double currentProgress = 90;
-  Offset center;
+  Offset center = Offset(0, 0);
 
-  double radiusOffset; // 边距
-  double ringWidth; //` ring宽度
-  double outRadius; // 外半径
-  double inRadius; // 内半径
-  double ringRadius;
+  double radiusOffset = 0; // 边距
+  double ringWidth = 0; //` ring宽度
+  double outRadius = 0; // 外半径
+  double inRadius = 0; // 内半径
+  double ringRadius = 0;
 
   Color startColor = Color(0xFFFF9E80);
   Color endColor = Colors.deepOrange;

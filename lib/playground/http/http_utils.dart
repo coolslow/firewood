@@ -9,36 +9,33 @@ class HttpUtils {
 
   static Future<Response> request(
     String path, {
-    String method,
+    required String method,
     dynamic data,
-    Map<String, dynamic> params,
+    required Map<String, dynamic> params,
   }) async {
-    String _method = method ?? 'GET';
-    Map<String, dynamic> _params = params ?? null;
+    String _method = method;
+    Map<String, dynamic> _params = params;
     dynamic _data = data ?? null;
-    Options _options = Options().merge(method: _method);
 
-    print(_options);
+    Options _options = Options().copyWith(method: _method);
+    // print(_options);
 
-    Response response;
+    late Response response;
 
     // Dio 拦截器
     _dio.interceptors.add(
       InterceptorsWrapper(
         // 请求被发送之前执行的相关操作
-        onRequest: (RequestOptions options) async {
+        onRequest: (RequestOptions options,RequestInterceptorHandler handler) async {
           print('请求发送前执行操作, $options');
-          return options;
         },
         // 返回响应数据之前执行的预处理操作
-        onResponse: (Response response) async {
+        onResponse: (Response response,ResponseInterceptorHandler handler) async {
           print('返回响应数据之前执行的预处理操作 ' + response.toString());
-          return response;
         },
         // 请求失败时执行的预处理操作
-        onError: (DioError e) async {
+        onError: (DioError e,ErrorInterceptorHandler handler) async {
           print('Dio错误 ' + e.toString());
-          return e;
         },
       ),
     );

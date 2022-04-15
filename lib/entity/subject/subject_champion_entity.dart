@@ -14,13 +14,13 @@ class ChampionEntity extends TypeEntity {
 }
 
 class ChampionItemEntity {
-  String id; // 唯一编号
-  String imgUrl; // 海报
-  String name; // 名称
-  String des; // 名称
+  late String id; // 唯一编号
+  late String imgUrl; // 海报
+  late String name; // 名称
+  late String des; // 名称
 
-  String bgColor; //底色
-  List<ChampionItemListEntity> list; // 榜单清单
+  late String bgColor; //底色
+  late List<ChampionItemListEntity> list; // 榜单清单
 
   ChampionItemEntity.create(
       this.imgUrl, this.name, this.des, this.bgColor, this.list) {

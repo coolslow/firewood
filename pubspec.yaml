@@ -14,37 +14,36 @@ description: A new Flutter project.
 version: 1.0.0+1
 
 environment:
-  sdk: ">=2.1.0 <3.0.0"
+  sdk: ">=2.12.0 <3.0.0"
 
 dependencies:
   flutter:
     sdk: flutter
 
-  sqflite: ^1.1.6
+  sqflite: ^2.0.0+4
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
-  cupertino_icons: ^0.1.2
+  cupertino_icons: ^1.0.2
 
-  english_words: ^3.1.0
-  dio: ^2.1.0
+  english_words: ^4.0.0
+  dio: ^4.0.1
 
-  bloc: ^0.14.0
-  flutter_bloc: ^0.20.0
+  bloc: ^7.2.1
+  flutter_bloc: ^7.3.1
+  equatable: ^2.0.3
 
-  cached_network_image: ^1.1.1
+  cached_network_image: ^3.1.0
 
-  fluttertoast: ^3.1.0
+  fluttertoast: ^8.0.8
 
   # camera related plugins
-  camera:
-  path_provider:
-  path:
+#  camera:
+#  path_provider:
+#  path:
 #  flutter_statusbarcolor: ^0.2.1
-
-  image_picker: ^0.6.1+4
-
-  barcode_scan: ^1.0.0
+#  image_picker: ^0.8.4+4
+#  barcode_scan: ^3.0.1
 
 dev_dependencies:
   flutter_test:

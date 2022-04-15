@@ -26,7 +26,7 @@ class _CircleProgressBarDemoState extends State<CircleProgressBarDemoPage> {
     );
   }
 
-  ProgressBloc progressBloc = ProgressBloc();
+  ProgressBloc progressBloc = ProgressBloc(ProgressState());
 
   Widget getBody(BuildContext context) {
     return Column(
@@ -43,7 +43,7 @@ class _CircleProgressBarDemoState extends State<CircleProgressBarDemoPage> {
                   child: CircleProgressBarWidget(state.progress,
                       supportGesture: supportGesture,
                       startAnim: startAnim, callback: (double progress) {
-                progressBloc.dispatch(ProgressChangeEvent(progress));
+                progressBloc.add(ProgressChangeEvent(progress));
               })),
               ProgressText(state.progress),
             ]);
@@ -56,7 +56,7 @@ class _CircleProgressBarDemoState extends State<CircleProgressBarDemoPage> {
               color: Colors.grey,
               child: FlatButton(
                   onPressed: () {
-                    progressBloc.dispatch(ProgressAnimEvent(0.8));
+                    progressBloc.add(ProgressAnimEvent(0.8));
                   },
                   child: Text("动画展示")),
             )),
@@ -102,6 +102,8 @@ class ProgressState {
 }
 
 class ProgressBloc extends Bloc<ProgressEvent, ProgressState> {
+  ProgressBloc(ProgressState initialState) : super(initialState);
+
   @override
   ProgressState get initialState {
     ProgressState currentState = new ProgressState();

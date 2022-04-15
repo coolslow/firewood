@@ -10,8 +10,8 @@ class AnimatedWidgetDemoPage extends StatefulWidget {
 
 class _AnimatedWidgetDemoPageState extends State<AnimatedWidgetDemoPage>
     with TickerProviderStateMixin {
-  AnimationController controller;
-  Animation<int> animation;
+  late AnimationController controller;
+  late Animation<int> animation;
 
   @override
   void initState() {
@@ -86,12 +86,12 @@ class _AnimatedWidgetDemoPageState extends State<AnimatedWidgetDemoPage>
 }
 
 class AnimatedContainer extends AnimatedWidget {
-  AnimatedContainer({Key key, Animation<int> animation})
-      : super(key: key, listenable: animation);
+  AnimatedContainer({required Animation<int> animation})
+      : super(listenable: animation);
 
   @override
   Widget build(BuildContext context) {
-    final Animation<int> animation = listenable;
+    final Animation<int> animation = listenable as Animation<int>;
 
     return Container(
       height: 100,

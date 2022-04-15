@@ -6,7 +6,7 @@ class TitleEntity extends TypeEntity {
   String more;
   double fontSize;
 
-  TitleEntity.create({this.title, this.router, this.more, this.fontSize = 56});
+  TitleEntity.create({required this.title, required this.router, required this.more, this.fontSize = 56});
 
   @override
   getType() {

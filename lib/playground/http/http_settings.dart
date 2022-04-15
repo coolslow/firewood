@@ -13,7 +13,7 @@ class HttpSettings {
   static BaseOptions baseOptions = BaseOptions(
     method: 'GET',
     baseUrl: _apiBaseUrl,
-    contentType: ContentType.json,
+    contentType: ContentType.json.charset,
     responseType: ResponseType.json,
     headers: {
       "X-Auth-Token": _authToken,

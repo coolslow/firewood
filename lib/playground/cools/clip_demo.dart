@@ -10,11 +10,11 @@ class ClipDemoPage extends StatefulWidget {
 }
 
 class _ClipDemoPage extends State<ClipDemoPage> with TickerProviderStateMixin {
-  AnimationController controller;
-  Animation<Rect> animation;
+  late AnimationController controller;
+  late Animation<Rect?> animation;
 
-  List<ClipRequest> request = List<ClipRequest>();
-  Rect desRect;
+  List<ClipRequest> request = <ClipRequest>[];
+  late Rect? desRect;
   GlobalKey _key = GlobalKey();
 
   @override
@@ -23,9 +23,10 @@ class _ClipDemoPage extends State<ClipDemoPage> with TickerProviderStateMixin {
 
     updataData(0);
 
+    print("Animated initState==================");
+
     desRect = Rect.fromLTWH(0, 0, 300, 300);
-    controller = AnimationController(
-        duration: const Duration(milliseconds: 300), vsync: this);
+    controller = AnimationController(duration: const Duration(milliseconds: 300), vsync: this);
     animation = RectTween(begin: Rect.zero, end: desRect).animate(controller);
   }
 
@@ -65,6 +66,7 @@ class _ClipDemoPage extends State<ClipDemoPage> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
+    print("Animated build==================");
     return Scaffold(
       appBar: AppBar(title: Text("Hello World")),
       body: Container(
@@ -87,18 +89,19 @@ class _ClipDemoPage extends State<ClipDemoPage> with TickerProviderStateMixin {
 //                onHorizontalDragEnd: (DragEndDetails details) {
 //                  dragEnd(details);
 //                },
-                child: FutureBuilder<List<ClipResult>>(
+                child:
+                FutureBuilder<List<ClipResult>>(
                   future: ImageUtil.loadImage(request, true),
                   builder: (BuildContext context,
                       AsyncSnapshot<List<ClipResult>> snapshot) {
                     return AnimatedBuilder(
                       animation: animation,
-                      builder: (BuildContext context, Widget child) {
-                        print("Animated build");
+                      builder: (BuildContext context, Widget? child) {
+                        print("Animated AnimatedBuilder==================");
                         return CustomPaint(
                           painter: ClipImageView(
-                              snapshot.data, match, animation.value),
-                          size: Size(desRect.width, desRect.height),
+                              snapshot.data!, match, animation.value!),
+                          size: Size(desRect!.width, desRect!.height),
                         );
                       },
                     );
@@ -222,9 +225,8 @@ class ClipRequest {
 }
 
 class ImageUtil {
-  static Future<List<ClipResult>> loadImage(
-      List<ClipRequest> paths, bool isUrl) async {
-    List<ClipResult> result = List<ClipResult>();
+  static Future<List<ClipResult>> loadImage(List<ClipRequest> paths, bool isUrl) async {
+    List<ClipResult> result = <ClipResult>[];
     Completer<List<ClipResult>> completer = Completer<List<ClipResult>>();
     for (int i = 0; i < paths.length; i++) {
       ClipRequest data = paths[i];
@@ -234,7 +236,7 @@ class ImageUtil {
       } else {
         stream = AssetImage(data.path).resolve(ImageConfiguration.empty);
       }
-      ImageStreamListener listener;
+      late ImageStreamListener listener;
       listener = ImageStreamListener((ImageInfo frame, bool synchronousCall) {
         ui.Image image = frame.image;
         stream.removeListener(listener);

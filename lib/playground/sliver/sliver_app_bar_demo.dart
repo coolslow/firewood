@@ -4,6 +4,8 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:firewood/common/font.dart';
 import 'package:flutter/material.dart';
 
+
+// DEPRECATED ZHL
 class SliverAppBarDemoPage extends StatelessWidget {
 
   @override

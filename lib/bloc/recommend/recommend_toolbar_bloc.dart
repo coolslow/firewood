@@ -29,10 +29,7 @@ class RecommendToolbarBloc
     extends Bloc<RecommendToolbarEvent, RecommendToolbarState> {
   RecommendRepos mRecommendRepos = RecommendRepos();
 
-  @override
-  RecommendToolbarState get initialState {
-    return RecommendToolbarState();
-  }
+  RecommendToolbarBloc(RecommendToolbarState initialState) : super(initialState);
 
   int count = 1;
 
@@ -59,7 +56,7 @@ class RecommendToolbarBloc
             result.thumbNumber = result.thumbNumber + 1;
           }
           result.thumbed = !result.thumbed;
-          dispatch(RecommendThumbNetworkEvent("此文章无法点赞"));
+          add(RecommendThumbNetworkEvent("此文章无法点赞"));
         }
       });
     } else if (event is RecommendThumbNetworkEvent) {

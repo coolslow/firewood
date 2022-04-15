@@ -2,6 +2,7 @@ import 'package:firewood/common/font.dart';
 import 'package:firewood/playground/navigation/action_bar.dart';
 import 'package:flutter/material.dart';
 
+// deprecated zhl
 class IconFontDemo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {

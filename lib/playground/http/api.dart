@@ -4,7 +4,7 @@ import 'package:firewood/playground/http/http_utils.dart';
 class Apis {
   /// 获取用户Auth验证信息
   static Future<Response> userAuthValidation(String path) {
-    return HttpUtils.request(path);
+    return HttpUtils.request(path, params: {}, method: '');
   }
 
   /// 获取语雀用户登录信息
@@ -17,7 +17,7 @@ class Apis {
     };
 
     print(_params is Map);
-    return HttpUtils.request(path);
+    return HttpUtils.request(path, params: {}, method: 'GET');
   }
 
   /// 在用户账户下创建新的知识库
@@ -26,6 +26,6 @@ class Apis {
     dynamic data,
     // Map<String, dynamic> params,
   ) {
-    return HttpUtils.request(path, method: 'POST', data: data);
+    return HttpUtils.request(path, method: 'POST', data: data, params: {});
   }
 }

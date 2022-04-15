@@ -25,7 +25,7 @@ class MusicPage extends StatefulWidget {
 
 class _MusicPageState extends State<MusicPage> {
   SubjectMoveRepos mSubjectMoveRepos = SubjectMoveRepos();
-  List<TypeEntity> list;
+  late List<TypeEntity> list;
 
   bool isLoading = false;
 
@@ -43,6 +43,7 @@ class _MusicPageState extends State<MusicPage> {
           padding: EdgeInsets.only(top: SizeCompat.pxToDp(50)),
           isLoadMoreRunning: isLoading,
           onLoadMore: _onLoadMore,
+          onRefresh: () {},
           itemBuilder: (BuildContext context, int index) {
             return SubjectViewController.transform(list[index]);
           },

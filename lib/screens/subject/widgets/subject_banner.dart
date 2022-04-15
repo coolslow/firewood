@@ -6,7 +6,7 @@ import 'package:flutter/widgets.dart';
 
 // ignore: must_be_immutable
 class SubjectBanner extends StatefulWidget {
-  double _ratio;
+  double _ratio = 1;
   List<String> data;
 
   EdgeInsets padding = EdgeInsets.only(

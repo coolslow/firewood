@@ -10,11 +10,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 // ignore: must_be_immutable
 class ToolbarWidget extends StatelessWidget {
-  final TypeEntity entity;
-  RecommendToolbarBloc _toolbarBloc;
+  late TypeEntity entity;
+  late RecommendToolbarBloc _toolbarBloc;
 
   ToolbarWidget(this.entity) {
-    _toolbarBloc = RecommendToolbarBloc();
+    _toolbarBloc = RecommendToolbarBloc(RecommendToolbarState());
   }
 
   @override
@@ -160,7 +160,7 @@ class ToolbarWidget extends StatelessWidget {
   }
 
   void _clickThumb(BuildContext context, RecommendEntity data) {
-    _toolbarBloc.dispatch(RecommendThumbLocalEvent(data));
+    _toolbarBloc.add(RecommendThumbLocalEvent(data));
   }
 
   void _clickComment(RecommendEntity data) {

@@ -22,11 +22,13 @@ class SubjectRepos {
     Utils.resetAutoIncrement();
   }
 
-  BannerEntity getBanner({String imgUrl, String router, double ratio}) {
+  BannerEntity getBanner(
+      {required String imgUrl, required String router, required double ratio}) {
     return BannerEntity.create(imgUrl: imgUrl, router: router, ratio: ratio);
   }
 
-  DividerEntity getDivider({double size, Color color = Colors.transparent}) {
+  DividerEntity getDivider(
+      {required double size, Color color = Colors.transparent}) {
     if (size == null) {
       size = SizeCompat.pxToDp(50);
     } else {
@@ -36,15 +38,18 @@ class SubjectRepos {
   }
 
   TitleEntity getTitle(
-      {String title, String router, String more, double fontSize = 56}) {
+      {required String title,
+      required String router,
+      required String more,
+      double fontSize = 56}) {
     return TitleEntity.create(
         title: title, router: router, more: more, fontSize: fontSize);
   }
 
   TitleTabEntity getTitleTab(
-      {List<String> tabs,
-      String router,
-      String more,
+      {required List<String> tabs,
+      required String router,
+      required String more,
       double fontSize = 56,
       double horSpace = 50,
       double verSpace = 50}) {
@@ -61,7 +66,7 @@ class SubjectRepos {
 /// 电影相关仓库
 class SubjectMoveRepos extends SubjectRepos {
   List<TypeEntity> getSubjectList() {
-    List<TypeEntity> result = List<TypeEntity>();
+    List<TypeEntity> result = <TypeEntity>[];
 
     // Banner
     result.add(getBanner(
@@ -71,7 +76,9 @@ class SubjectMoveRepos extends SubjectRepos {
         ratio: 6.5));
 
     result.add(getTitleTab(
-      tabs: List<String>()..add("影院热映")..add("即将上映"),
+      tabs: <String>[]
+        ..add("影院热映")
+        ..add("即将上映"),
       router: "",
       more: "",
     ));
@@ -113,7 +120,7 @@ class SubjectMoveRepos extends SubjectRepos {
   }
 
   List<TypeEntity> getSubjectLoadMore() {
-    List<TypeEntity> result = List<TypeEntity>();
+    List<TypeEntity> result = <TypeEntity>[];
     result.add(getMoveRecommend()[0]);
     result.add(getMoveInterest()[0]);
     result.add(getMoveRecommend()[1]);
@@ -130,7 +137,7 @@ class SubjectMoveRepos extends SubjectRepos {
   }
 
   GridEntity getMoveGridRecommend() {
-    List<GridItemEntity> list = List<GridItemEntity>();
+    List<GridItemEntity> list = <GridItemEntity>[];
     list.add(GridItemEntity.create(
         "https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2563780504.webp",
         "哪吒之魔童降世",
@@ -168,7 +175,7 @@ class SubjectMoveRepos extends SubjectRepos {
   }
 
   GridEntity getMoveGridBeOn() {
-    List<GridItemEntity> list = List<GridItemEntity>();
+    List<GridItemEntity> list = <GridItemEntity>[];
     list.add(GridItemEntity.create(
         "https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2566665806.webp",
         "零零后",
@@ -206,7 +213,7 @@ class SubjectMoveRepos extends SubjectRepos {
   }
 
   GridEntity getMoveGridHot() {
-    List<GridItemEntity> list = List<GridItemEntity>();
+    List<GridItemEntity> list = <GridItemEntity>[];
 
     list.add(GridItemEntity.create(
         "https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2565751382.webp",
@@ -243,14 +250,14 @@ class SubjectMoveRepos extends SubjectRepos {
   }
 
   ChampionEntity getMoveChampion() {
-    List<ChampionItemEntity> list = List<ChampionItemEntity>();
+    List<ChampionItemEntity> list = <ChampionItemEntity>[];
 
     list.add(ChampionItemEntity.create(
         "https://img1.doubanio.com/view/photo/l/public/p2564849769.webp",
         "一周口碑电影榜",
         "每周五更新~共10部",
         "ff64523D",
-        List<ChampionItemListEntity>()
+        <ChampionItemListEntity>[]
           ..add(ChampionItemListEntity.create("寄生虫", "8.8", "↑"))
           ..add(ChampionItemListEntity.create("疾速备战", "8.5", "↓"))
           ..add(ChampionItemListEntity.create("美国工厂", "9.4", "- "))
@@ -262,7 +269,7 @@ class SubjectMoveRepos extends SubjectRepos {
         "电影排行榜",
         "共250部",
         "ff564B4B",
-        List<ChampionItemListEntity>()
+        <ChampionItemListEntity>[]
           ..add(ChampionItemListEntity.create("教父", "8.8", "↑"))
           ..add(ChampionItemListEntity.create("被解救的姜戈", "8.5", "↓"))
           ..add(ChampionItemListEntity.create("摔跤吧！爸爸", "9.4", "- "))
@@ -273,7 +280,7 @@ class SubjectMoveRepos extends SubjectRepos {
         "一周热门电影",
         "每周五更新~共10部",
         "ff084852",
-        List<ChampionItemListEntity>()
+        <ChampionItemListEntity>[]
           ..add(ChampionItemListEntity.create("哥斯拉2", "8.8", "↑"))
           ..add(ChampionItemListEntity.create("孟买酒店", "8.5", "↓"))
           ..add(ChampionItemListEntity.create("黑衣人2", "9.4", "- "))
@@ -283,7 +290,7 @@ class SubjectMoveRepos extends SubjectRepos {
   }
 
   List<MoveRecommendEntity> getMoveRecommend() {
-    List<MoveRecommendEntity> result = List<MoveRecommendEntity>();
+    List<MoveRecommendEntity> result = <MoveRecommendEntity>[];
     result.add(MoveRecommendEntity.create(
         "https://img1.doubanio.com/view/photo/l/public/p858079649.webp",
         "专题",
@@ -314,7 +321,7 @@ class SubjectMoveRepos extends SubjectRepos {
   }
 
   List<MoveInterestEntity> getMoveInterest() {
-    List<MoveInterestEntity> list = List<MoveInterestEntity>();
+    List<MoveInterestEntity> list = <MoveInterestEntity>[];
 
     // 0
     list.add(MoveInterestEntity.create(
@@ -324,16 +331,15 @@ class SubjectMoveRepos extends SubjectRepos {
         score: 9.7,
         des:
             "20世纪40年代末，小有成就的青年银行家安迪（蒂姆·罗宾斯 Tim Robbins 饰）因涉嫌杀害妻子及她的情人而锒铛入狱。在这座名为肖申克的监狱内，希望似乎虚无缥缈，终身监禁的惩罚无疑注定了安迪接下来灰暗绝望的人生。未过多久，安迪尝试接近囚犯中颇有声望的瑞德（摩根·弗里曼 Morgan Freeman 饰），请求对方帮自己搞来小锤子。以此为契机，二人逐渐熟稔，安迪也仿佛在鱼龙混杂、罪恶横生、黑白混淆的牢狱中找到属于自己的求生之道。他利用自身的专业知识，帮助监狱管理层逃税、洗黑钱，同时凭借与瑞德的交往在犯人中间也渐渐受到礼遇。表面看来，他已如瑞德那样对那堵高墙从憎恨转变为处之泰然，但是对自由的渴望仍促使他朝着心中的希望和目标前进。而关于其罪行的真相，似乎更使这一切朝前推进了一步…… ",
-        leftImgUrls: List<String>()
-          ..add(
-              "https://img3.doubanio.com/view/photo/l/public/p480747492.webp"),
-        rightImgUrls: List<String>()
+        leftImgUrls: <String>[]..add(
+            "https://img3.doubanio.com/view/photo/l/public/p480747492.webp"),
+        rightImgUrls: <String>[]
           ..add("https://img3.doubanio.com/view/photo/l/public/p490576110.webp")
           ..add("https://img3.doubanio.com/view/photo/l/public/p490574164.webp")
           ..add("https://img3.doubanio.com/view/photo/l/public/p456482220.webp")
           ..add(
               "https://img3.doubanio.com/view/photo/l/public/p2533776776.webp"),
-        tags: List<String>()
+        tags: <String>[]
           ..add("Top250")
           ..add("第68届金像奖")
           ..add("第67届奥斯卡金像奖")
@@ -348,10 +354,9 @@ class SubjectMoveRepos extends SubjectRepos {
         score: 9.2,
         des:
             "故事发生在一个所有哺乳类动物和谐共存的美好世界中，兔子朱迪（金妮弗·古德温 Ginnifer Goodwin 配音）从小就梦想着能够成为一名惩恶扬善的刑警，凭借着智慧和努力，朱迪成功的从警校中毕业进入了疯狂动物城警察局，殊不知这里是大型肉食类动物的领地，作为第一只，也是唯一的小型食草类动物，朱迪会遇到怎样的故事呢？",
-        leftImgUrls: List<String>()
-          ..add(
-              "https://img1.doubanio.com/view/photo/l/public/p2315672647.webp"),
-        rightImgUrls: List<String>()
+        leftImgUrls: <String>[]..add(
+            "https://img1.doubanio.com/view/photo/l/public/p2315672647.webp"),
+        rightImgUrls: <String>[]
           ..add(
               "https://img1.doubanio.com/view/photo/l/public/p2277484017.webp")
           ..add(
@@ -362,7 +367,9 @@ class SubjectMoveRepos extends SubjectRepos {
               "https://img3.doubanio.com/view/photo/l/public/p2277484015.webp")
           ..add(
               "https://img3.doubanio.com/view/photo/l/public/p2277484013.webp"),
-        tags: List<String>()..add("克里斯托弗·诺兰 导演")..add("第89届奥斯卡金像奖")));
+        tags: <String>[]
+          ..add("克里斯托弗·诺兰 导演")
+          ..add("第89届奥斯卡金像奖")));
 
     // 2
     list.add(MoveInterestEntity.create(
@@ -372,17 +379,16 @@ class SubjectMoveRepos extends SubjectRepos {
         score: 9.4,
         des:
             "1912年4月10日，号称 “世界工业史上的奇迹”的豪华客轮泰坦尼克号开始了自己的处女航，从英国的南安普顿出发驶往美国纽约。富家少女罗丝（凯特•温丝莱特）与母亲及未婚夫卡尔坐上了头等舱；另一边，放荡不羁的少年画家杰克（莱昂纳多·迪卡普里奥）也在码头的一场赌博中赢得了下等舱的船票。",
-        leftImgUrls: List<String>()
-          ..add(
-              "https://img3.doubanio.com/view/photo/l/public/p457760035.webp"),
-        rightImgUrls: List<String>()
+        leftImgUrls: <String>[]..add(
+            "https://img3.doubanio.com/view/photo/l/public/p457760035.webp"),
+        rightImgUrls: <String>[]
           ..add(
               "https://img1.doubanio.com/view/photo/l/public/p1482506339.webp")
           ..add(
               "https://img3.doubanio.com/view/photo/l/public/p1482523342.webp")
           ..add(
               "https://img3.doubanio.com/view/photo/l/public/p1482491522.webp"),
-        tags: List<String>()
+        tags: <String>[]
           ..add("第70届奥斯卡金像奖")
           ..add("最佳影片")
           ..add("最佳导演")
@@ -399,15 +405,14 @@ class SubjectMoveRepos extends SubjectRepos {
         score: 9.1,
         des:
             "克里斯•加纳（威尔·史密斯 Will Smith 饰）用尽全部积蓄买下了高科技治疗仪，到处向医院推销，可是价格高昂，接受的人不多。就算他多努力都无法提供一个良好的生活环境给妻儿，妻子（桑迪·牛顿 Thandie Newton 饰）最终选择离开家。从此他带着儿子克里斯托夫（贾登·史密斯 Jaden Smith 饰）相依为命。",
-        leftImgUrls: List<String>()
-          ..add(
-              "https://img1.doubanio.com/view/photo/l/public/p1312700628.webp"),
-        rightImgUrls: List<String>()
+        leftImgUrls: <String>[]..add(
+            "https://img1.doubanio.com/view/photo/l/public/p1312700628.webp"),
+        rightImgUrls: <String>[]
           ..add(
               "https://img3.doubanio.com/view/photo/l/public/p1694419635.webp")
           ..add(
               "https://img1.doubanio.com/view/photo/l/public/p1694422517.webp"),
-        tags: List<String>()
+        tags: <String>[]
           ..add("第16届MTV电影奖")
           ..add("第64届金球奖")
           ..add("第79届奥斯卡金像奖")
@@ -421,14 +426,13 @@ class SubjectMoveRepos extends SubjectRepos {
         score: 8.7,
         des:
             "战斗中负伤而下身瘫痪的前海军战士杰克•萨利（萨姆•沃辛顿 Sam Worthington 饰）决定替死去的同胞哥哥来到潘多拉星操纵格蕾丝博士（西格妮•韦弗 Sigourney Weaver 饰）用人类基因与当地纳美部族基因结合创造出的 “阿凡达” 混血生物。",
-        leftImgUrls: List<String>()
-          ..add(
-              "https://img1.doubanio.com/view/photo/l/public/p2180085848.webp"),
-        rightImgUrls: List<String>()
+        leftImgUrls: <String>[]..add(
+            "https://img1.doubanio.com/view/photo/l/public/p2180085848.webp"),
+        rightImgUrls: <String>[]
           ..add("https://img3.doubanio.com/view/photo/l/public/p595258686.webp")
           ..add(
               "https://img3.doubanio.com/view/photo/l/public/p442190131.webp"),
-        tags: List<String>()
+        tags: <String>[]
           ..add("第82届奥斯卡金像奖")
           ..add("第67届威尼斯电影节")
           ..add("第67届金球奖")));
@@ -441,13 +445,13 @@ class SubjectMoveRepos extends SubjectRepos {
         score: 9.5,
         des:
             "1939年，波兰在纳粹德国的统治下，党卫军对犹太人进行了隔离统治。德国商人奥斯卡·辛德勒（连姆·尼森 Liam Neeson 饰）来到德军统治下的克拉科夫，开设了一间搪瓷厂，生产军需用品。凭着出众的社交能力和大量的金钱，辛德勒和德军建立了良好的关系，他的工厂雇用犹太人工作，大发战争财。 ",
-        leftImgUrls: List<String>()
-          ..add(
-              "https://img3.doubanio.com/view/photo/l/public/p492406163.webp"),
-        rightImgUrls: List<String>()
-          ..add(
-              "https://img3.doubanio.com/view/photo/l/public/p492385256.webp"),
-        tags: List<String>()..add("第66届奥斯卡金像奖")..add("第47届英国电影学院奖")));
+        leftImgUrls: <String>[]..add(
+            "https://img3.doubanio.com/view/photo/l/public/p492406163.webp"),
+        rightImgUrls: <String>[]..add(
+            "https://img3.doubanio.com/view/photo/l/public/p492385256.webp"),
+        tags: <String>[]
+          ..add("第66届奥斯卡金像奖")
+          ..add("第47届英国电影学院奖")));
 
     // 6
     list.add(MoveInterestEntity.create(
@@ -457,15 +461,14 @@ class SubjectMoveRepos extends SubjectRepos {
         score: 8.2,
         des:
             "一股突如其来的强大邪恶势力对地球造成致命威胁，没有任何一个超级英雄能够单独抵挡。长期致力于保护全球安危的神盾局（SHIELD）感到措手不及，其指挥官“独眼侠”尼克·弗瑞（塞缪尔·杰克逊 Samuel L. Jackson 饰）意识到他必须创建一个“史上最强”的联盟组织。",
-        leftImgUrls: List<String>()
-          ..add(
-              "https://img3.doubanio.com/view/photo/l/public/p1524904031.webp"),
-        rightImgUrls: List<String>()
+        leftImgUrls: <String>[]..add(
+            "https://img3.doubanio.com/view/photo/l/public/p1524904031.webp"),
+        rightImgUrls: <String>[]
           ..add(
               "https://img3.doubanio.com/view/photo/l/public/p1679956051.webp")
           ..add(
               "https://img3.doubanio.com/view/photo/l/public/p1679953436.webp"),
-        tags: List<String>()..add("第85届奥斯卡金像奖")));
+        tags: <String>[]..add("第85届奥斯卡金像奖")));
 
     // 7
     list.add(MoveInterestEntity.create(
@@ -475,15 +478,14 @@ class SubjectMoveRepos extends SubjectRepos {
         score: 9.5,
         des:
             "犹太青年圭多（罗伯托·贝尼尼）邂逅美丽的女教师多拉（尼可莱塔·布拉斯基），他彬彬有礼的向多拉鞠躬：“早安！公主！”。历经诸多令人啼笑皆非的周折后，天遂人愿，两人幸福美满的生活在一起。 ",
-        leftImgUrls: List<String>()
-          ..add(
-              "https://img3.doubanio.com/view/photo/l/public/p510861873.webp"),
-        rightImgUrls: List<String>()
+        leftImgUrls: <String>[]..add(
+            "https://img3.doubanio.com/view/photo/l/public/p510861873.webp"),
+        rightImgUrls: <String>[]
           ..add(
               "https://img3.doubanio.com/view/photo/l/public/p2498749682.webp")
           ..add(
               "https://img3.doubanio.com/view/photo/l/public/p2525275926.webp"),
-        tags: List<String>()
+        tags: <String>[]
           ..add("第71届奥斯卡金像奖")
           ..add("第51届戛纳电影节")
           ..add("第23届日本电影学院奖")));
@@ -496,15 +498,14 @@ class SubjectMoveRepos extends SubjectRepos {
         score: 9.0,
         des:
             "普通中年男子程勇（徐峥 饰）经营着一家保健品店，失意又失婚。不速之客吕受益（王传君 饰）的到来，让他开辟了一条去印度买药做“代购”的新事业，虽然困难重重，但他在这条“买药之路”上发现了商机，一发不可收拾地做起了治疗慢粒白血病的印度仿制药独家代理商。",
-        leftImgUrls: List<String>()
-          ..add(
-              "https://img3.doubanio.com/view/photo/l/public/p2561305376.webp"),
-        rightImgUrls: List<String>()
+        leftImgUrls: <String>[]..add(
+            "https://img3.doubanio.com/view/photo/l/public/p2561305376.webp"),
+        rightImgUrls: <String>[]
           ..add(
               "https://img3.doubanio.com/view/photo/l/public/p2526147573.webp")
           ..add(
               "https://img3.doubanio.com/view/photo/l/public/p2528752253.webp"),
-        tags: List<String>()
+        tags: <String>[]
           ..add("第55届台北金马影展")
           ..add("第38届香港电影金像奖")
           ..add("第13届亚洲电影大奖")));
@@ -515,20 +516,19 @@ class SubjectMoveRepos extends SubjectRepos {
 
 class SubjectTeleplayRepos extends SubjectRepos {
   List<TypeEntity> getSubjectList() {
-    List<TypeEntity> result = List<TypeEntity>();
-
+    List<TypeEntity> result = <TypeEntity>[];
 
     result.add(getBanner(
         imgUrl: "https://img3.doubanio.com/view/note/l/public/p57441816.webp",
         router: "",
         ratio: 5.0));
 
-    result.add(getDivider());
+    result.add(getDivider(size: SizeCompat.pxToDp(50)));
 
     result.add(getTitle(title: "热播新剧", router: "", more: "全部 271"));
 
     result.add(getTitleTab(
-        tabs: List<String>()
+        tabs: <String>[]
           ..add("综合")
           ..add("国产")
           ..add("美剧")
@@ -540,41 +540,44 @@ class SubjectTeleplayRepos extends SubjectRepos {
         horSpace: 50,
         verSpace: 32));
 
-    result.add(getDivider());
+    result.add(getDivider(size: SizeCompat.pxToDp(50)));
 
     result.add(getGridHot());
-    result.add(getDivider());
+    result.add(getDivider(size: SizeCompat.pxToDp(50)));
 
     result.add(getTitle(title: "热播综艺", router: "", more: "全部 59"));
 
     result.add(getTitleTab(
-        tabs: List<String>()..add("综合")..add("国内")..add("国外"),
+        tabs: <String>[]
+          ..add("综合")
+          ..add("国内")
+          ..add("国外"),
         router: "",
         more: "",
         fontSize: 40,
         horSpace: 50,
         verSpace: 32));
 
-    result.add(getDivider());
+    result.add(getDivider(size: SizeCompat.pxToDp(50)));
 
     result.add(getGridVarietySynthesize());
 
-    result.add(getDivider());
+    result.add(getDivider(size: SizeCompat.pxToDp(50)));
 
     result.add(getTitle(title: "榜单", router: "", more: "全部 8"));
 
-    result.add(getDivider());
+    result.add(getDivider(size: SizeCompat.pxToDp(50)));
 
     result.add(getChampion());
 
-    result.add(getDivider());
+    result.add(getDivider(size: SizeCompat.pxToDp(50)));
 
     result.add(getBanner(
         imgUrl: "https://img3.doubanio.com/view/status/l/public/1hLNrZ.webp",
         router: "",
         ratio: 4.0));
 
-    result.add(getDivider());
+    result.add(getDivider(size: SizeCompat.pxToDp(50)));
 
     result.add(getTitle(title: "分类浏览", router: "", more: "全部"));
 
@@ -587,25 +590,25 @@ class SubjectTeleplayRepos extends SubjectRepos {
     result.add(getTitle(title: "日剧", router: "", more: "更多", fontSize: 45));
     result.add(getDivider(size: 40));
     result.add(getGridClassifyJapanese());
-    result.add(getDivider());
+    result.add(getDivider(size : SizeCompat.pxToDp(50)));
 //    result.add(getTitle(title: "即将播出剧集", router: "", more: "全部 340"));
 //    result.add(getDivider());
 
     result.add(getTitle(title: "为您推荐", router: "", more: ""));
-    result.add(getDivider());
+    result.add(getDivider(size : SizeCompat.pxToDp(50)));
     result.addAll(getTeleplayRecommend());
 
     return result;
   }
 
   List<TypeEntity> getSubjectLoadMore() {
-    List<TypeEntity> result = List<TypeEntity>();
+    List<TypeEntity> result = <TypeEntity>[];
     result.addAll(getTeleplayRecommend());
     return result;
   }
 
   GridEntity getGridHot() {
-    List<GridItemEntity> list = List<GridItemEntity>();
+    List<GridItemEntity> list = <GridItemEntity>[];
     list.add(GridItemEntity.create(
         "https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2562953341.jpg",
         "长安十二时辰",
@@ -645,7 +648,7 @@ class SubjectTeleplayRepos extends SubjectRepos {
   }
 
   GridEntity getGridChinese() {
-    List<GridItemEntity> list = List<GridItemEntity>();
+    List<GridItemEntity> list = <GridItemEntity>[];
     list.add(GridItemEntity.create(
         "https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2555641009.jpg",
         "加油，你是最棒的",
@@ -682,7 +685,7 @@ class SubjectTeleplayRepos extends SubjectRepos {
   }
 
   GridEntity getGridAmerican() {
-    List<GridItemEntity> list = List<GridItemEntity>();
+    List<GridItemEntity> list = <GridItemEntity>[];
     list.add(GridItemEntity.create(
         "https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2558596736.jpg",
         "狂欢命案 第一季",
@@ -718,7 +721,7 @@ class SubjectTeleplayRepos extends SubjectRepos {
   }
 
   GridEntity getGridKorea() {
-    List<GridItemEntity> list = List<GridItemEntity>();
+    List<GridItemEntity> list = <GridItemEntity>[];
     list.add(GridItemEntity.create(
         "https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2520568437.jpg",
         "我的大叔",
@@ -755,7 +758,7 @@ class SubjectTeleplayRepos extends SubjectRepos {
   }
 
   GridEntity getGridAnim() {
-    List<GridItemEntity> list = List<GridItemEntity>();
+    List<GridItemEntity> list = <GridItemEntity>[];
     list.add(GridItemEntity.create(
         "https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2564646167.jpg",
         "魔道祖师 第二季",
@@ -793,7 +796,7 @@ class SubjectTeleplayRepos extends SubjectRepos {
   }
 
   GridEntity getGridVarietySynthesize() {
-    List<GridItemEntity> list = List<GridItemEntity>();
+    List<GridItemEntity> list = <GridItemEntity>[];
     list.add(GridItemEntity.create(
         "https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2264809475.jpg",
         "极限挑战 第一季",
@@ -837,7 +840,7 @@ class SubjectTeleplayRepos extends SubjectRepos {
   }
 
   GridEntity getGridVarietyChinese() {
-    List<GridItemEntity> list = List<GridItemEntity>();
+    List<GridItemEntity> list = <GridItemEntity>[];
     list.add(GridItemEntity.create(
         "https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2552553650.jpg",
         "这！就是街舞 第二季",
@@ -875,7 +878,7 @@ class SubjectTeleplayRepos extends SubjectRepos {
   }
 
   GridEntity getGridVarietyForeign() {
-    List<GridItemEntity> list = List<GridItemEntity>();
+    List<GridItemEntity> list = <GridItemEntity>[];
     list.add(GridItemEntity.create(
         "https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2552553650.jpg",
         "这！就是街舞 第二季",
@@ -913,14 +916,14 @@ class SubjectTeleplayRepos extends SubjectRepos {
   }
 
   ChampionEntity getChampion() {
-    List<ChampionItemEntity> list = List<ChampionItemEntity>();
+    List<ChampionItemEntity> list = <ChampionItemEntity>[];
 
     list.add(ChampionItemEntity.create(
         "https://img3.doubanio.com/view/photo/l/public/p2555677726.webp",
         "华语口碑剧集榜",
         "每周三更新~共10部",
         "ff4C4333",
-        List<ChampionItemListEntity>()
+        <ChampionItemListEntity>[]
           ..add(ChampionItemListEntity.create("小欢喜", "8.8", "↑"))
           ..add(ChampionItemListEntity.create("他乡的童年", "8.5", "↓"))
           ..add(ChampionItemListEntity.create("魔道祖师 第二季", "9.4", "- "))
@@ -931,7 +934,7 @@ class SubjectTeleplayRepos extends SubjectRepos {
         "全球口碑剧集榜",
         "榜单~共250部",
         "ff4C2D28",
-        List<ChampionItemListEntity>()
+        <ChampionItemListEntity>[]
           ..add(ChampionItemListEntity.create("致命女人", "8.8", "↑"))
           ..add(ChampionItemListEntity.create("黄石 第二季", "8.5", "↓"))
           ..add(ChampionItemListEntity.create("风的新生活", "9.4", "- "))
@@ -942,7 +945,7 @@ class SubjectTeleplayRepos extends SubjectRepos {
         "国内口碑综艺榜",
         "每周一更新~共10部",
         "ff4C4333",
-        List<ChampionItemListEntity>()
+        <ChampionItemListEntity>[]
           ..add(ChampionItemListEntity.create("邻家诗话", "8.8", "↑"))
           ..add(ChampionItemListEntity.create("圆桌派 第四季", "8.5", "↓"))
           ..add(ChampionItemListEntity.create("极限青春", "9.4", "- "))
@@ -953,7 +956,7 @@ class SubjectTeleplayRepos extends SubjectRepos {
         "国外口碑综艺榜",
         "每周一更新~共10部",
         "ff4C2D28",
-        List<ChampionItemListEntity>()
+        <ChampionItemListEntity>[]
           ..add(ChampionItemListEntity.create("姜食堂 第三季", "8.8", "↑"))
           ..add(ChampionItemListEntity.create("再次出发", "8.5", "↓"))
           ..add(ChampionItemListEntity.create("三时三餐 山村篇", "9.4", "- "))
@@ -963,7 +966,7 @@ class SubjectTeleplayRepos extends SubjectRepos {
   }
 
   GridEntity getGridClassifyAmerican() {
-    List<GridItemEntity> list = List<GridItemEntity>();
+    List<GridItemEntity> list = <GridItemEntity>[];
     list.add(GridItemEntity.create(
         "https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2426595773.jpg",
         "破产姐妹 第六季",
@@ -984,7 +987,7 @@ class SubjectTeleplayRepos extends SubjectRepos {
   }
 
   GridEntity getGridClassifyJapanese() {
-    List<GridItemEntity> list = List<GridItemEntity>();
+    List<GridItemEntity> list = <GridItemEntity>[];
     list.add(GridItemEntity.create(
         "https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2411814194.jpg",
         "半泽直树",
@@ -1005,8 +1008,7 @@ class SubjectTeleplayRepos extends SubjectRepos {
   }
 
   List<TeleplayRecommendEntity> getTeleplayRecommend() {
-
-    List<TeleplayRecommendEntity> result = List<TeleplayRecommendEntity>();
+    List<TeleplayRecommendEntity> result = <TeleplayRecommendEntity>[];
 
     result.add(TeleplayRecommendEntity.create(
         "https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2562677270.jpg",
@@ -1014,8 +1016,7 @@ class SubjectTeleplayRepos extends SubjectRepos {
         "(2019)",
         3.0,
         6.3,
-        "《九州缥缈录》改编自江南同名小说，由张晓波执导，江南担任总编剧。 "
-    ));
+        "《九州缥缈录》改编自江南同名小说，由张晓波执导，江南担任总编剧。 "));
 
     result.add(TeleplayRecommendEntity.create(
         "https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2566615972.jpg",
@@ -1023,8 +1024,7 @@ class SubjectTeleplayRepos extends SubjectRepos {
         "(2019)",
         3.5,
         7.7,
-        "该剧是一部悬疑爱情剧，围绕着财阀家隐藏的秘密和业主风险管理展开剧情，讲述因为15年前的杀人案而痛失母亲的财阀继承女和三流律师相遇后寻找事件真相的故事。值得一提的是，该剧是首次真实描写业主风险管理TOP团队的电视剧。"
-    ));
+        "该剧是一部悬疑爱情剧，围绕着财阀家隐藏的秘密和业主风险管理展开剧情，讲述因为15年前的杀人案而痛失母亲的财阀继承女和三流律师相遇后寻找事件真相的故事。值得一提的是，该剧是首次真实描写业主风险管理TOP团队的电视剧。"));
 
     result.add(TeleplayRecommendEntity.create(
         "https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2563460881.jpg",
@@ -1032,8 +1032,7 @@ class SubjectTeleplayRepos extends SubjectRepos {
         "(2019)",
         3.5,
         8.6,
-        "2019 / 中国大陆 / 爱情 悬疑 /导演: 蒋家骏 / 主演: 杨烁 / 古力娜扎 "
-    ));
+        "2019 / 中国大陆 / 爱情 悬疑 /导演: 蒋家骏 / 主演: 杨烁 / 古力娜扎 "));
 
     result.add(TeleplayRecommendEntity.create(
         "https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2567028069.jpg",
@@ -1041,9 +1040,7 @@ class SubjectTeleplayRepos extends SubjectRepos {
         "(2019)",
         4.0,
         8.3,
-        "故事根据金容基的网络漫画《惊悚考试院》改编，以考试院为背景，描述从乡村来到首尔生活的一位少年发生的一连串奇怪的事件，而且身旁的每个人也都怪怪的……"
-    ));
-
+        "故事根据金容基的网络漫画《惊悚考试院》改编，以考试院为背景，描述从乡村来到首尔生活的一位少年发生的一连串奇怪的事件，而且身旁的每个人也都怪怪的……"));
 
     result.add(TeleplayRecommendEntity.create(
         "https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2558596736.jpg",
@@ -1051,8 +1048,7 @@ class SubjectTeleplayRepos extends SubjectRepos {
         "(2019)",
         3.5,
         7.3,
-        "奥兰多·布鲁姆领衔出演亚马逊新剧《狂欢命案》，这也是他首次以常规角色亮相小荧屏。这部黑暗奇幻题材剧集共8集。在一个具有维多利亚风格的新兴城市，各色神秘生物因逃难而齐聚在此。故事围绕一宗狂欢之夜发生的命案展开，奥兰多·布鲁姆饰警探莱克弗特·菲勒斯特雷。"
-    ));
+        "奥兰多·布鲁姆领衔出演亚马逊新剧《狂欢命案》，这也是他首次以常规角色亮相小荧屏。这部黑暗奇幻题材剧集共8集。在一个具有维多利亚风格的新兴城市，各色神秘生物因逃难而齐聚在此。故事围绕一宗狂欢之夜发生的命案展开，奥兰多·布鲁姆饰警探莱克弗特·菲勒斯特雷。"));
 
     result.add(TeleplayRecommendEntity.create(
         "https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2566991162.jpg",
@@ -1060,8 +1056,7 @@ class SubjectTeleplayRepos extends SubjectRepos {
         "(2019)",
         4.5,
         9.1,
-        "教育，是中国各个阶层共同焦虑的话题，无数家庭穷尽所有把孩子送去国外，都是希望自己的孩子得到更好的教育。身为两个孩子的母亲，常年报道国际新闻的记者周轶君感受到同样的焦虑。轶君走访芬兰、日本、印度、以色列及英国等五个国家，最后回到中国，踏上一趟关于教育哲学的思考之旅。"
-    ));
+        "教育，是中国各个阶层共同焦虑的话题，无数家庭穷尽所有把孩子送去国外，都是希望自己的孩子得到更好的教育。身为两个孩子的母亲，常年报道国际新闻的记者周轶君感受到同样的焦虑。轶君走访芬兰、日本、印度、以色列及英国等五个国家，最后回到中国，踏上一趟关于教育哲学的思考之旅。"));
 
     result.add(TeleplayRecommendEntity.create(
         "https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2567329686.jpg",
@@ -1069,8 +1064,7 @@ class SubjectTeleplayRepos extends SubjectRepos {
         "(2019)",
         4.5,
         9.5,
-        "《浴血黑帮》一次性获得第四季和第五季续订。"
-    ));
+        "《浴血黑帮》一次性获得第四季和第五季续订。"));
 
     result.add(TeleplayRecommendEntity.create(
         "https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2563910544.jpg",
@@ -1078,8 +1072,7 @@ class SubjectTeleplayRepos extends SubjectRepos {
         "(2019)",
         3.5,
         7.0,
-        "、开国大典之后，百忙之中的毛泽东开始关注在押的国民党战犯的情况。根据各方面意见，毛泽东确定了对战犯的总体政策：不审不判不杀，给予人道主义待遇，组织政治学习和参加劳动改造，待时机成熟后，再酌情提出处理办法。 "
-    ));
+        "、开国大典之后，百忙之中的毛泽东开始关注在押的国民党战犯的情况。根据各方面意见，毛泽东确定了对战犯的总体政策：不审不判不杀，给予人道主义待遇，组织政治学习和参加劳动改造，待时机成熟后，再酌情提出处理办法。 "));
 
     result.add(TeleplayRecommendEntity.create(
         "https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2564451036.jpg",
@@ -1087,8 +1080,7 @@ class SubjectTeleplayRepos extends SubjectRepos {
         "(2019)",
         4.5,
         9.5,
-        "Netflix宣布一口气续订《女子监狱》第5﹑6﹑7季。"
-    ));
+        "Netflix宣布一口气续订《女子监狱》第5﹑6﹑7季。"));
 
     result.add(TeleplayRecommendEntity.create(
         "https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2558948000.jpg",
@@ -1096,8 +1088,7 @@ class SubjectTeleplayRepos extends SubjectRepos {
         "(2019)",
         4.0,
         8.6,
-        "《黑袍纠察队》（英语：The Boys）是一部超级英雄类型的美国网路电视影集，根据加斯·恩尼斯和达里克·罗伯逊的同名漫画改编，由埃里克·克里普基、伊凡·戈博和塞斯·罗根开创，预定于2019年7月26日在亚马逊影片首播。2019年7月，在剧集首播之前，亚马逊影片宣布预订第二季。 "
-    ));
+        "《黑袍纠察队》（英语：The Boys）是一部超级英雄类型的美国网路电视影集，根据加斯·恩尼斯和达里克·罗伯逊的同名漫画改编，由埃里克·克里普基、伊凡·戈博和塞斯·罗根开创，预定于2019年7月26日在亚马逊影片首播。2019年7月，在剧集首播之前，亚马逊影片宣布预订第二季。 "));
 
     return result;
   }

@@ -16,9 +16,10 @@ class TeleplayPage extends StatefulWidget {
   }
 }
 
-class _TeleplayPageState extends State<TeleplayPage> with AutomaticKeepAliveClientMixin {
+class _TeleplayPageState extends State<TeleplayPage>
+    with AutomaticKeepAliveClientMixin {
   SubjectTeleplayRepos mSubjectTeleplayRepos = SubjectTeleplayRepos();
-  List<TypeEntity> list;
+  late List<TypeEntity> list;
 
   bool isLoading = false;
 
@@ -36,6 +37,11 @@ class _TeleplayPageState extends State<TeleplayPage> with AutomaticKeepAliveClie
           padding: EdgeInsets.only(top: SizeCompat.pxToDp(50)),
           isLoadMoreRunning: isLoading,
           onLoadMore: _onLoadMore,
+          onRefresh: () {},
+          separatorBuilder: (BuildContext context, int index) {
+            return FVDivider(
+                height: SizeCompat.pxToDp(50), color: Colors.transparent);
+          },
           itemBuilder: (BuildContext context, int index) {
             return SubjectViewController.transform(list[index]);
           },

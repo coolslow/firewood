@@ -1,9 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:firewood/common/constants.dart';
-import 'package:firewood/common/utils/color_util.dart';
 import 'package:firewood/common/utils/size_compat.dart';
-import 'package:firewood/entity/subject/subject_move_interest_entity.dart';
-import 'package:firewood/entity/subject/subject_move_recommend_entity.dart';
 import 'package:firewood/entity/subject/subject_teleplay_recommend_entity.dart';
 import 'package:firewood/widgets/divider/dashed_divider.dart';
 import 'package:firewood/widgets/divider/h_divider.dart';
@@ -31,7 +28,10 @@ class SubjectTeleplayRecommend extends StatelessWidget {
           right: SizeCompat.pxToDp(Dimens.appEdgeEdge)),
       child: Column(
         children: <Widget>[
-          FVDivider(height: SizeCompat.pxToDp(50)),
+          FVDivider(
+            height: SizeCompat.pxToDp(50),
+            color: Colors.transparent,
+          ),
           getTop(context),
           getBottom(context),
         ],

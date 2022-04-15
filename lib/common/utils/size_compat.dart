@@ -3,11 +3,11 @@ import 'package:flutter/material.dart';
 
 class SizeCompat {
   static double _devicePixelRatio = 1;
-  static double _width;
-  static double _height;
-  static double top;
-  static double bottom;
-  static double _ratio;
+  static double _width = 0;
+  static double _height = 0;
+  static double top = 0;
+  static double bottom = 0;
+  static double _ratio = 1;
 
   static void init(BuildContext context, double uiWidth) {
 

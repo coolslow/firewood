@@ -1,35 +1,21 @@
 import 'package:firewood/common/utils/size_compat.dart';
-import 'package:firewood/common/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
 // ignore: must_be_immutable
 class FTabBar extends StatefulWidget {
-
-  final List<FTabBarData> tabData;
-  int currIndex;
-  final ValueChanged<int> callback;
-  TextStyle selectTs;
-  TextStyle unSelectTs;
+  List<FTabBarData> tabData = [];
+  int currIndex = 0;
+  late ValueChanged<int> callback;
+  late TextStyle selectTs;
+  late TextStyle unSelectTs;
 
   FTabBar(
-      {@required this.tabData,
+      {required this.tabData,
       this.currIndex = 0,
-      this.callback,
-      this.selectTs,
-      this.unSelectTs}) {
-    selectTs ??= TextStyle(
-        color: Color(0xff42BD56),
-        fontSize: SizeCompat.pxToDp(40),
-        decoration: TextDecoration.none,
-        fontWeight: FontWeight.w700);
-
-    unSelectTs ??= TextStyle(
-        color: Color(0xff959595),
-        fontSize: SizeCompat.pxToDp(40),
-        decoration: TextDecoration.none,
-        fontWeight: FontWeight.w200);
-  }
+      required this.callback,
+      required this.selectTs,
+      required this.unSelectTs});
 
   @override
   State<StatefulWidget> createState() {
@@ -65,7 +51,7 @@ class _FTabBarState extends State<FTabBar> {
   }
 
   List<Widget> getBar(List<FTabBarData> data) {
-    List<Widget> body = List<Widget>();
+    List<Widget> body = <Widget>[];
     if (data != null && data.length > 0) {
       for (int i = 0; i < data.length; i++) {
         Widget item = Container(
@@ -93,15 +79,16 @@ class _FTabBarState extends State<FTabBar> {
                   bottom: 0,
                   child: Container(
                     height: SizeCompat.pxToDp(6),
+                    width: SizeCompat.pxToDp(120),
                     color: widget.currIndex == i
                         ? widget.selectTs.color
                         : Colors.white,
-                    child: Center(
-                      child: Text(data[i].title,
-                          style: widget.currIndex == i
-                              ? widget.selectTs
-                              : widget.unSelectTs),
-                    ),
+                    // child: Center(
+                    //   child: Text(data[i].title,
+                    //       style: widget.currIndex == i
+                    //           ? widget.selectTs
+                    //           : widget.unSelectTs),
+                    // ),
                   ))
 //        )
             ]),

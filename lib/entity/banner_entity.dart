@@ -5,7 +5,7 @@ class BannerEntity extends TypeEntity {
   String router;
   double ratio;
 
-  BannerEntity.create({this.imgUrl, this.router, this.ratio = 3});
+  BannerEntity.create({required this.imgUrl, required this.router, this.ratio = 3});
 
   @override
   getType() {

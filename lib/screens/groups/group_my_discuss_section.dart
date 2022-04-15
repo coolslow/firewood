@@ -14,7 +14,7 @@ class _MyGroupDiscussState extends State<MyGroupDiscussSection> {
   void initState() {
     controller.addListener(() {
       setState(() {
-        currentPageValue = controller.page;
+        currentPageValue = controller.page!;
       });
     });
 

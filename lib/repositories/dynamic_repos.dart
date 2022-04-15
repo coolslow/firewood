@@ -6,7 +6,7 @@ import 'package:firewood/entity/recommend_entity.dart';
 import 'package:firewood/entity/type_entity.dart';
 
 class DynamicRepos {
-  List<TypeEntity> repositories = List<TypeEntity>();
+  List<TypeEntity> repositories = <TypeEntity>[];
 
   DynamicRepos.create() {
 

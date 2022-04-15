@@ -50,7 +50,7 @@ class ToastDemoPage extends StatelessWidget {
         msg: "This is Center Short Toast with center",
         toastLength: Toast.LENGTH_SHORT,
         gravity: ToastGravity.CENTER,
-        timeInSecForIos: 1,
+        timeInSecForIosWeb: 1,
         backgroundColor: Colors.red,
         textColor: Colors.white,
         fontSize: 16.0);
@@ -61,7 +61,7 @@ class ToastDemoPage extends StatelessWidget {
         msg: "This is Center Long Toast with bottom ",
         toastLength: Toast.LENGTH_LONG,
         gravity: ToastGravity.BOTTOM,
-        timeInSecForIos: 3,
+        timeInSecForIosWeb: 3,
         backgroundColor: Colors.red,
         textColor: Colors.white,
         fontSize: 16.0);

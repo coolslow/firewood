@@ -2,11 +2,11 @@ import 'package:firewood/common/utils/utils.dart';
 import 'package:firewood/entity/type_entity.dart';
 
 class MoveRecommendEntity extends TypeEntity {
-  String id; // 唯一编号
-  String imgUrl; // 海报
-  String title; // 名称
-  String subTitle; // 名称
-  String des; // 名称
+  late String id; // 唯一编号
+  late String imgUrl; // 海报
+  late String title; // 名称
+  late String subTitle; // 名称
+  late String des; // 名称
 
   final String bgColor; //底色
   final String titleColor; //底色

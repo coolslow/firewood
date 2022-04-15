@@ -3,7 +3,7 @@ class Dog {
   final String name;
   final int age;
 
-  Dog({this.id, this.name, this.age});
+  Dog({required this.id, required this.name, required this.age});
 
   Map<String, dynamic> toMap() {
     return {

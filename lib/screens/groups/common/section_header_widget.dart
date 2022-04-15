@@ -6,11 +6,10 @@ class SectionHeaderWidget extends StatelessWidget {
   final Widget icon;
 
   const SectionHeaderWidget({
-    Key key,
-    @required this.title,
-    this.subTitle,
-    this.icon,
-  }) : super(key: key);
+    required this.title,
+    required this.subTitle,
+    required this.icon,
+  }) : super();
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +19,7 @@ class SectionHeaderWidget extends StatelessWidget {
         // border: Border.all(color: Colors.blueAccent),
         border: Border(
           bottom: BorderSide(
-            color: Colors.grey[300],
+            color: Colors.grey[300]!,
             width: 1.0,
           ),
         ),

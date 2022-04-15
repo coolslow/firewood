@@ -14,8 +14,8 @@ class _TickerDemoState extends State<TickerDemoPage> {
   StreamController<String> microsecondsStreamController =
       StreamController<String>();
 
-  Ticker secondTicker;
-  Ticker microsecondsTicker;
+  late Ticker secondTicker;
+  late Ticker microsecondsTicker;
 
   @override
   void initState() {
@@ -53,7 +53,7 @@ class _TickerDemoState extends State<TickerDemoPage> {
                     initialData: "开始",
                     builder:
                         (BuildContext context, AsyncSnapshot<String> snapshot) {
-                      return Center(child: Text(snapshot.data));
+                      return Center(child: Text(snapshot.data!));
                     }))),
         getTitle("秒级定时器"),
         FlatButton(
@@ -69,7 +69,7 @@ class _TickerDemoState extends State<TickerDemoPage> {
                     initialData: "开始",
                     builder:
                         (BuildContext context, AsyncSnapshot<String> snapshot) {
-                      return Center(child: Text(snapshot.data));
+                      return Center(child: Text(snapshot.data!));
                     }))),
       ],
     );
@@ -115,10 +115,10 @@ class _TickerDemoState extends State<TickerDemoPage> {
 
   @override
   void dispose() {
-    secondTicker?.dispose();
-    microsecondsTicker?.dispose();
-    secondStreamController?.close();
-    microsecondsStreamController?.close();
+    secondTicker.dispose();
+    microsecondsTicker.dispose();
+    secondStreamController.close();
+    microsecondsStreamController.close();
     super.dispose();
   }
 

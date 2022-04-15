@@ -18,7 +18,7 @@ class _GroupPageViewSectionState extends State<GroupPageViewSection> {
   void initState() {
     controller.addListener(() {
       setState(() {
-        currentPage = controller.page;
+        currentPage = controller.page!;
       });
     });
 

@@ -1,51 +1,49 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:firewood/common/utils/size_compat.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
 // ignore: must_be_immutable
 class PhotoAlbum extends StatefulWidget {
-  List<String> data;
+  List<String> data = [];
 
-  double size;
-  double mainAxisSpacing;
-  double crossAxisSpacing;
-  int crossAxisCount;
-  double childAspectRatio;
-  EdgeInsetsGeometry padding;
-  BorderRadius borderRadius;
-  int maxCount;
-  bool showDustbin;
-  bool showWhenEmpty;
+  double size = 0;
+  double mainAxisSpacing = 10;
+  double crossAxisSpacing = 10;
+  int crossAxisCount = 3;
+  double childAspectRatio = 1;
+  EdgeInsetsGeometry padding = EdgeInsetsGeometry.infinity;
+  BorderRadius borderRadius = BorderRadius.zero;
+  int maxCount = 9;
+  bool showDustbin = false;
+  bool showWhenEmpty = false;
 
   PhotoAlbum({
-    List<String> data,
-    double size,
-    double mainAxisSpacing,
-    double crossAxisSpacing,
-    int crossAxisCount,
+    required List<String> data,
+    required double size,
+    required double mainAxisSpacing,
+    required double crossAxisSpacing,
+    required int crossAxisCount,
     double childAspectRatio = 1,
-    EdgeInsetsGeometry padding,
-    BorderRadius borderRadius,
+    required EdgeInsetsGeometry padding,
+    required BorderRadius borderRadius,
     int maxCount = 9,
-    bool showDustbin,
-    bool showWhenEmpty,
+    required bool showDustbin,
+    required bool showWhenEmpty,
   }) {
-    this.size = size ?? SizeCompat.width();
-    this.mainAxisSpacing = mainAxisSpacing ?? SizeCompat.pxToDp(20);
-    this.crossAxisSpacing = crossAxisSpacing ?? SizeCompat.pxToDp(20);
+    this.size = size;
+    this.mainAxisSpacing = mainAxisSpacing;
+    this.crossAxisSpacing = crossAxisSpacing;
 
-    this.crossAxisCount = crossAxisCount ?? 3;
-    this.childAspectRatio = childAspectRatio ?? 1;
-    this.padding = padding ?? EdgeInsets.all(0);
-    this.borderRadius =
-        borderRadius ?? BorderRadius.circular(SizeCompat.pxToDp(10));
+    this.crossAxisCount = crossAxisCount;
+    this.childAspectRatio = childAspectRatio;
+    this.padding = padding;
+    this.borderRadius = borderRadius;
 
-    this.maxCount = maxCount ?? 9;
-    this.showDustbin = showDustbin ?? true;
-    this.showWhenEmpty = showWhenEmpty ?? true;
+    this.maxCount = maxCount;
+    this.showDustbin = showDustbin;
+    this.showWhenEmpty = showWhenEmpty;
 
-    this.data = data ?? List<String>();
+    this.data = data;
   }
 
   @override
@@ -55,8 +53,8 @@ class PhotoAlbum extends StatefulWidget {
 }
 
 class _PhotoAlbumState extends State<PhotoAlbum> {
-  double itemWith;
-  double itemHeight;
+  late double itemWith;
+  late double itemHeight;
 
   @override
   void initState() {

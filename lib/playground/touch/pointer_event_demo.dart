@@ -27,7 +27,7 @@ class _PointerEventDemoState extends State<PointerEventDemo> {
               stream: _stream.stream,
               builder: (BuildContext context, AsyncSnapshot<String> snapshot) {
                 return Center(
-                    child: Text(snapshot.data == null ? "" : snapshot.data,
+                    child: Text(snapshot.data!,
                         style: TextStyle(
                             color: Colors.white,
                             fontSize: 15,

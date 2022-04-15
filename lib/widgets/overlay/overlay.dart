@@ -3,11 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
 class FOverlay {
-  OverlayEntry overlayEntry;
+  OverlayEntry? overlayEntry;
 
-  void open(BuildContext context, Widget child) {
+  void open(BuildContext context, Widget? child) {
     if (overlayEntry != null) {
-      overlayEntry.remove();
+      overlayEntry?.remove();
       overlayEntry = null;
       return;
     }
@@ -70,12 +70,12 @@ class FOverlay {
                 ]),
               )));
     });
-    Overlay.of(context).insert(overlayEntry);
+    Overlay.of(context)!.insert(overlayEntry!);
   }
 
   void close() {
     if (overlayEntry != null) {
-      overlayEntry.remove();
+      overlayEntry?.remove();
       overlayEntry = null;
       return;
     }

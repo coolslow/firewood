@@ -76,7 +76,7 @@ class _FIndicatorState extends State<FIndicator> {
 
   @override
   void dispose() {
-    mController?.dispose();
+    mController.dispose();
     super.dispose();
   }
 }

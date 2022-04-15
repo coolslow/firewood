@@ -20,16 +20,16 @@ class DynamicPage extends StatefulWidget {
 }
 
 class _DynamicPageState extends State<DynamicPage>
-    with AutomaticKeepAliveClientMixin {
+     {
   double _offset = 145;
-  double _vpFraction;
+  late double _vpFraction;
 
   DynamicViewController _controller = DynamicViewController();
-  PageController _pageController;
+  late PageController _pageController;
   StreamController<int> _stream = StreamController<int>();
 
   DynamicRepos _dynamicRepos = DynamicRepos.create();
-  List<TypeEntity> _data = List<TypeEntity>();
+  List<TypeEntity> _data = <TypeEntity>[];
 
   @override
   void initState() {
@@ -90,7 +90,7 @@ class _DynamicPageState extends State<DynamicPage>
                         builder: (BuildContext context,
                             AsyncSnapshot<int> snapshot) {
                           return FIndicator(
-                              current: snapshot.data,
+                              current: snapshot.data!,
                               indicatorCount: _data.length);
                         }),
                   )),
@@ -108,11 +108,11 @@ class _DynamicPageState extends State<DynamicPage>
 
   @override
   void dispose() {
-    _pageController?.dispose();
-    _stream?.close();
+    _pageController.dispose();
+    _stream.close();
     super.dispose();
   }
 
-  @override
-  bool get wantKeepAlive => true;
+  // @override
+  // bool get wantKeepAlive => true;
 }

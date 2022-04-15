@@ -9,7 +9,8 @@ class SubjectTitle extends StatelessWidget {
   String des;
   double fontSize;
 
-  SubjectTitle({this.title, this.des, this.fontSize});
+  SubjectTitle(
+      {required this.title, required this.des, required this.fontSize});
 
   @override
   Widget build(BuildContext context) {

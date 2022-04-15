@@ -5,25 +5,25 @@ import 'package:meta/meta.dart';
 
 class ChessController {
   //棋盘路数
-  int boardSize;
+  int boardSize = 10;
 
   //棋盘尺寸
   double size;
 
   //每个格子的尺寸
-  double tileSize;
+  late double tileSize;
 
   //左右第一条边线和边界的距离
-  double xOffset;
+  late double xOffset;
 
   //上下第一条边线和边界的距离
-  double yOffset;
+  late double yOffset;
 
   bool showChart = false;
 
-  List<Offset> chessData = List<Offset>();
+  List<Offset> chessData = <Offset>[];
 
-  ChessController({@required this.size, @required this.boardSize}) {
+  ChessController({required this.size, required this.boardSize}) {
 
     tileSize = this.size / (boardSize + 1);
     xOffset = tileSize * 1;

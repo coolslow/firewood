@@ -4,6 +4,7 @@ import 'package:english_words/english_words.dart';
 import 'package:firewood/playground/navigation/action_bar.dart';
 import 'package:flutter/material.dart';
 
+// deprecated zhl
 class PageViewDemoPage extends StatefulWidget {
   @override
   _PageViewDemoState createState() => new _PageViewDemoState();
@@ -14,12 +15,12 @@ class _PageViewDemoState extends State<PageViewDemoPage> {
 
   StreamController<double> streamController = StreamController<double>();
 
-  List<Widget> transitionList = List<Widget>();
+  List<Widget> transitionList = <Widget>[];
 
   @override
   void initState() {
     controller.addListener(() {
-      streamController.add(controller.page);
+      streamController.add(controller.page!);
     });
 
     transitionList.add(
@@ -141,7 +142,7 @@ class _PageViewDemoState extends State<PageViewDemoPage> {
   }
 
   Widget _buildPage(int index) {
-    List<Widget> list = List<Widget>();
+    List<Widget> list = <Widget>[];
     list.add(
       Container(
         alignment: Alignment.center,
@@ -226,14 +227,14 @@ class _PageViewDemoState extends State<PageViewDemoPage> {
           scrollDirection: Axis.horizontal,
           physics: BouncingScrollPhysics(),
           itemBuilder: (BuildContext context, int index) {
-            if (index == snapshot.data.floor()) {
+            if (index == snapshot.data!.floor()) {
               return Transform(
-                transform: Matrix4.identity()..rotateX(snapshot.data - index),
+                transform: Matrix4.identity()..rotateX(snapshot.data! - index),
                 child: transitionList[index % transitionList.length],
               );
-            } else if (index == snapshot.data.floor() + 1) {
+            } else if (index == snapshot.data!.floor() + 1) {
               return Transform(
-                transform: Matrix4.identity()..rotateX(snapshot.data - index),
+                transform: Matrix4.identity()..rotateX(snapshot.data! - index),
                 child: transitionList[index % transitionList.length],
               );
             } else {
@@ -248,8 +249,8 @@ class _PageViewDemoState extends State<PageViewDemoPage> {
 
   @override
   void dispose() {
-    controller?.dispose();
-    streamController?.close();
+    controller.dispose();
+    streamController.close();
     super.dispose();
   }
 }

@@ -143,8 +143,8 @@ class SubjectInterest extends StatelessWidget {
   }
 
   List<Widget> getWraps() {
-    List<Widget> list = List<Widget>();
-    data.tags?.forEach((source) {
+    List<Widget> list = <Widget>[];
+    data.tags.forEach((source) {
       list.add(Container(
           padding: EdgeInsets.only(
               top: SizeCompat.pxToDp(10),

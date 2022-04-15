@@ -10,10 +10,10 @@ class SimpleAnimateDemoPage extends StatefulWidget {
 
 class _SimpleAnimateDemoPageState extends State<SimpleAnimateDemoPage>
     with TickerProviderStateMixin {
-  AnimationController controller1;
-  Animation<int> animation1;
-  AnimationController controller2;
-  Animation<int> animation2;
+  late AnimationController controller1;
+  late Animation<int> animation1;
+  late AnimationController controller2;
+  late Animation<int> animation2;
 
   @override
   void initState() {

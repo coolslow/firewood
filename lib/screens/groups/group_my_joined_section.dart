@@ -23,7 +23,6 @@ class _MyJoinedSectionState extends State<MyJoinedSection> {
       child: Column(
         children: <Widget>[
           SectionHeaderWidget(
-            key: UniqueKey(),
             title: Text(
               '主标题',
               style: TextStyle(

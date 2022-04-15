@@ -43,9 +43,7 @@ class LayerChessState extends State<LayerChess> {
   }
 
   void onClick(TapUpDetails details) {
-    RenderBox box = _key.currentContext.findRenderObject();
-    Offset localOffset = box.localToGlobal(Offset.zero);
-
+    Offset localOffset = Offset.zero;
     Offset offset = details.globalPosition - localOffset;
     bool success = chessController.appendChess(offset);
 

@@ -1,7 +1,7 @@
 import 'package:firewood/entity/type_entity.dart';
 
 class TitleTabEntity extends TypeEntity {
-  List<String> tabs = List<String>();
+  List<String> tabs = <String>[];
   String router;
   String more;
   double fontSize;
@@ -9,12 +9,12 @@ class TitleTabEntity extends TypeEntity {
   double verSpace;
 
   TitleTabEntity.create(
-      {this.tabs,
-      this.router,
-      this.more,
-      this.fontSize,
-      this.horSpace,
-      this.verSpace});
+      {required this.tabs,
+      required this.router,
+      required this.more,
+      required this.fontSize,
+      required this.horSpace,
+      required this.verSpace});
 
   @override
   getType() {

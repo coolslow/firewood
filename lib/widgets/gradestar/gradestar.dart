@@ -10,7 +10,10 @@ class GradeStart extends StatelessWidget {
   Color unSelectColor = Colors.grey;
   double size = 5;
 
-  GradeStart(this.score, this.total, {this.size,this.selectColor,this.unSelectColor});
+  GradeStart(this.score, this.total,
+      {required this.size,
+      required this.selectColor,
+      required this.unSelectColor});
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +21,7 @@ class GradeStart extends StatelessWidget {
   }
 
   List<Widget> _getGradeStar(double score, int total) {
-    List<Widget> _list = List<Widget>();
+    List<Widget> _list = <Widget>[];
 
     for (var i = 0; i < total; i++) {
       double factor = (score - i);

@@ -10,7 +10,7 @@ class CircleProgressBarWidget extends StatefulWidget {
   final ValueChanged<double> callback;
 
   CircleProgressBarWidget(this.progress,
-      {this.supportGesture = false, this.callback, this.startAnim = true});
+      {this.supportGesture = false, required this.callback, this.startAnim = true});
 
   @override
   _CircleProgressBarState createState() {
@@ -22,11 +22,11 @@ class CircleProgressBarWidget extends StatefulWidget {
 
 class _CircleProgressBarState extends State<CircleProgressBarWidget>
     with SingleTickerProviderStateMixin {
-  AnimationController controller;
-  Animation<double> animation;
+  late AnimationController controller;
+  late Animation<double> animation;
 
   GlobalKey _globalKey = GlobalKey();
-  CircleProgressPainterView painterView;
+  late CircleProgressPainterView painterView;
   double currProgress = 0;
 
   @override
@@ -91,7 +91,7 @@ class _CircleProgressBarState extends State<CircleProgressBarWidget>
       return;
     }
 
-    RenderBox getBox = _globalKey.currentContext.findRenderObject();
+    RenderBox getBox = _globalKey.currentContext!.findRenderObject() as RenderBox;
     Offset local = getBox.globalToLocal(details.globalPosition);
     bool isValid = painterView.checkValidTouch(local);
     if (isValid) {
@@ -126,14 +126,14 @@ class _CircleProgressBarState extends State<CircleProgressBarWidget>
       setState(() {});
     });
 
-    controller?.reset();
-    controller?.forward();
+    controller.reset();
+    controller.forward();
 
   }
 
   @override
   void dispose() {
-    controller?.dispose();
+    controller.dispose();
     super.dispose();
   }
 }

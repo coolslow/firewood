@@ -1,5 +1,4 @@
 import 'package:firewood/common/constants.dart';
-import 'package:firewood/common/utils/size_compat.dart';
 import 'package:firewood/widgets/navigation/action_search_bar.dart';
 import 'package:flutter/material.dart';
 
@@ -12,10 +11,9 @@ class CustomAppbarWidget extends StatelessWidget
   final Color bgColor; // appbar 背景颜色
 
   const CustomAppbarWidget({
-    Key key,
-    @required this.height,
-    @required this.bgColor,
-  }) : super(key: key);
+    required this.height,
+    required this.bgColor,
+  }) : super();
 
   @override
   Widget build(BuildContext context) {

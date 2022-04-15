@@ -1,13 +1,10 @@
 import 'dart:async';
 
-import 'package:cached_network_image/cached_network_image.dart';
-import 'package:firewood/common/constants.dart';
 import 'package:firewood/common/utils/size_compat.dart';
 import 'package:firewood/playground/navigation/action_bar.dart';
 import 'package:firewood/widgets/compat/safe_area.dart';
 import 'package:firewood/widgets/divider/h_divider.dart';
 import 'package:firewood/widgets/divider/v_divider.dart';
-import 'package:firewood/widgets/navigation/action_search_bar.dart';
 import 'package:firewood/widgets/overlay/overlay.dart';
 import 'package:firewood/widgets/photo/photo_album.dart';
 import 'package:flutter/material.dart';
@@ -24,7 +21,7 @@ class _ComposePageState extends State<ComposePage> {
 
   bool hasEditingText = false;
 
-  List<String> photos = List<String>();
+  List<String> photos = <String>[];
 
   @override
   void initState() {
@@ -89,7 +86,7 @@ class _ComposePageState extends State<ComposePage> {
                                       color: Color(0xff1a1a1a)),
                                   controller: textEditingController,
                                   keyboardType: TextInputType.text,
-                                  autofocus: !snapshot.data,
+                                  autofocus: !snapshot.data!,
                                   textInputAction: TextInputAction.done,
                                   onChanged: (val) {
                                     if (val.isEmpty) {
@@ -132,7 +129,17 @@ class _ComposePageState extends State<ComposePage> {
                             left: SizeCompat.pxToDp(40),
                             right: SizeCompat.pxToDp(40)),
                         child: PhotoAlbum(
-                            data: photos, size: SizeCompat.width() * 3 / 4),
+                          data: photos,
+                          size: SizeCompat.width() * 3 / 4,
+                          mainAxisSpacing: SizeCompat.pxToDp(20),
+                          crossAxisSpacing: SizeCompat.pxToDp(20),
+                          crossAxisCount: 3,
+                          padding: EdgeInsets.all(0),
+                          borderRadius:
+                              BorderRadius.circular(SizeCompat.pxToDp(10)),
+                          showDustbin: true,
+                          showWhenEmpty: true,
+                        ),
                       ),
                     ],
                   ),
@@ -218,6 +225,7 @@ class _ComposePageState extends State<ComposePage> {
   }
 
   FOverlay overlay = FOverlay();
+
   void clickAuthority() {
     overlay.open(context, null);
   }

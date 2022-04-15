@@ -53,7 +53,7 @@ class TouchDemoPage extends StatelessWidget {
         context,
         PageRouteBuilder(
             transitionDuration: Duration(milliseconds: 200),
-            pageBuilder: (BuildContext context, Animation animation,
+            pageBuilder: (BuildContext context, Animation<double> animation,
                     Animation secondaryAnimation) =>
                 SlideTransition(
                   position: Tween<Offset>(

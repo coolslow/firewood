@@ -1,8 +1,6 @@
 import 'dart:async';
 
 import 'package:firewood/common/constants.dart';
-import 'package:firewood/common/utils/size_compat.dart';
-import 'package:firewood/common/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
@@ -20,17 +18,16 @@ class FListView extends StatefulWidget {
   EdgeInsets padding;
 
   FListView.builder(
-      {this.itemCount,
-      this.itemBuilder,
-      this.separatorBuilder,
-      this.onRefresh,
-      this.onLoadMore,
+      {required this.itemCount,
+      required this.itemBuilder,
+      required this.separatorBuilder,
+      required this.onRefresh,
+      required this.onLoadMore,
       this.isLoadMoreRunning = false,
-      this.padding,
+      required this.padding,
       this.pageState = const PageStateFactory()})
       : assert(itemBuilder != null),
         assert(itemCount != null && itemCount >= 0) {
-    padding ??= EdgeInsets.all(0);
   }
 
   @override
@@ -102,7 +99,7 @@ class _FListViewState extends State<FListView> {
     if (widget.onRefresh != null) {
       widget.onRefresh();
     }
-    return _refreshCompleter?.future;
+    return _refreshCompleter.future;
   }
 
   void _handleLoadMore() {
@@ -132,7 +129,7 @@ class _FListViewState extends State<FListView> {
   Widget getListView() {
     if (widget.onRefresh != null) {
       // 支持下拉刷新
-      _refreshCompleter?.complete();
+      _refreshCompleter.complete();
       _refreshCompleter = Completer();
 
       if (widget.separatorBuilder == null) {

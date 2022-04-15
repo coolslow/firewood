@@ -1,12 +1,12 @@
 import 'package:flutter/widgets.dart';
 
 class FRouter {
-  static void to(BuildContext context, Widget w) {
+  static void to(BuildContext context, Widget? w) {
     Navigator.push(
         context,
         PageRouteBuilder(
             transitionDuration: Duration(milliseconds: 200),
-            pageBuilder: (BuildContext context, Animation animation,
+            pageBuilder: (BuildContext context, Animation<double> animation,
                     Animation secondaryAnimation) =>
                 SlideTransition(
                   position: Tween<Offset>(

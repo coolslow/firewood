@@ -4,20 +4,20 @@ import 'package:firewood/widgets/toast/toast.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
-class Router {
+class RouterUtils {
 
-  static Future handle(
+  static Future<dynamic>? handle(
     BuildContext context,
     String url, {
-    Object arguments,
-    RouterAnimate animateType,
+    Object? arguments,
+    required RouterAnimate animateType,
   }) {
     if (url == null || url.isEmpty) {
       FToast.show("Routr is empty");
       return null;
     }
     Uri uri = Uri.parse(url);
-    Widget widget = _match(uri);
+    Widget? widget = _match(uri);
     if (widget == null) {
       FToast.showLong(
           "Router not matched by flutter router table, Maybe you can call native router table");
@@ -35,12 +35,12 @@ class Router {
     return _handle(context, widget, animateType: animateType);
   }
 
-  static Widget _match(Uri uri) {
+  static Widget? _match(Uri uri) {
     if (!uri.toString().startsWith(RouterTable.PREFIX)) {
       return null;
     }
 
-    Widget result;
+    Widget? result;
     result = RouterTable.routers[uri.path];
     if (result != null) {
       return result;
@@ -83,7 +83,7 @@ class Router {
   }
 
   static AnimatedWidget _getAnimatedWidget(
-      RouterAnimate animateType, Animation animation, Widget w) {
+      RouterAnimate animateType, Animation<double> animation, Widget w) {
     if (animateType == RouterAnimate.SlideLeftIn ||
         animateType == RouterAnimate.SlideRightIn ||
         animateType == RouterAnimate.SlideTopIn ||
@@ -122,8 +122,8 @@ class Router {
   static Future _handle(
     BuildContext context,
     Widget w, {
-    Object arguments,
-    RouterAnimate animateType,
+    Object? arguments,
+    required RouterAnimate animateType,
   }) {
     return Navigator.push(
         context,
@@ -132,7 +132,7 @@ class Router {
               arguments: arguments,
             ),
             transitionDuration: Duration(milliseconds: 200),
-            pageBuilder: (BuildContext context, Animation animation,
+            pageBuilder: (BuildContext context, Animation<double> animation,
                 Animation secondaryAnimation) {
               return _getAnimatedWidget(animateType, animation, w);
             }));

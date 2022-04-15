@@ -17,18 +17,18 @@ class MainPage extends StatefulWidget {
 }
 
 class _MainPageState extends State<MainPage> {
-  List<FBottomData> bottomData;
-  List<Widget> pages = List<Widget>();
+  late List<FBottomData> bottomData;
+  List<Widget> pages = <Widget>[];
   int currentIndex = 0;
 
-  PageController _pageController;
+  late PageController _pageController;
 
   @override
   void initState() {
     super.initState();
     _pageController = PageController(initialPage: currentIndex);
 
-    bottomData = new List();
+    bottomData = [];
 
     bottomData.add(FBottomData(
       title: "首页",
@@ -42,18 +42,18 @@ class _MainPageState extends State<MainPage> {
       selectIcon: Image.asset("images/ic_tab_subject_active.png"),
       unSelectIcon: Image.asset("images/ic_tab_subject_normal.png"),
     ));
-    bottomData.add(FBottomData(
-      title: "小组",
-      page: GroupPage(),
-      selectIcon: Image.asset("images/ic_tab_group_active.png"),
-      unSelectIcon: Image.asset("images/ic_tab_group_normal.png"),
-    ));
-    bottomData.add(FBottomData(
-      title: "市集",
-      page: MarketPage(),
-      selectIcon: Image.asset("images/ic_tab_shiji_active.png"),
-      unSelectIcon: Image.asset("images/ic_tab_shiji_normal.png"),
-    ));
+    // bottomData.add(FBottomData(
+    //   title: "小组",
+    //   page: GroupPage(),
+    //   selectIcon: Image.asset("images/ic_tab_group_active.png"),
+    //   unSelectIcon: Image.asset("images/ic_tab_group_normal.png"),
+    // ));
+    // bottomData.add(FBottomData(
+    //   title: "市集",
+    //   page: MarketPage(),
+    //   selectIcon: Image.asset("images/ic_tab_shiji_active.png"),
+    //   unSelectIcon: Image.asset("images/ic_tab_shiji_normal.png"),
+    // ));
     bottomData.add(FBottomData(
       title: "我的",
 //      page: ProfilePage(),
@@ -125,6 +125,16 @@ class _MainPageState extends State<MainPage> {
             currIndex: currentIndex,
             bottomData: bottomData,
             callback: onPageChange,
+            selectTs: TextStyle(
+                color: Color(0xff42BD56),
+                fontSize: SizeCompat.pxToDp(30),
+                decoration: TextDecoration.none,
+                fontWeight: FontWeight.w200),
+            unSelectTs: TextStyle(
+                color: Color(0xffa6a6a6),
+                fontSize: SizeCompat.pxToDp(30),
+                decoration: TextDecoration.none,
+                fontWeight: FontWeight.w200),
           ),
         ),
 //        Container(
@@ -137,7 +147,7 @@ class _MainPageState extends State<MainPage> {
 
   @override
   void dispose() {
-    _pageController?.dispose();
+    _pageController.dispose();
     super.dispose();
   }
 }

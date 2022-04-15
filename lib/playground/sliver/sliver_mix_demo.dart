@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:firewood/common/font.dart';
 import 'package:flutter/material.dart';
 
+// deprecated zhl
 class SliverMixDemoPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {

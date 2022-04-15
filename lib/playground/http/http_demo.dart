@@ -61,7 +61,7 @@ class _HttpDemoState extends State<HttpDemoPage> {
     setState(() {
       responseData = "";
     });
-    Future<String> content = HttpService.getInstance().get("music.md");
+    Future<String> content = HttpService.getInstance().get("music.md", parameters: {});
     LoadingDialog.show(context, color: Colors.transparent);
     content.then((data) {
       LoadingDialog.hide(context);
@@ -75,7 +75,7 @@ class _HttpDemoState extends State<HttpDemoPage> {
     setState(() {
       responseData = "";
     });
-    Future<String> content = HttpService.getInstance().get("music.md");
+    Future<String> content = HttpService.getInstance().get("music.md", parameters: {});
     LoadingDialog.show(context, color: Colors.transparent);
     content.then((data) {
       LoadingDialog.hide(context);

@@ -10,10 +10,10 @@ class AdvanceAnimateDemoPage extends StatefulWidget {
 
 class _AdvanceAnimateDemoPageState extends State<AdvanceAnimateDemoPage>
     with TickerProviderStateMixin {
-  AnimationController controller;
-  AnimationController controller2;
-  Animation<int> animation;
-  Animation<double> animation2;
+  late AnimationController controller;
+  late AnimationController controller2;
+  late Animation<int> animation;
+  late Animation<double> animation2;
 
   @override
   void initState() {
@@ -107,7 +107,7 @@ class _AdvanceAnimateDemoPageState extends State<AdvanceAnimateDemoPage>
     print("build");
     return AnimatedBuilder(
       animation: animation,
-      builder: (BuildContext context, Widget child) {
+      builder: (BuildContext context, Widget? child) {
         print("Animated build  value=${animation.value.toDouble()}");
         return Container(
             margin: EdgeInsets.only(left: animation.value.toDouble()),

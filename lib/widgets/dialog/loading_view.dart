@@ -6,7 +6,7 @@ class LoadingView extends StatefulWidget {
   bool isLoading;
   final Widget child;
 
-  LoadingView({this.isLoading = false, this.child, this.isDismissible = true});
+  LoadingView({this.isLoading = false, required this.child, this.isDismissible = true});
 
   @override
   State<StatefulWidget> createState() {

@@ -3,6 +3,7 @@ import 'package:firewood/playground/listviews/refresh_list_demo.dart';
 import 'package:firewood/playground/navigation/action_bar.dart';
 import 'package:flutter/material.dart';
 
+// deprecated zhl
 class ListVerDemoPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -12,7 +13,7 @@ class ListVerDemoPage extends StatelessWidget {
         children: <Widget>[
           Expanded(
             child: ListView.builder(
-//                scrollDirection: Axis.horizontal,
+               scrollDirection: Axis.horizontal,
               shrinkWrap: false,
               physics: BouncingScrollPhysics(),
               padding: EdgeInsets.all(0.0),

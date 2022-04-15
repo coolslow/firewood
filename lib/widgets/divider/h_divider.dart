@@ -8,7 +8,6 @@ class FHDivider extends StatelessWidget {
   final Color color;
 
   const FHDivider({
-    Key key,
     this.width = 16.0,
     this.indent = 0.0,
     this.endIndent = 0.0,

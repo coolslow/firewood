@@ -17,11 +17,11 @@ class SubjectPage extends StatefulWidget {
 
 class _SubjectPageState extends State<SubjectPage>
     with AutomaticKeepAliveClientMixin {
-  List<FTabBarData> tabData = List<FTabBarData>();
-  List<Widget> widgetData = List<Widget>();
+  List<FTabBarData> tabData = <FTabBarData>[];
+  List<Widget> widgetData = <Widget>[];
   int currentIndex = 0;
 
-  PageController _pageController;
+  late PageController _pageController;
 
   @override
   void initState() {
@@ -103,7 +103,7 @@ class _SubjectPageState extends State<SubjectPage>
 
   @override
   void dispose() {
-    _pageController?.dispose();
+    _pageController.dispose();
     super.dispose();
   }
 

@@ -2,6 +2,7 @@ import 'package:firewood/common/utils/size_compat.dart';
 import 'package:firewood/playground/navigation/action_bar.dart';
 import 'package:flutter/material.dart';
 
+// deprecated zhl
 class CircleAvatarDemoPage extends StatelessWidget {
   final String portrait = "https://img3.doubanio.com/icon/up180055214-15.jpg";
 

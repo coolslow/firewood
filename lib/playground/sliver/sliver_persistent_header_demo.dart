@@ -115,9 +115,9 @@ class SliverPersistentHeaderDemo extends StatelessWidget {
 
 class _SliverPersistentHeaderDelegate extends SliverPersistentHeaderDelegate {
   _SliverPersistentHeaderDelegate({
-    @required this.minHeight,
-    @required this.maxHeight,
-    @required this.child,
+    required this.minHeight,
+    required this.maxHeight,
+    required this.child,
   });
 
   final double minHeight;
